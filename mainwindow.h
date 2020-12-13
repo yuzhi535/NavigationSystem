@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFile>
 
 #include "Graph/graph.h"
 #include "GraphUi/qgraph.h"

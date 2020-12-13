@@ -4,6 +4,9 @@
 
 #define GRAPHDEBUG 0
 
+#if GRAPHDEBUG == 0
+#include <iostream>
+#endif
 
 int main(int argc, char *argv[])
 {
@@ -13,7 +16,7 @@ int main(int argc, char *argv[])
     w.show();
     return a.exec();
 #else
-    QString fileName;
+    std::string fileName;
 
     if (argc > 1)
     {
@@ -21,10 +24,14 @@ int main(int argc, char *argv[])
     }
     else
     {
-        fileName = "pre.txt";
+        fileName = "pre.dat";
     }
+    std::fstream fout;
+    fout.open(fileName, std::ios::in);
 
     Graph graph;
+    graph.init(fout);
+    graph.show();
 //    graph.
 
 

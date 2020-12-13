@@ -6,6 +6,9 @@
 #include <QMap>
 #include <QString>
 #include <QPoint>
+#include <fstream>
+#include <QDebug>
+#include <string>
 
 
 const int maxVexNum = 20;
@@ -16,18 +19,22 @@ const int maxVexNum = 20;
 struct Pair
 {
     int from, to;
+    Pair() : Pair(-1, -1) {}
+    Pair(int a, int b) : from(a), to(b) {}
 };
 
 /**
  * @brief The EdgeSet class
  */
-class EdgeSet
+typedef class EdgeSet
 {
 public:
     EdgeSet();
     EdgeSet(EdgeSet& other);
 
-    void setGroup(bool key);
+    void setGroup(bool key);   //change the weight
+    void setWeight(int weight);
+    int getWeight() { return m_weight; }
 
 
 private:
@@ -36,23 +43,24 @@ private:
     int m_group;      // to record the people density
     bool isGroup;     // to decide whether the group arg works
 
-};
+} Arc[maxVexNum][maxVexNum];
 
 
 /**
  * @brief the set of verteces
  */
-typedef class VexSet
+class VexSet
 {
 public:
     VexSet();
+    VexSet(std::string info) : m_info(info) {}
     ~VexSet();
-    void addInfo (const char* info);
+    void addInfo (std::string info);
 private:
-    QString m_info;    // the info of this vertex
+    std::string m_info;    // the info of this vertex
     QPoint m_pos;      // the position in the graph ui
 
-} Arc[maxVexNum][maxVexNum];
+} ;
 
 
 class Graph
@@ -60,12 +68,14 @@ class Graph
 public:
     Graph();
     ~Graph();
-    void addArc(Pair currPos);
-    void addArc(int start, int end);
-    void operator << (Pair currPos);
+    void init(std::fstream& out);
+    void addArc(Pair currPos, int weight = 1);
+    void addArc(int start, int end, int weight = 1);
     void deleteArc(Pair currPos);
     void deleteArc(int start, int end);
-    void addVex (const char* info);
+    void addVex (const std::string info);
+    void deleteVex();
+    void show();
 
     int getVexNum ();
     int getArcNum ();
@@ -74,7 +84,7 @@ public:
     QVector<int> findEulerRoad(int source);              // to find the Euler Road from source
 
 private:
-    EdgeSet m_edgeSet;           // the set of the edges;
+    Arc m_edgeSet;           // the set of the edges;
     int m_vexNum, m_arcNum;
     QVector<VexSet> m_vexSet;    // the set of the verteces;
 };
