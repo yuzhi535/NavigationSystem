@@ -10,11 +10,13 @@ CONFIG += c++11
 
 SOURCES += \
     Graph/graph.cpp \
+    GraphUi/qgraph.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     Graph/graph.h \
+    GraphUi/qgraph.h \
     mainwindow.h
 
 FORMS += \

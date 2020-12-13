@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 
+#include "Graph/graph.h"
+#include "GraphUi/qgraph.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
