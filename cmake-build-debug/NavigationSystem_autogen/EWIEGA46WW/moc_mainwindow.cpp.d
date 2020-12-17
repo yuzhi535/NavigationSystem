@@ -225,6 +225,7 @@
   /usr/include/qt/QtCore/QMap \
   /usr/include/qt/QtCore/QPoint \
   /usr/include/qt/QtCore/QQueue \
+  /usr/include/qt/QtCore/QStack \
   /usr/include/qt/QtCore/QString \
   /usr/include/qt/QtCore/QVector \
   /usr/include/qt/QtCore/qabstractitemmodel.h \
@@ -282,6 +283,7 @@
   /usr/include/qt/QtCore/qsharedpointer.h \
   /usr/include/qt/QtCore/qsharedpointer_impl.h \
   /usr/include/qt/QtCore/qsize.h \
+  /usr/include/qt/QtCore/qstack.h \
   /usr/include/qt/QtCore/qstring.h \
   /usr/include/qt/QtCore/qstringalgorithms.h \
   /usr/include/qt/QtCore/qstringlist.h \
@@ -337,11 +339,14 @@
   /usr/include/qt/QtMultimedia/qsound.h \
   /usr/include/qt/QtMultimedia/qtmultimedia-config.h \
   /usr/include/qt/QtMultimedia/qtmultimediaglobal.h \
+  /usr/include/qt/QtWidgets/QAction \
+  /usr/include/qt/QtWidgets/QCheckBox \
   /usr/include/qt/QtWidgets/QComboBox \
   /usr/include/qt/QtWidgets/QGridLayout \
   /usr/include/qt/QtWidgets/QGroupBox \
   /usr/include/qt/QtWidgets/QListWidget \
   /usr/include/qt/QtWidgets/QMainWindow \
+  /usr/include/qt/QtWidgets/QMenu \
   /usr/include/qt/QtWidgets/QPushButton \
   /usr/include/qt/QtWidgets/QWidget \
   /usr/include/qt/QtWidgets/qabstractbutton.h \
@@ -350,7 +355,10 @@
   /usr/include/qt/QtWidgets/qabstractscrollarea.h \
   /usr/include/qt/QtWidgets/qabstractslider.h \
   /usr/include/qt/QtWidgets/qabstractspinbox.h \
+  /usr/include/qt/QtWidgets/qaction.h \
+  /usr/include/qt/QtWidgets/qactiongroup.h \
   /usr/include/qt/QtWidgets/qboxlayout.h \
+  /usr/include/qt/QtWidgets/qcheckbox.h \
   /usr/include/qt/QtWidgets/qcombobox.h \
   /usr/include/qt/QtWidgets/qframe.h \
   /usr/include/qt/QtWidgets/qgridlayout.h \
@@ -360,6 +368,7 @@
   /usr/include/qt/QtWidgets/qlistview.h \
   /usr/include/qt/QtWidgets/qlistwidget.h \
   /usr/include/qt/QtWidgets/qmainwindow.h \
+  /usr/include/qt/QtWidgets/qmenu.h \
   /usr/include/qt/QtWidgets/qpushbutton.h \
   /usr/include/qt/QtWidgets/qrubberband.h \
   /usr/include/qt/QtWidgets/qsizepolicy.h \

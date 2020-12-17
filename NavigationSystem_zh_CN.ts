@@ -9,5 +9,20 @@
         <source>MainWindow</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="mainwindow.cpp" line="9"/>
+        <source>Navigation System</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="15"/>
+        <source>界面</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="32"/>
+        <source>choice</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

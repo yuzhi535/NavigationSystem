@@ -224,9 +224,9 @@
   /usr/include/qt/QtCore/QMap \
   /usr/include/qt/QtCore/QPoint \
   /usr/include/qt/QtCore/QQueue \
+  /usr/include/qt/QtCore/QStack \
   /usr/include/qt/QtCore/QString \
   /usr/include/qt/QtCore/QVector \
-  /usr/include/qt/QtCore/qabstractitemmodel.h \
   /usr/include/qt/QtCore/qalgorithms.h \
   /usr/include/qt/QtCore/qarraydata.h \
   /usr/include/qt/QtCore/qatomic.h \
@@ -273,13 +273,13 @@
   /usr/include/qt/QtCore/qrect.h \
   /usr/include/qt/QtCore/qrefcount.h \
   /usr/include/qt/QtCore/qregexp.h \
-  /usr/include/qt/QtCore/qregularexpression.h \
   /usr/include/qt/QtCore/qscopedpointer.h \
   /usr/include/qt/QtCore/qset.h \
   /usr/include/qt/QtCore/qshareddata.h \
   /usr/include/qt/QtCore/qsharedpointer.h \
   /usr/include/qt/QtCore/qsharedpointer_impl.h \
   /usr/include/qt/QtCore/qsize.h \
+  /usr/include/qt/QtCore/qstack.h \
   /usr/include/qt/QtCore/qstring.h \
   /usr/include/qt/QtCore/qstringalgorithms.h \
   /usr/include/qt/QtCore/qstringlist.h \
@@ -328,28 +328,13 @@
   /usr/include/qt/QtGui/qtguiglobal.h \
   /usr/include/qt/QtGui/qtouchdevice.h \
   /usr/include/qt/QtGui/qtransform.h \
-  /usr/include/qt/QtGui/qvalidator.h \
   /usr/include/qt/QtGui/qvector2d.h \
   /usr/include/qt/QtGui/qwindowdefs.h \
-  /usr/include/qt/QtWidgets/QComboBox \
-  /usr/include/qt/QtWidgets/QGroupBox \
   /usr/include/qt/QtWidgets/QPushButton \
   /usr/include/qt/QtWidgets/QWidget \
   /usr/include/qt/QtWidgets/qabstractbutton.h \
-  /usr/include/qt/QtWidgets/qabstractitemdelegate.h \
-  /usr/include/qt/QtWidgets/qabstractslider.h \
-  /usr/include/qt/QtWidgets/qabstractspinbox.h \
-  /usr/include/qt/QtWidgets/qcombobox.h \
-  /usr/include/qt/QtWidgets/qframe.h \
-  /usr/include/qt/QtWidgets/qgroupbox.h \
   /usr/include/qt/QtWidgets/qpushbutton.h \
-  /usr/include/qt/QtWidgets/qrubberband.h \
   /usr/include/qt/QtWidgets/qsizepolicy.h \
-  /usr/include/qt/QtWidgets/qslider.h \
-  /usr/include/qt/QtWidgets/qstyle.h \
-  /usr/include/qt/QtWidgets/qstyleoption.h \
-  /usr/include/qt/QtWidgets/qtabbar.h \
-  /usr/include/qt/QtWidgets/qtabwidget.h \
   /usr/include/qt/QtWidgets/qtwidgets-config.h \
   /usr/include/qt/QtWidgets/qtwidgetsglobal.h \
   /usr/include/qt/QtWidgets/qwidget.h \

@@ -9,6 +9,10 @@
 #include <QGroupBox>
 #include <QPushButton>
 #include <QListWidget>
+#include <QMenu>
+#include <QAction>
+#include <QCheckBox>
+#include <QComboBox>
 
 #include "graphui.h"
 
@@ -30,10 +34,17 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QGridLayout* layout;
+    QWidget* widget;   //main widget
+    QGridLayout* outLayout, * inLayout;
     GraphUi* paintWidget;
     QListWidget* list;
-    QWidget* widget;
+    QGroupBox* groupBox;
+    QComboBox* comboBox;
+
+
+    //菜单
+    QMenu* menu;
+    QAction* action1;
 
 };
 

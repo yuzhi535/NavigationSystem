@@ -11,6 +11,7 @@
 #include <QVector>
 #include <QMap>    //表示颜色
 #include <QQueue>  //最短路径
+#include <QStack>  //最短路径
 #include <QColor>  //各种颜色表示不同
 #include <QPoint>  //点的坐标
 
@@ -30,7 +31,7 @@ struct Pair {
 
     Pair() : Pair(-1, -1) {}
 
-    Pair(const Pair& other) : from(other.from), to(other.to) {}  //拷贝构造函数
+    Pair(const Pair &other) : from(other.from), to(other.to) {}  //拷贝构造函数
 
     Pair(int a, int b) : from(a), to(b) {}
 };
@@ -44,9 +45,10 @@ struct Road {
 
     Road() : Road(Pair(-1, -1), -1) {}
 
-    Road(const Road& other) : m_pair(other.m_pair), weight(other.weight) {} //拷贝构造函数
+    Road(const Road &other) : m_pair(other.m_pair), weight(other.weight) {} //拷贝构造函数
 
     Road(Pair pair, int w) : m_pair(pair), weight(w) {}
+
     Road(int a, int b, int c) : m_pair(a, b), weight(c) {}
 };
 
@@ -60,9 +62,13 @@ public:
     ~Arc();
 
     void setDistance(int num);
+
     void setWeight(int num);
+
     int getDistance() const;
+
     int getWeight() const;
+
     void setPair(Pair pair);
 
 private:
@@ -70,9 +76,9 @@ private:
     int m_weight;  //最终的权重
     Pair m_pair;   //起点和终点
 #if DEV == 2
-//实验性内容
-    int group;
-    int weather;
+    //实验性内容
+        int group;
+        int weather;
 #endif
 };
 
@@ -85,7 +91,9 @@ public:
     void addInfo(QString context);
 
     void setPos(QPoint pos);
+
     QPoint getPos();
+
     QString info;
     QPoint point;
 };
@@ -100,7 +108,9 @@ public:
 
     ~Graph();
 
-    void init_from_file(QString fileName);
+    void init_from_file(QString fileName = "pre.txt");
+
+    void updateGraph(int group);
 
     //添加顶点
     void addVex(QString info, int x, int y);
@@ -127,6 +137,8 @@ public:
     enum VexColor {
         AIM = 3, BY, IRRELEVANT
     };
+
+    QVector<QString> findShortestRoad(int from, int to, QVector<int> &pos);
 
 
 private:

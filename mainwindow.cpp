@@ -6,19 +6,37 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle(tr("Navigation System"));
+    this->setStyleSheet("background-color: rgba(12, 23, 34, 0.5)");
+
+    //菜单栏待定，还没想好
+    //-----------------------------------------------
+    menu = new QMenu(this);
+    menu->setTitle(tr("界面"));   //待定，还诶想好
+    this->menuBar()->addMenu(menu);
+    action1 = new QAction("test", this);
+    menu->addAction(action1);
+    //-----------------------------------------------
 
     widget = new QWidget(this);
     this->setCentralWidget(widget);
-    layout = new QGridLayout(widget);
-    layout->setVerticalSpacing(30);
-    layout->setHorizontalSpacing(30);
+    outLayout = new QGridLayout(widget);
+    outLayout->setVerticalSpacing(16);
+    outLayout->setHorizontalSpacing(20);
     paintWidget = new GraphUi(this);
-    layout->addWidget(paintWidget, 10, 10, 10, 10);
+    outLayout->addWidget(paintWidget, 0, 0, 16, 14);
     list = new QListWidget(this);
-    layout->addWidget(list, 20, 20, 5, 5);
+    outLayout->addWidget(list, 12, 14, 4, 6);
 
-
-    qDebug() << layout->verticalSpacing();
+    groupBox = new QGroupBox(this);
+    groupBox->setTitle(tr("choice"));
+    outLayout->addWidget(groupBox, 0, 14, 12, 6);
+    comboBox = new QComboBox(groupBox);
+    comboBox->addItem("asdf");
+    inLayout = new QGridLayout(groupBox);
+    inLayout->setHorizontalSpacing(8);
+    inLayout->setVerticalSpacing(16);
+    inLayout->addWidget(comboBox, 1, 1, 1, 2);
 }
 
 MainWindow::~MainWindow()

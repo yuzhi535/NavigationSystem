@@ -2,6 +2,7 @@
 // Created by sasuke on 2020/12/17.
 //
 
+
 #include "graph.h"
 
 void Vertex::addInfo(QString context) {
@@ -47,7 +48,10 @@ Status Graph::addArc(Road road) {
     if (this->vexNum < road.m_pair.from || this->vexNum < road.m_pair.to) {
         return ERR;
     }
-    if (this->arc.capacity() < this->vexNum) {
+
+    //扩容
+    if (this->arc.size() < this->vexNum) {
+        int size = this->arc.size();
         this->arc.resize(2 * this->vexNum);
         for (int i = 0; i < this->vexNum; ++i) {
             this->arc[i].resize(2 * this->vexNum);
@@ -89,7 +93,7 @@ Status Graph::deleteArc(Pair pair) {
 }
 
 Status Graph::delVex(QString info) {
-    int ff;
+    int ff;  //寻找该顶点
     for (ff = this->vertexes.size() - 1; ff < this->vexNum && this->vertexes.at(ff).info != info; ++ff);
     if (ff) {
         if (!this->vexNum) {
@@ -101,6 +105,7 @@ Status Graph::delVex(QString info) {
             this->arc[i][ff].setDistance(-1);
             this->arc[i][ff].setWeight(-1);
         }
+        this->vertexes.remove(ff);   //葱顶点集合中删除
 
         //邻接表的删除
 
@@ -118,36 +123,127 @@ void Graph::init_from_file(QString fileName) {
     qDebug() << "init from " << fileName;
     std::ifstream in;
     in.open(fileName.toStdString());
-    if (in.is_open()) {
-        int vexNum, arcNum;
-        //录入点和边
-        in >> vexNum >> arcNum;
-        //录入点的信息
-        for (int i = 0; i < vexNum; ++i) {
-            std::string info;
-            int x, y;
-            in >> info >> x >> y;
-            //------------
-            qDebug() << info.c_str() << x << y;
-            //------------
-            this->addVex(QString(info.c_str()), x, y);
-        }
+    if (!in.is_open()) {
+        in.close();
+        std::ofstream out;
+        out.open(fileName.toStdString());
+        out << "4 5\n"
+               "a 1 2\n"
+               "b 23 35\n"
+               "c 45 6\n"
+               "d 56 7\n"
+               "0 1 12\n"
+               "0 2 23\n"
+               "0 3 1\n"
+               "1 3 22\n"
+               "1 2 11";
+        out.close();
+        in.open(fileName.toStdString());
+    }
+    int vex_num, arc_num;
+    //录入点和边
+    in >> vex_num >> arc_num;
+    //录入点的信息
+    for (int i = 0; i < vex_num; ++i) {
+        std::string info;
+        int x, y;
+        in >> info >> x >> y;
+        this->addVex(QString(info.c_str()), x, y);
+    }
 
-        //录入边的权值  (距离)
-        for (int i = 0; i < arcNum; ++i) {
-            int j, k, l;  //顶点 顶点 距离
-            in >> j >> k >> l;
-            this->addArc(j, k, l);
-        }
-
+    //录入边的权值  (距离)
+    for (int i = 0; i < arc_num; ++i) {
+        int j, k, l;  //顶点 顶点 距离
+        in >> j >> k >> l;
+        this->addArc(j, k, l);
     }
 //#define TEST
 //#ifdef TEST
-//    for (int i = 0; i < this->vexNum; ++i) {
-//        for (int j = 0; j < this->vexNum; ++j)
+//    for (int i = 0; i < this->vex_num; ++i) {
+//        for (int j = 0; j < this->vex_num; ++j)
 //            qDebug() << i << j << this->arc[i][j].getDistance();
 //    }
 //#endif
+}
+
+QVector<QString> Graph::findShortestRoad(int from, int to, QVector<int>& pos) {
+    this->updateGraph(1);
+    QVector<int> dis(this->vexNum, 0x7f7f7f7f);
+    QVector<QString> ans;
+    QQueue<int> queue;
+    queue.push_back(from);
+    //邻接矩阵的写法
+    //先把最近的初始化
+    for (int i = 0; i < this->vexNum; ++i) {
+        if (this->arc[from][i].getWeight() != -1) {
+            dis[i] = this->arc[from][i].getWeight();
+            queue.push_back(i);
+        }
+    }
+    dis[from] = 0;
+
+    while (!queue.empty()) {
+        auto tmp = queue.front();
+        queue.pop_front();
+        for (int i = 0; i < this->vexNum; ++i) {
+            int weight = arc[tmp][i].getWeight();
+            if (weight + dis[tmp] >= 0) {
+                if (dis[i] > dis[tmp] + weight) {
+                    dis[i] = dis[tmp] + weight;
+                    queue.push_back(i);
+                }
+            }
+        }
+    }
+
+    QStack<QString> stack;
+    stack.push(this->vertexes[to].info);
+    int index(to);
+    //寻找路径
+    while (index != from) {
+        for ( index = 0; index < this->vexNum; ++index) {
+            if (dis[index] == dis[to] - this->arc[index][to].getWeight()) {
+                stack.push(this->vertexes[index].info);
+                pos.push_back(index);  //倒过来无所谓，用于绘制图
+                to = index;
+                if (index == from)
+                    break;
+            }
+        }
+    }
+
+    while (!stack.empty()) {
+        ans.push_back(stack.top());
+        stack.pop();
+    }
+
+    //------------------------------
+    for (auto i : ans) {
+        qDebug() << i;
+    }
+
+
+
+
+
+
+    return ans;
+}
+
+void Graph::updateGraph(int group) {
+    //默认为距离
+    if (group == 1) {
+        for (int i = 0; i < this->vexNum; ++i) {
+            for (int j = 0; j < this->vexNum; ++j) {
+                this->arc[i][j].setWeight(this->arc[i][j].getDistance());
+            }
+        }
+
+    } else if (group == 2) {
+
+    } else if (group == 3) {
+
+    }
 }
 
 void Arc::setDistance(int num) {
@@ -167,7 +263,7 @@ int Arc::getWeight() const {
 }
 
 Arc::Arc() {
-
+    distance = 0x7f7f7f7f;
 }
 
 Arc::~Arc() {
