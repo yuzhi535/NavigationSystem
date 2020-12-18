@@ -4,8 +4,7 @@
 
 #include "graph.h"
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     QString fileName("pre.txt");
     QApplication a(argc, argv);
 #if DEV == 1

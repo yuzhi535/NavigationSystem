@@ -17,7 +17,9 @@
 #include "graphui.h"
 
 #if DEV
+
 #include <QSound>
+
 #endif
 
 QT_BEGIN_NAMESPACE
@@ -34,17 +36,18 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QWidget* widget;   //main widget
-    QGridLayout* outLayout, * inLayout;
-    GraphUi* paintWidget;
-    QListWidget* list;
-    QGroupBox* groupBox;
-    QComboBox* comboBox;
+    QWidget *widget;   //main widget
+    QGridLayout *outLayout, *inLayout;
+    GraphUi *paintWidget;
+    QListWidget *list;
+    QGroupBox *groupBox;
+    QComboBox *comboBox;
 
 
     //菜单
-    QMenu* menu;
-    QAction* action1;
+    QMenu *menu;
+    QAction *action1;
+    QAction *action2;
 
 };
 

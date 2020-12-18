@@ -15,9 +15,6 @@ GraphUi::GraphUi(QWidget *parent) : QWidget(parent) {
 void GraphUi::mouseReleaseEvent(QMouseEvent *event) {
 
 
-
-
-
     update();
 }
 
@@ -37,12 +34,29 @@ void GraphUi::mousePressEvent(QMouseEvent *event) {
 void GraphUi::paintEvent(QPaintEvent *event) {
     QPainter painter(this);
     painter.setPen(Qt::NoPen);
-    painter.setBrush(QBrush(QColor(  56, 116, 237  )));
+    painter.setBrush(QBrush(QColor(56, 116, 237)));
     painter.drawRect(rect());
 
-
-
-
-
-
+    qDebug() << graph.edge.size();
+    auto vex_num = graph.getVexNum();
+    for (auto i = 0; i != vex_num; ++i) {
+        QPen pen;
+        pen.setWidth(5);
+        pen.setColor(Qt::red);
+        painter.setPen(pen);
+        QPoint point = graph.getVertex(i);
+        qDebug() << point;
+        painter.drawEllipse(point, 4, 4);
+        pen.setColor(Qt::green);
+        painter.setPen(pen);
+        painter.drawText(QPoint(point.x() + 3, point.y() - 8), graph.getInfo(i));
+    }
+    for (auto i = graph.edge.begin(); i != graph.edge.end(); ++i) {
+        QPen pen;
+        pen.setWidth(5);
+        pen.setColor(Qt::yellow);
+        painter.setPen(pen);
+        QPoint point1 = graph.getVertex(i->m_pair.from), point2 = graph.getVertex(i->m_pair.to);
+        painter.drawLine(point1, point2);
+    }
 }

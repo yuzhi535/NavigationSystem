@@ -10,17 +10,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="9"/>
+        <location filename="mainwindow.cpp" line="7"/>
         <source>Navigation System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="15"/>
-        <source>界面</source>
+        <location filename="mainwindow.cpp" line="13"/>
+        <source>theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="32"/>
+        <location filename="mainwindow.cpp" line="37"/>
         <source>choice</source>
         <translation type="unfinished"></translation>
     </message>

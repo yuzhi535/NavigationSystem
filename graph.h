@@ -34,6 +34,9 @@ struct Pair {
     Pair(const Pair &other) : from(other.from), to(other.to) {}  //拷贝构造函数
 
     Pair(int a, int b) : from(a), to(b) {}
+
+    bool operator= (const Pair& other) const {return from == other.from && to == other.to; }
+    bool operator!= (const Pair& other) const { return from != other.from || to != other.to; }
 };
 
 /**
@@ -86,7 +89,7 @@ class Vertex {
 public:
     ~Vertex();
 
-    Vertex(QString context, int x, int y) : info(context) {}
+    Vertex(QString context, int x, int y) : info(context), point(x, y) {}
 
     void addInfo(QString context);
 
@@ -111,6 +114,9 @@ public:
     void init_from_file(QString fileName = "pre.txt");
 
     void updateGraph(int group);
+
+    int getVexNum();
+    int getArcNum();
 
     //添加顶点
     void addVex(QString info, int x, int y);
@@ -140,15 +146,17 @@ public:
 
     QVector<QString> findShortestRoad(int from, int to, QVector<int> &pos);
 
+    QVector<Road> edge;         //有效顶点的集合
+
+    QPoint getVertex(int index);
+    QString getInfo(int index);
 
 private:
     QVector<QVector<Arc>> arc;  //邻接矩阵
-    QVector<Road> edge;         //邻接表
     QVector<Vertex> vertexes;  //顶点集合
     int vexNum, arcNum;  //顶点数量  边的数量
 
     QVector<QColor> color;
-
 };
 
 

@@ -31,6 +31,7 @@ Graph::~Graph() {
 
 void Graph::addVex(QString info, int x, int y) {
     this->vertexes.push_back(Vertex(info, x, y));
+    qDebug() << "x=" << x << " y=" << y;
     ++this->vexNum;
 }
 
@@ -65,7 +66,7 @@ Status Graph::addArc(Road road) {
 
     //邻接表的添加
     //-----------------------
-
+    edge.push_back(road);
 
 
 
@@ -85,8 +86,9 @@ Status Graph::deleteArc(Pair pair) {
     this->arc[pair.to][pair.from].setDistance(-1);
     //邻接表的删除
     //---------------------
-
-
+    auto i = edge.begin();
+    for (; i != edge.end() && i->m_pair != pair; ++i);
+    edge.erase(i);
     //---------------------
 
     return OK;
@@ -100,23 +102,27 @@ Status Graph::delVex(QString info) {
             return ERR;
         }
         for (int i = 0; i < this->vexNum; ++i) {
-            this->arc[ff][i].setDistance(-1);
-            this->arc[ff][i].setWeight(-1);
-            this->arc[i][ff].setDistance(-1);
-            this->arc[i][ff].setWeight(-1);
+//            this->arc[ff][i].setDistance(-1);
+//            this->arc[ff][i].setWeight(-1);
+//            this->arc[i][ff].setDistance(-1);
+//            this->arc[i][ff].setWeight(-1);
+            this->arc[i].remove(ff);
         }
+        this->arc.remove(ff);
         this->vertexes.remove(ff);   //葱顶点集合中删除
 
-        //邻接表的删除
-
-
+        //邻接表的删除,不算邻接表
+        for (auto i = edge.begin(); i != edge.end(); ++i) {
+            if (i->m_pair.from == ff || i->m_pair.to == ff) {
+                i = edge.erase(i);
+                --i;
+            }
+        }
+        --this->vexNum;
         return OK;
     } else {
         return ERR;
     }
-
-
-    --this->vexNum;
 }
 
 void Graph::init_from_file(QString fileName) {
@@ -166,7 +172,7 @@ void Graph::init_from_file(QString fileName) {
 //#endif
 }
 
-QVector<QString> Graph::findShortestRoad(int from, int to, QVector<int>& pos) {
+QVector<QString> Graph::findShortestRoad(int from, int to, QVector<int> &pos) {
     this->updateGraph(1);
     QVector<int> dis(this->vexNum, 0x7f7f7f7f);
     QVector<QString> ans;
@@ -201,7 +207,7 @@ QVector<QString> Graph::findShortestRoad(int from, int to, QVector<int>& pos) {
     int index(to);
     //寻找路径
     while (index != from) {
-        for ( index = 0; index < this->vexNum; ++index) {
+        for (index = 0; index < this->vexNum; ++index) {
             if (dis[index] == dis[to] - this->arc[index][to].getWeight()) {
                 stack.push(this->vertexes[index].info);
                 pos.push_back(index);  //倒过来无所谓，用于绘制图
@@ -223,10 +229,6 @@ QVector<QString> Graph::findShortestRoad(int from, int to, QVector<int>& pos) {
     }
 
 
-
-
-
-
     return ans;
 }
 
@@ -244,6 +246,22 @@ void Graph::updateGraph(int group) {
     } else if (group == 3) {
 
     }
+}
+
+int Graph::getArcNum() {
+    return this->arcNum;
+}
+
+int Graph::getVexNum() {
+    return this->vexNum;
+}
+
+QPoint Graph::getVertex(int index) {
+    return this->vertexes[index].getPos();
+}
+
+QString Graph::getInfo(int index) {
+    return this->vertexes[index].info;
 }
 
 void Arc::setDistance(int num) {
