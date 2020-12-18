@@ -159,6 +159,8 @@ public:
 
 	QString getInfo(int index);
 
+	void setInfo(int index, QString info);
+
 private:
 	QVector<QVector<Arc>> arc; //邻接矩阵
 	QVector<Vertex> vertexes;  //顶点集合

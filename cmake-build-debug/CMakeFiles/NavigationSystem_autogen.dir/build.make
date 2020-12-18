@@ -75,7 +75,7 @@ include CMakeFiles/NavigationSystem_autogen.dir/progress.make
 
 CMakeFiles/NavigationSystem_autogen:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target NavigationSystem"
-	/home/sasuke/clion-2020.2.5/bin/cmake/linux/bin/cmake -E cmake_autogen /home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles/NavigationSystem_autogen.dir/AutogenInfo.json ""
+	/home/sasuke/clion-2020.2.5/bin/cmake/linux/bin/cmake -E cmake_autogen /home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles/NavigationSystem_autogen.dir/AutogenInfo.json Debug
 
 NavigationSystem_autogen: CMakeFiles/NavigationSystem_autogen
 NavigationSystem_autogen: CMakeFiles/NavigationSystem_autogen.dir/build.make

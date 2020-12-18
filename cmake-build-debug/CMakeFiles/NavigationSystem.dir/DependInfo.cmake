@@ -5,10 +5,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/NavigationSystem_autogen/mocs_compilation.cpp" "/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o"
+  "/home/sasuke/qtProjects/NavigationSystem/edgedialog.cpp" "/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles/NavigationSystem.dir/edgedialog.cpp.o"
   "/home/sasuke/qtProjects/NavigationSystem/graph.cpp" "/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles/NavigationSystem.dir/graph.cpp.o"
   "/home/sasuke/qtProjects/NavigationSystem/graphui.cpp" "/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles/NavigationSystem.dir/graphui.cpp.o"
   "/home/sasuke/qtProjects/NavigationSystem/main.cpp" "/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles/NavigationSystem.dir/main.cpp.o"
   "/home/sasuke/qtProjects/NavigationSystem/mainwindow.cpp" "/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o"
+  "/home/sasuke/qtProjects/NavigationSystem/vertexdialog.cpp" "/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles/NavigationSystem.dir/vertexdialog.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -18,7 +20,6 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "QT_GUI_LIB"
   "QT_MULTIMEDIA_LIB"
   "QT_NETWORK_LIB"
-  "QT_NO_DEBUG"
   "QT_WIDGETS_LIB"
   )
 

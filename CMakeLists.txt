@@ -46,6 +46,10 @@ else()
     mainwindow.ui
     graphui.h
     graphui.cpp
+    vertexdialog.h
+    vertexdialog.cpp
+    edgedialog.h
+    edgedialog.cpp
     ${TS_FILES}
   )
 endif()

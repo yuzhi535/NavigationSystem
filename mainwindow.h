@@ -21,6 +21,8 @@
 #include <QKeySequence>
 
 #include "graphui.h"
+#include "vertexdialog.h"
+#include "edgedialog.h"
 
 #if DEV
 
@@ -43,6 +45,9 @@ public:
 	~MainWindow();
 
 	void updateTableWidget();
+
+signals:
+	void updateGraph();
 
 public slots:
 
@@ -97,6 +102,8 @@ private:
 	QAction *action3;  //节点
 	QAction *action4;  //道路
 
+	EdgeDialog *dialog1;
+	VertexDialog *dialog2;
 
 
 	// the shortest road

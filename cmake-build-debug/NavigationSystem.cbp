@@ -47,7 +47,6 @@
 					<Add option="-DQT_WIDGETS_LIB"/>
 					<Add option="-DQT_GUI_LIB"/>
 					<Add option="-DQT_CORE_LIB"/>
-					<Add option="-DQT_NO_DEBUG"/>
 					<Add option="-DQT_MULTIMEDIA_LIB"/>
 					<Add option="-DQT_NETWORK_LIB"/>
 					<Add directory="/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug"/>
@@ -85,7 +84,6 @@
 					<Add option="-DQT_WIDGETS_LIB"/>
 					<Add option="-DQT_GUI_LIB"/>
 					<Add option="-DQT_CORE_LIB"/>
-					<Add option="-DQT_NO_DEBUG"/>
 					<Add option="-DQT_MULTIMEDIA_LIB"/>
 					<Add option="-DQT_NETWORK_LIB"/>
 					<Add directory="/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug"/>
@@ -133,6 +131,12 @@
 		<Unit filename="/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/NavigationSystem_autogen/mocs_compilation.cpp">
 			<Option target="NavigationSystem"/>
 		</Unit>
+		<Unit filename="/home/sasuke/qtProjects/NavigationSystem/edgedialog.cpp">
+			<Option target="NavigationSystem"/>
+		</Unit>
+		<Unit filename="/home/sasuke/qtProjects/NavigationSystem/edgedialog.h">
+			<Option target="NavigationSystem"/>
+		</Unit>
 		<Unit filename="/home/sasuke/qtProjects/NavigationSystem/graph.cpp">
 			<Option target="NavigationSystem"/>
 		</Unit>
@@ -155,6 +159,12 @@
 			<Option target="NavigationSystem"/>
 		</Unit>
 		<Unit filename="/home/sasuke/qtProjects/NavigationSystem/mainwindow.ui">
+			<Option target="NavigationSystem"/>
+		</Unit>
+		<Unit filename="/home/sasuke/qtProjects/NavigationSystem/vertexdialog.cpp">
+			<Option target="NavigationSystem"/>
+		</Unit>
+		<Unit filename="/home/sasuke/qtProjects/NavigationSystem/vertexdialog.h">
 			<Option target="NavigationSystem"/>
 		</Unit>
 		<Unit filename="/home/sasuke/qtProjects/NavigationSystem/CMakeLists.txt">

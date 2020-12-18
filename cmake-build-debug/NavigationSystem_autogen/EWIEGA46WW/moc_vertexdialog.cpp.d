@@ -1,9 +1,7 @@
-/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/NavigationSystem_autogen/EWIEGA46WW/moc_mainwindow.cpp: /home/sasuke/qtProjects/NavigationSystem/mainwindow.h \
+/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/NavigationSystem_autogen/EWIEGA46WW/moc_vertexdialog.cpp: /home/sasuke/qtProjects/NavigationSystem/vertexdialog.h \
   /home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/NavigationSystem_autogen/moc_predefs.h \
-  /home/sasuke/qtProjects/NavigationSystem/edgedialog.h \
   /home/sasuke/qtProjects/NavigationSystem/graph.h \
   /home/sasuke/qtProjects/NavigationSystem/graphui.h \
-  /home/sasuke/qtProjects/NavigationSystem/vertexdialog.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/asm/errno.h \
@@ -229,7 +227,6 @@
   /usr/include/qt/QtCore/QQueue \
   /usr/include/qt/QtCore/QStack \
   /usr/include/qt/QtCore/QString \
-  /usr/include/qt/QtCore/QStringList \
   /usr/include/qt/QtCore/QVector \
   /usr/include/qt/QtCore/qabstractitemmodel.h \
   /usr/include/qt/QtCore/qalgorithms.h \
@@ -305,7 +302,6 @@
   /usr/include/qt/QtCore/qversiontagging.h \
   /usr/include/qt/QtGui/QBrush \
   /usr/include/qt/QtGui/QColor \
-  /usr/include/qt/QtGui/QKeySequence \
   /usr/include/qt/QtGui/QMouseEvent \
   /usr/include/qt/QtGui/QPaintEvent \
   /usr/include/qt/QtGui/QPainter \
@@ -339,21 +335,8 @@
   /usr/include/qt/QtGui/qvalidator.h \
   /usr/include/qt/QtGui/qvector2d.h \
   /usr/include/qt/QtGui/qwindowdefs.h \
-  /usr/include/qt/QtMultimedia/QSound \
-  /usr/include/qt/QtMultimedia/qsound.h \
-  /usr/include/qt/QtMultimedia/qtmultimedia-config.h \
-  /usr/include/qt/QtMultimedia/qtmultimediaglobal.h \
-  /usr/include/qt/QtWidgets/QAbstractItemView \
-  /usr/include/qt/QtWidgets/QAction \
-  /usr/include/qt/QtWidgets/QCheckBox \
-  /usr/include/qt/QtWidgets/QComboBox \
   /usr/include/qt/QtWidgets/QDialog \
   /usr/include/qt/QtWidgets/QGridLayout \
-  /usr/include/qt/QtWidgets/QGroupBox \
-  /usr/include/qt/QtWidgets/QLabel \
-  /usr/include/qt/QtWidgets/QListWidget \
-  /usr/include/qt/QtWidgets/QMainWindow \
-  /usr/include/qt/QtWidgets/QMenu \
   /usr/include/qt/QtWidgets/QMessageBox \
   /usr/include/qt/QtWidgets/QPushButton \
   /usr/include/qt/QtWidgets/QTableWidget \
@@ -365,22 +348,12 @@
   /usr/include/qt/QtWidgets/qabstractscrollarea.h \
   /usr/include/qt/QtWidgets/qabstractslider.h \
   /usr/include/qt/QtWidgets/qabstractspinbox.h \
-  /usr/include/qt/QtWidgets/qaction.h \
-  /usr/include/qt/QtWidgets/qactiongroup.h \
   /usr/include/qt/QtWidgets/qboxlayout.h \
-  /usr/include/qt/QtWidgets/qcheckbox.h \
-  /usr/include/qt/QtWidgets/qcombobox.h \
   /usr/include/qt/QtWidgets/qdialog.h \
   /usr/include/qt/QtWidgets/qframe.h \
   /usr/include/qt/QtWidgets/qgridlayout.h \
-  /usr/include/qt/QtWidgets/qgroupbox.h \
-  /usr/include/qt/QtWidgets/qlabel.h \
   /usr/include/qt/QtWidgets/qlayout.h \
   /usr/include/qt/QtWidgets/qlayoutitem.h \
-  /usr/include/qt/QtWidgets/qlistview.h \
-  /usr/include/qt/QtWidgets/qlistwidget.h \
-  /usr/include/qt/QtWidgets/qmainwindow.h \
-  /usr/include/qt/QtWidgets/qmenu.h \
   /usr/include/qt/QtWidgets/qmessagebox.h \
   /usr/include/qt/QtWidgets/qpushbutton.h \
   /usr/include/qt/QtWidgets/qrubberband.h \

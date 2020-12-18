@@ -2,6 +2,19 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="NavigationSystem_zh_CN">
 <context>
+    <name>EdgeDialog</name>
+    <message>
+        <location filename="edgedialog.cpp" line="23"/>
+        <source>confirm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="edgedialog.cpp" line="24"/>
+        <source>exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="mainwindow.ui" line="14"/>
@@ -97,7 +110,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="187"/>
+        <location filename="mainwindow.cpp" line="196"/>
         <source>info</source>
         <translation type="unfinished"></translation>
     </message>

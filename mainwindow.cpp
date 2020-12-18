@@ -143,7 +143,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 	//更新列表的信号槽
-	connect(paintWidget, SIGNAL(updateList(QVector<QString>)), this, SLOT(updateListWidget(QVector<QString>)));
+	connect(paintWidget, SIGNAL(updateList(QVector<QString>)), this,
+	        SLOT(updateListWidget(QVector<QString>)));
+	connect(this, SIGNAL(updateGraph()), paintWidget, SIGNAL(update()));
 }
 
 MainWindow::~MainWindow() {
@@ -155,21 +157,28 @@ void MainWindow::comboBox1_triggered(int index) {
 	index1 = index;
 }
 
+// 编辑道路
 void MainWindow::action4_triggered() {
-
+	dialog1 = new EdgeDialog(paintWidget);
+	dialog1->show();
 }
 
+// 编辑顶点
 void MainWindow::action3_triggered() {
-
+	dialog2 = new VertexDialog(paintWidget, this);
+	dialog2->show();
 }
 
+//编辑主题
 void MainWindow::action2_triggered() {
 
 }
 
+//编辑主题
 void MainWindow::action1_triggered() {
 
 }
+
 
 void MainWindow::onCheckBox1_stateChanged() {
 

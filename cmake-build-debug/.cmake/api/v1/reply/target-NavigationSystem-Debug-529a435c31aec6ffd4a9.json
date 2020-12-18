@@ -31,7 +31,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 53,
+				"line" : 57,
 				"parent" : 0
 			}
 		]
@@ -42,7 +42,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " "
+					"fragment" : "-g  "
 				},
 				{
 					"backtrace" : 2,
@@ -69,10 +69,6 @@
 				{
 					"backtrace" : 2,
 					"define" : "QT_NETWORK_LIB"
-				},
-				{
-					"backtrace" : 2,
-					"define" : "QT_NO_DEBUG"
 				},
 				{
 					"backtrace" : 2,
@@ -134,7 +130,9 @@
 				1,
 				2,
 				6,
-				8
+				8,
+				10,
+				12
 			]
 		}
 	],
@@ -150,6 +148,10 @@
 	{
 		"commandFragments" : 
 		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			},
 			{
 				"fragment" : "",
 				"role" : "flags"
@@ -197,7 +199,9 @@
 				1,
 				2,
 				6,
-				8
+				8,
+				10,
+				12
 			]
 		},
 		{
@@ -206,7 +210,9 @@
 			[
 				3,
 				5,
-				9
+				7,
+				9,
+				13
 			]
 		},
 		{
@@ -214,14 +220,14 @@
 			"sourceIndexes" : 
 			[
 				4,
-				7
+				11
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				10
+				14
 			]
 		}
 	],
@@ -265,6 +271,28 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "graphui.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vertexdialog.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vertexdialog.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "edgedialog.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "edgedialog.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

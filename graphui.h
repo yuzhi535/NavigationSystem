@@ -18,11 +18,16 @@ Q_OBJECT
 public:
 	explicit GraphUi(QWidget *parent = nullptr);
 
+	void destroyGraph();
+	void addArc(Road road);
 	int getVexNum();
+	int getVexIndex (const QString& info);
 	QString getVExInfo(int index);
+	void setVexInfo(int index, QString info);
 	QPoint getPos(int index);
 	void getShortestRoad(int from, int to);
-    void addVertex(QString info, int x, int y);
+    void editVertex(QString info, int x, int y);
+    const QVector<Road>& getEdge () const;
 
 protected:
 	void mouseReleaseEvent(QMouseEvent *event) override;

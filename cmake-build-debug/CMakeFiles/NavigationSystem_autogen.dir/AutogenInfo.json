@@ -10,6 +10,11 @@
 	"HEADERS" : 
 	[
 		[
+			"/home/sasuke/qtProjects/NavigationSystem/edgedialog.h",
+			"MU",
+			"EWIEGA46WW/moc_edgedialog.cpp"
+		],
+		[
 			"/home/sasuke/qtProjects/NavigationSystem/graph.h",
 			"MU",
 			"EWIEGA46WW/moc_graph.cpp"
@@ -23,6 +28,11 @@
 			"/home/sasuke/qtProjects/NavigationSystem/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp"
+		],
+		[
+			"/home/sasuke/qtProjects/NavigationSystem/vertexdialog.h",
+			"MU",
+			"EWIEGA46WW/moc_vertexdialog.cpp"
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -34,7 +44,6 @@
 		"QT_GUI_LIB",
 		"QT_MULTIMEDIA_LIB",
 		"QT_NETWORK_LIB",
-		"QT_NO_DEBUG",
 		"QT_WIDGETS_LIB"
 	],
 	"MOC_DEPEND_FILTERS" : 
@@ -87,10 +96,12 @@
 	"SETTINGS_FILE" : "/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles/NavigationSystem_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "/home/sasuke/qtProjects/NavigationSystem/edgedialog.cpp", "MU" ],
 		[ "/home/sasuke/qtProjects/NavigationSystem/graph.cpp", "MU" ],
 		[ "/home/sasuke/qtProjects/NavigationSystem/graphui.cpp", "MU" ],
 		[ "/home/sasuke/qtProjects/NavigationSystem/main.cpp", "MU" ],
-		[ "/home/sasuke/qtProjects/NavigationSystem/mainwindow.cpp", "MU" ]
+		[ "/home/sasuke/qtProjects/NavigationSystem/mainwindow.cpp", "MU" ],
+		[ "/home/sasuke/qtProjects/NavigationSystem/vertexdialog.cpp", "MU" ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

@@ -1,0 +1,118 @@
+#include "edgedialog.h"
+#include <QDebug>
+
+const int maxEdgeNum = 20;
+
+EdgeDialog::EdgeDialog(GraphUi *graphUi, QWidget *parent) {
+	this->setMinimumWidth(400);
+	this->setMinimumHeight(300);
+	ui = graphUi;
+
+	layout = new QGridLayout(this);
+	this->setLayout(layout);
+	layout->setVerticalSpacing(12);
+	layout->setHorizontalSpacing(20);
+	tableWidget = new QTableWidget(maxEdgeNum, 3, this);
+	QStringList header;
+	header << "from" << "to" << "weight";
+	tableWidget->setHorizontalHeaderLabels(header);
+	layout->addWidget(tableWidget, 0, 0, 10, -1);
+
+	button1 = new QPushButton(this);
+	button2 = new QPushButton(this);
+	button1->setText(tr("confirm"));
+	button2->setText(tr("exit"));
+
+	layout->addWidget(button1, 10, 0, 2, 10);
+	layout->addWidget(button2, 10, 10, 2, 10);
+
+
+	connect(button1, SIGNAL(clicked(bool)), this, SLOT(on_button_1_clicked()));
+	connect(button2, SIGNAL(clicked(bool)), this, SLOT(on_button_2_clicked()));
+
+	auto edge = graphUi->getEdge();
+	for (int i = 0; i < edge.size(); ++i) {
+		tableWidget->setItem(i, 0,
+		                     new QTableWidgetItem(
+				                     QString("%1").arg(graphUi->getVExInfo(edge[i].m_pair.from))));
+		tableWidget->setItem(i, 1,
+		                     new QTableWidgetItem(
+				                     QString("%1").arg(graphUi->getVExInfo(edge[i].m_pair.to))));
+		tableWidget->setItem(i, 2,
+		                     new QTableWidgetItem(
+				                     QString("%1").arg(edge[i].weight)));
+	}
+
+	col1.clear();
+	col2.clear();
+	col3.clear();
+
+	col1.resize(maxEdgeNum);
+	col2.resize(maxEdgeNum);
+	col3.resize(maxEdgeNum);
+
+	for (int i = 0; i < ui->getEdge().size(); ++i) {
+		col1[i].first = col1[i].second = tableWidget->item(i, 0)->text().toUtf8();
+		qDebug() << "row=" << i << " " << col1[i].second;
+	}
+
+	for (int i = 0; i < ui->getEdge().size(); ++i) {
+		col2[i].first = col2[i].second = tableWidget->item(i, 1)->text().toUtf8();
+		qDebug() << "row=" << i << " " << col2[i].second;
+	}
+	for (int i = 0; i < ui->getEdge().size(); ++i) {
+		col3[i].first = col3[i].second = tableWidget->item(i, 2)->text().toInt();
+		qDebug() << "row=" << i << " " << col2[i].second;
+	}
+
+	connect(tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(onTableItemChanged(int, int)));
+}
+
+void EdgeDialog::on_button_1_clicked() {
+	for (int i = 0; i < maxEdgeNum; ++i) {
+		// 对顶点的更改
+		//如果顶点名称第一个和第二个不一样，则更改顶点
+		if (col1[i].first != col1[i].second) {
+			ui->setVexInfo(i, col1[i].second);
+		}
+		if (col2[i].first != col2[i].second) {
+			ui->setVexInfo(i, col1[i].second);
+		}
+		if (col3[i].first != col3[i].second) {
+			int index1, index2;
+			qDebug() << QString("col1=%1 col2=%2").arg(col1[i].second).arg(col2[i].second);
+			index1 = ui->getVexIndex(col1[i].second);
+			index2 = ui->getVexIndex(col2[i].second);
+			if (index1 != -1 && index2 != -1) {
+				Road road(index1, index2, col3[i].second);
+				ui->addArc(road);
+			}
+		}
+	}
+	hide();
+}
+
+// 退出
+void EdgeDialog::on_button_2_clicked() {
+	deleteLater();
+}
+
+void EdgeDialog::onTableItemChanged(int row, int column) {
+	qDebug() << "changed";
+	switch (column) {
+		case 0:
+			col1[row].second = tableWidget->item(row, column)->text().toUtf8();
+			qDebug() << "row " << row << " column= " << column << col1[row];
+			break;
+		case 1:
+			col2[row].second = tableWidget->item(row, column)->text().toUtf8();
+			qDebug() << "row " << row << " column= " << column << col2[row];
+			break;
+		case 2:
+			col3[row].second = tableWidget->item(row, column)->text().toInt();
+			qDebug() << "row " << row << " column= " << column << col3[row].second;
+			break;
+		default:
+			qDebug() << "test";
+	}
+}

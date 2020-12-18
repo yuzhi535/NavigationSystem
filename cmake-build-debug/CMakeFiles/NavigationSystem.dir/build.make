@@ -135,9 +135,35 @@ CMakeFiles/NavigationSystem.dir/graphui.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NavigationSystem.dir/graphui.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sasuke/qtProjects/NavigationSystem/graphui.cpp -o CMakeFiles/NavigationSystem.dir/graphui.cpp.s
 
+CMakeFiles/NavigationSystem.dir/vertexdialog.cpp.o: CMakeFiles/NavigationSystem.dir/flags.make
+CMakeFiles/NavigationSystem.dir/vertexdialog.cpp.o: ../vertexdialog.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/NavigationSystem.dir/vertexdialog.cpp.o"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/NavigationSystem.dir/vertexdialog.cpp.o -c /home/sasuke/qtProjects/NavigationSystem/vertexdialog.cpp
+
+CMakeFiles/NavigationSystem.dir/vertexdialog.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NavigationSystem.dir/vertexdialog.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sasuke/qtProjects/NavigationSystem/vertexdialog.cpp > CMakeFiles/NavigationSystem.dir/vertexdialog.cpp.i
+
+CMakeFiles/NavigationSystem.dir/vertexdialog.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NavigationSystem.dir/vertexdialog.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sasuke/qtProjects/NavigationSystem/vertexdialog.cpp -o CMakeFiles/NavigationSystem.dir/vertexdialog.cpp.s
+
+CMakeFiles/NavigationSystem.dir/edgedialog.cpp.o: CMakeFiles/NavigationSystem.dir/flags.make
+CMakeFiles/NavigationSystem.dir/edgedialog.cpp.o: ../edgedialog.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/NavigationSystem.dir/edgedialog.cpp.o"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/NavigationSystem.dir/edgedialog.cpp.o -c /home/sasuke/qtProjects/NavigationSystem/edgedialog.cpp
+
+CMakeFiles/NavigationSystem.dir/edgedialog.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NavigationSystem.dir/edgedialog.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sasuke/qtProjects/NavigationSystem/edgedialog.cpp > CMakeFiles/NavigationSystem.dir/edgedialog.cpp.i
+
+CMakeFiles/NavigationSystem.dir/edgedialog.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NavigationSystem.dir/edgedialog.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sasuke/qtProjects/NavigationSystem/edgedialog.cpp -o CMakeFiles/NavigationSystem.dir/edgedialog.cpp.s
+
 CMakeFiles/NavigationSystem.dir/graph.cpp.o: CMakeFiles/NavigationSystem.dir/flags.make
 CMakeFiles/NavigationSystem.dir/graph.cpp.o: ../graph.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/NavigationSystem.dir/graph.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/NavigationSystem.dir/graph.cpp.o"
 	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/NavigationSystem.dir/graph.cpp.o -c /home/sasuke/qtProjects/NavigationSystem/graph.cpp
 
 CMakeFiles/NavigationSystem.dir/graph.cpp.i: cmake_force
@@ -154,6 +180,8 @@ NavigationSystem_OBJECTS = \
 "CMakeFiles/NavigationSystem.dir/main.cpp.o" \
 "CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o" \
 "CMakeFiles/NavigationSystem.dir/graphui.cpp.o" \
+"CMakeFiles/NavigationSystem.dir/vertexdialog.cpp.o" \
+"CMakeFiles/NavigationSystem.dir/edgedialog.cpp.o" \
 "CMakeFiles/NavigationSystem.dir/graph.cpp.o"
 
 # External object files for target NavigationSystem
@@ -163,6 +191,8 @@ NavigationSystem: CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_
 NavigationSystem: CMakeFiles/NavigationSystem.dir/main.cpp.o
 NavigationSystem: CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o
 NavigationSystem: CMakeFiles/NavigationSystem.dir/graphui.cpp.o
+NavigationSystem: CMakeFiles/NavigationSystem.dir/vertexdialog.cpp.o
+NavigationSystem: CMakeFiles/NavigationSystem.dir/edgedialog.cpp.o
 NavigationSystem: CMakeFiles/NavigationSystem.dir/graph.cpp.o
 NavigationSystem: CMakeFiles/NavigationSystem.dir/build.make
 NavigationSystem: /usr/lib/libQt5Widgets.so.5.15.2
@@ -171,7 +201,7 @@ NavigationSystem: /usr/lib/libQt5Network.so.5.15.2
 NavigationSystem: /usr/lib/libQt5Gui.so.5.15.2
 NavigationSystem: /usr/lib/libQt5Core.so.5.15.2
 NavigationSystem: CMakeFiles/NavigationSystem.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable NavigationSystem"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable NavigationSystem"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/NavigationSystem.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

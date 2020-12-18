@@ -107,6 +107,35 @@ void GraphUi::getShortestRoad(int from, int to) {
 	emit updateList(orderedRoad);
 }
 
-void GraphUi::addVertex(QString info, int x, int y) {
+void GraphUi::editVertex(QString info, int x, int y) {
 	graph.addVex(info, x, y);
+}
+
+const QVector<Road> &GraphUi::getEdge() const {
+	return graph.edge;
+}
+
+void GraphUi::destroyGraph() {
+	for (int i = graph.getVexNum() - 1; i >= 0; --i) {
+		graph.delVex(this->getVExInfo(i));
+	}
+}
+
+void GraphUi::addArc(Road road) {
+	qDebug() << QString("add %1->%2  %3").arg(road.m_pair.from).arg(road.m_pair.to).arg(road.weight);
+	graph.addArc(road);
+}
+
+int GraphUi::getVexIndex(const QString &info) {
+	for (int i = 0; i < graph.getVexNum(); ++i) {
+		if (graph.getInfo(i) == info) {
+			qDebug() << "info = " << info;
+			return i;
+		}
+	}
+	return -1;
+}
+
+void GraphUi::setVexInfo(int index, QString info) {
+	graph.setInfo(index, info);
 }

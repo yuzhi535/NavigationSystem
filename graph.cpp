@@ -31,7 +31,7 @@ Graph::~Graph() {
 
 void Graph::addVex(QString info, int x, int y) {
 	this->vertexes.push_back(Vertex(info, x, y));
-	qDebug() << "x=" << x << " y=" << y;
+	qDebug() << this->vexNum << info << " x=" << x << " y=" << y;
 	++this->vexNum;
 }
 
@@ -63,8 +63,13 @@ Status Graph::addArc(Road road) {
 	this->arc[road.m_pair.to][road.m_pair.from].setDistance(road.weight);
 	this->arc[road.m_pair.from][road.m_pair.to].setPair(Pair(road.m_pair.from, road.m_pair.to));
 	this->arc[road.m_pair.to][road.m_pair.from].setPair(Pair(road.m_pair.from, road.m_pair.to));
-	edge.push_back(road);
-	++this->arcNum;
+	if (road.weight != -1) {
+		edge.push_back(road);
+		++this->arcNum;
+		qDebug() << QString("add %1->%2  %3").arg(road.m_pair.from).arg(road.m_pair.to).arg(road.weight);
+	} else {
+		deleteArc(road.m_pair.from, road.m_pair.to);
+	}
 	return OK;
 }
 
@@ -85,14 +90,18 @@ Status Graph::deleteArc(Pair pair) {
 
 Status Graph::delVex(QString info) {
 	int ff;  //寻找该顶点
-	for (ff = this->vertexes.size() - 1; ff < this->vexNum && this->vertexes.at(ff).info != info; ++ff);
+	for (ff = this->vertexes.size() - 1; ff < this->vexNum && this->vertexes[ff].info != info; --ff);
 	if (ff) {
 		if (!this->vexNum) {
 			return ERR;
 		}
-		for (int i = 0; i < this->vexNum; ++i) {
-			this->arc[i].remove(ff);
+
+		//不能移除，，，应该置为-1 ，把后面的往前挪
+		for (int i = this->vexNum - 1; i >= 0; --i) {
+			if (this->arc[i].size() > ff + 1)
+				this->arc[i].remove(ff);
 		}
+		qDebug() << "ttttttttt";
 		this->arc.remove(ff);
 		this->vertexes.remove(ff);   //葱顶点集合中删除
 
@@ -241,6 +250,18 @@ QPoint Graph::getVertex(int index) {
 
 QString Graph::getInfo(int index) {
 	return this->vertexes[index].info;
+}
+
+void Graph::setInfo(int index, QString info) {
+	int i = 0;
+	for (; i < this->vertexes.size() && this->vertexes[i].info != info; ++i);
+	if (i == this->vertexes.size())
+		this->vertexes[index].info = info;
+	else {
+		addVex(info, this->vertexes[index].getPos().x(), this->vertexes[index].getPos().y());
+		delVex(getInfo(index));
+
+	}
 }
 
 void Arc::setDistance(int num) {

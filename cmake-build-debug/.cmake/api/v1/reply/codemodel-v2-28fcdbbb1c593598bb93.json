@@ -19,7 +19,7 @@
 					]
 				}
 			],
-			"name" : "",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -40,14 +40,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "NavigationSystem::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-NavigationSystem-ce4afaf9a6e17ee278b5.json",
+					"jsonFile" : "target-NavigationSystem-Debug-529a435c31aec6ffd4a9.json",
 					"name" : "NavigationSystem",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "NavigationSystem_autogen::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-NavigationSystem_autogen-046e7962c4cf9d9e73cc.json",
+					"jsonFile" : "target-NavigationSystem_autogen-Debug-046e7962c4cf9d9e73cc.json",
 					"name" : "NavigationSystem_autogen",
 					"projectIndex" : 0
 				}

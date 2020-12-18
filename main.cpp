@@ -11,9 +11,8 @@ int main(int argc, char *argv[]) {
 	MainWindow w;
 	w.show();
 #else
-	Graph graph;
-	graph.init_from_file(fileName);
-	graph.findShortestRoad(0, 2);
+	VertexDialog dialog;
+	dialog.show();
 
 #endif
 	return a.exec();
