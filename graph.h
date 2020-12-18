@@ -164,7 +164,9 @@ private:
 	QVector<Vertex> vertexes;  //顶点集合
 	int vexNum, arcNum;        //顶点数量  边的数量
 
-	QColor color[9];
+	// RGB色彩
+	QColor color[9] = {QColor(), QColor(), QColor(), QColor(), QColor(),
+	                   QColor(), QColor(), QColor(), QColor()};
 };
 
 #endif // NAVIGATIONSYSTEM_GRAPH_H

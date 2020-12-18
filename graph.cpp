@@ -179,34 +179,40 @@ QVector<QString> Graph::findShortestRoad(int from, int to, QVector<int> &pos) {
 		}
 	}
 
-	QStack<QString> stack;
-	stack.push(this->vertexes[to].info);
-	int index(to);
-	//寻找路径
-	while (index != from) {
-		for (index = 0; index < this->vexNum; ++index) {
-			if (dis[index] == dis[to] - this->arc[index][to].getWeight()) {
-				stack.push(this->vertexes[index].info);
-				pos.push_back(index);  //倒过来无所谓，用于绘制图
-				to = index;
-				if (index == from)
-					break;
+	if (dis[to] != 0x7f7f7f7f) {
+		QStack<QString> stack;
+		stack.push(this->vertexes[to].info);
+		int index(to);
+		//寻找路径
+		while (index != from) {
+			for (index = 0; index < this->vexNum; ++index) {
+				if (dis[index] == dis[to] - this->arc[index][to].getWeight()) {
+					stack.push(this->vertexes[index].info);
+					pos.push_back(index);  //倒过来无所谓，用于绘制图
+					to = index;
+					if (index == from)
+						break;
+				}
 			}
 		}
-	}
-	//正过来
-	while (!stack.empty()) {
-		ans.push_back(stack.top());
-		stack.pop();
-	}
+		//正过来
+		while (!stack.empty()) {
+			ans.push_back(stack.top());
+			stack.pop();
+		}
 
-	// test ------------------------------
-	for (auto i : ans) {
-		qDebug() << i;
+		// test ------------------------------
+		for (auto i : ans) {
+			qDebug() << i;
+		}
+		//------------------------------------
+		return ans;
+	} else {
+		//这里因该弹出警告框
+		qDebug() << "can't find the path";
+		qDebug() << "Please check your graph";
+		return QVector<QString>{};   //检查为空则弹出消息框提示
 	}
-	//------------------------------------
-
-	return ans;
 }
 
 void Graph::updateGraph(int group) {

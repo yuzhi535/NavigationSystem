@@ -13,6 +13,12 @@
 #include <QAction>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QLabel>
+#include <QTableWidget>
+#include <QTableWidgetItem>
+#include <QStringList>
+#include <QAbstractItemView>
+#include <QKeySequence>
 
 #include "graphui.h"
 
@@ -36,6 +42,28 @@ public:
 
 	~MainWindow();
 
+public slots:
+
+	// 更换主题
+	void action1_triggered();
+
+	void action2_triggered();
+
+	//添加节点 边 删除等
+	void action3_triggered();
+
+	void action4_triggered();
+
+	//是否加上人群
+	void onCheckBox1_stateChanged();
+
+	//是否加上天气
+	void onCheckBox2_stateChanged();
+
+	//最短路径的计算
+	void on_button_clicked();
+
+
 private:
 	Ui::MainWindow *ui;
 	QWidget *widget;   //main widget
@@ -43,12 +71,22 @@ private:
 	GraphUi *paintWidget;
 	QListWidget *list;
 	QGroupBox *groupBox;
-	QComboBox *comboBox;
+	QComboBox *comboBox1;  //起点
+	QComboBox *comboBox2;  //终点
+	QLabel *label1;  //起点
+	QLabel *label2;  //终点
+	QCheckBox *checkBox1;   //check group
+	QCheckBox *checkBox2;   //check weather
+	QTableWidget *tableWidget;  //表格
+	QPushButton *button;   //搜索
 
 	//菜单
-	QMenu *menu;
-	QAction *action1;
+	QMenu *view;   //视图
+	QAction *action1;   //切换主题
 	QAction *action2;
+	QMenu *edit;  //编辑节点和道路
+	QAction *action3;  //节点
+	QAction *action4;  //道路
 
 };
 

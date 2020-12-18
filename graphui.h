@@ -16,6 +16,9 @@ Q_OBJECT
 public:
 	explicit GraphUi(QWidget *parent = nullptr);
 
+	int getVexNum();
+	QString getVExInfo(int index);
+
 protected:
 	void mouseReleaseEvent(QMouseEvent *event) override;
 

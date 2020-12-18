@@ -227,6 +227,7 @@
   /usr/include/qt/QtCore/QQueue \
   /usr/include/qt/QtCore/QStack \
   /usr/include/qt/QtCore/QString \
+  /usr/include/qt/QtCore/QStringList \
   /usr/include/qt/QtCore/QVector \
   /usr/include/qt/QtCore/qabstractitemmodel.h \
   /usr/include/qt/QtCore/qalgorithms.h \
@@ -302,6 +303,7 @@
   /usr/include/qt/QtCore/qversiontagging.h \
   /usr/include/qt/QtGui/QBrush \
   /usr/include/qt/QtGui/QColor \
+  /usr/include/qt/QtGui/QKeySequence \
   /usr/include/qt/QtGui/QMouseEvent \
   /usr/include/qt/QtGui/QPaintEvent \
   /usr/include/qt/QtGui/QPainter \
@@ -339,15 +341,19 @@
   /usr/include/qt/QtMultimedia/qsound.h \
   /usr/include/qt/QtMultimedia/qtmultimedia-config.h \
   /usr/include/qt/QtMultimedia/qtmultimediaglobal.h \
+  /usr/include/qt/QtWidgets/QAbstractItemView \
   /usr/include/qt/QtWidgets/QAction \
   /usr/include/qt/QtWidgets/QCheckBox \
   /usr/include/qt/QtWidgets/QComboBox \
   /usr/include/qt/QtWidgets/QGridLayout \
   /usr/include/qt/QtWidgets/QGroupBox \
+  /usr/include/qt/QtWidgets/QLabel \
   /usr/include/qt/QtWidgets/QListWidget \
   /usr/include/qt/QtWidgets/QMainWindow \
   /usr/include/qt/QtWidgets/QMenu \
   /usr/include/qt/QtWidgets/QPushButton \
+  /usr/include/qt/QtWidgets/QTableWidget \
+  /usr/include/qt/QtWidgets/QTableWidgetItem \
   /usr/include/qt/QtWidgets/QWidget \
   /usr/include/qt/QtWidgets/qabstractbutton.h \
   /usr/include/qt/QtWidgets/qabstractitemdelegate.h \
@@ -363,6 +369,7 @@
   /usr/include/qt/QtWidgets/qframe.h \
   /usr/include/qt/QtWidgets/qgridlayout.h \
   /usr/include/qt/QtWidgets/qgroupbox.h \
+  /usr/include/qt/QtWidgets/qlabel.h \
   /usr/include/qt/QtWidgets/qlayout.h \
   /usr/include/qt/QtWidgets/qlayoutitem.h \
   /usr/include/qt/QtWidgets/qlistview.h \
@@ -376,6 +383,8 @@
   /usr/include/qt/QtWidgets/qstyle.h \
   /usr/include/qt/QtWidgets/qstyleoption.h \
   /usr/include/qt/QtWidgets/qtabbar.h \
+  /usr/include/qt/QtWidgets/qtableview.h \
+  /usr/include/qt/QtWidgets/qtablewidget.h \
   /usr/include/qt/QtWidgets/qtabwidget.h \
   /usr/include/qt/QtWidgets/qtwidgets-config.h \
   /usr/include/qt/QtWidgets/qtwidgetsglobal.h \
