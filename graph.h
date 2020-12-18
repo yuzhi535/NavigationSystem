@@ -35,7 +35,7 @@ struct Pair {
 
 	Pair(int a, int b) : from(a), to(b) {}
 
-	bool operator=(const Pair &other) const {
+	bool operator==(const Pair &other) const {
 		return from == other.from && to == other.to;
 	}
 
@@ -151,7 +151,7 @@ public:
 		AIM = 3, BY, IRRELEVANT
 	};
 
-	QVector<QString> findShortestRoad(int from, int to, QVector<int> &pos);
+	QVector<QString>& findShortestRoad(int from, int to, QVector<int> &pos);
 
 	QVector<Road> edge; //有效顶点的集合
 
@@ -163,6 +163,7 @@ private:
 	QVector<QVector<Arc>> arc; //邻接矩阵
 	QVector<Vertex> vertexes;  //顶点集合
 	int vexNum, arcNum;        //顶点数量  边的数量
+	QVector<QString> ans;
 
 	// RGB色彩
 	QColor color[9] = {QColor(), QColor(), QColor(), QColor(), QColor(),

@@ -345,12 +345,14 @@
   /usr/include/qt/QtWidgets/QAction \
   /usr/include/qt/QtWidgets/QCheckBox \
   /usr/include/qt/QtWidgets/QComboBox \
+  /usr/include/qt/QtWidgets/QDialog \
   /usr/include/qt/QtWidgets/QGridLayout \
   /usr/include/qt/QtWidgets/QGroupBox \
   /usr/include/qt/QtWidgets/QLabel \
   /usr/include/qt/QtWidgets/QListWidget \
   /usr/include/qt/QtWidgets/QMainWindow \
   /usr/include/qt/QtWidgets/QMenu \
+  /usr/include/qt/QtWidgets/QMessageBox \
   /usr/include/qt/QtWidgets/QPushButton \
   /usr/include/qt/QtWidgets/QTableWidget \
   /usr/include/qt/QtWidgets/QTableWidgetItem \
@@ -366,6 +368,7 @@
   /usr/include/qt/QtWidgets/qboxlayout.h \
   /usr/include/qt/QtWidgets/qcheckbox.h \
   /usr/include/qt/QtWidgets/qcombobox.h \
+  /usr/include/qt/QtWidgets/qdialog.h \
   /usr/include/qt/QtWidgets/qframe.h \
   /usr/include/qt/QtWidgets/qgridlayout.h \
   /usr/include/qt/QtWidgets/qgroupbox.h \
@@ -376,6 +379,7 @@
   /usr/include/qt/QtWidgets/qlistwidget.h \
   /usr/include/qt/QtWidgets/qmainwindow.h \
   /usr/include/qt/QtWidgets/qmenu.h \
+  /usr/include/qt/QtWidgets/qmessagebox.h \
   /usr/include/qt/QtWidgets/qpushbutton.h \
   /usr/include/qt/QtWidgets/qrubberband.h \
   /usr/include/qt/QtWidgets/qsizepolicy.h \

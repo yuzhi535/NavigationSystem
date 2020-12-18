@@ -8,6 +8,8 @@
 #include <QPushButton>
 #include <QMouseEvent>
 #include <QPaintEvent>
+#include <QDialog>
+#include <QMessageBox>
 
 #include "graph.h"
 
@@ -19,6 +21,7 @@ public:
 	int getVexNum();
 	QString getVExInfo(int index);
 	QPoint getPos(int index);
+	void getShortestRoad(int from, int to);
 
 protected:
 	void mouseReleaseEvent(QMouseEvent *event) override;
@@ -29,6 +32,7 @@ protected:
 
 
 signals:
+	void updateList(QVector<QString> path);
 
 public slots:
 
@@ -36,6 +40,7 @@ public slots:
 private:
 	Graph graph;
 	QPoint lastPos;
+	QVector<Pair> specialVertex;
 
 };
 

@@ -56,6 +56,7 @@ public slots:
 
 	//下拉框
 	void comboBox1_triggered(int index);
+
 	void comboBox2_triggered(int index);
 
 	//是否加上人群
@@ -66,6 +67,8 @@ public slots:
 
 	//最短路径的计算
 	void on_button_clicked();
+
+	void updateListWidget(QVector<QString> path);
 
 
 private:
@@ -96,6 +99,7 @@ private:
 
 	// the shortest road
 	QPoint startPos, lastPos;
+	int index1, index2;
 
 };
 

@@ -138,12 +138,14 @@ CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o:
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/QAction
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/QCheckBox
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/QComboBox
+CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/QDialog
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/QGridLayout
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/QGroupBox
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/QLabel
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/QListWidget
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/QMainWindow
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/QMenu
+CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/QMessageBox
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/QPushButton
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/QTableWidget
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/QTableWidgetItem
@@ -159,6 +161,7 @@ CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o:
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/qboxlayout.h
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/qcheckbox.h
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/qcombobox.h
+CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/qdialog.h
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/qframe.h
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/qgridlayout.h
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/qgroupbox.h
@@ -169,6 +172,7 @@ CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o:
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/qlistwidget.h
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/qmainwindow.h
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/qmenu.h
+CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/qmessagebox.h
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/qpushbutton.h
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/qrubberband.h
 CMakeFiles/NavigationSystem.dir/NavigationSystem_autogen/mocs_compilation.cpp.o: /usr/include/qt/QtWidgets/qsizepolicy.h
@@ -385,9 +389,13 @@ CMakeFiles/NavigationSystem.dir/graphui.cpp.o: /usr/include/qt/QtGui/qtransform.
 CMakeFiles/NavigationSystem.dir/graphui.cpp.o: /usr/include/qt/QtGui/qvector2d.h
 CMakeFiles/NavigationSystem.dir/graphui.cpp.o: /usr/include/qt/QtGui/qwindowdefs.h
 CMakeFiles/NavigationSystem.dir/graphui.cpp.o: /usr/include/qt/QtGui/qwindowdefs_win.h
+CMakeFiles/NavigationSystem.dir/graphui.cpp.o: /usr/include/qt/QtWidgets/QDialog
+CMakeFiles/NavigationSystem.dir/graphui.cpp.o: /usr/include/qt/QtWidgets/QMessageBox
 CMakeFiles/NavigationSystem.dir/graphui.cpp.o: /usr/include/qt/QtWidgets/QPushButton
 CMakeFiles/NavigationSystem.dir/graphui.cpp.o: /usr/include/qt/QtWidgets/QWidget
 CMakeFiles/NavigationSystem.dir/graphui.cpp.o: /usr/include/qt/QtWidgets/qabstractbutton.h
+CMakeFiles/NavigationSystem.dir/graphui.cpp.o: /usr/include/qt/QtWidgets/qdialog.h
+CMakeFiles/NavigationSystem.dir/graphui.cpp.o: /usr/include/qt/QtWidgets/qmessagebox.h
 CMakeFiles/NavigationSystem.dir/graphui.cpp.o: /usr/include/qt/QtWidgets/qpushbutton.h
 CMakeFiles/NavigationSystem.dir/graphui.cpp.o: /usr/include/qt/QtWidgets/qsizepolicy.h
 CMakeFiles/NavigationSystem.dir/graphui.cpp.o: /usr/include/qt/QtWidgets/qtwidgets-config.h
@@ -534,12 +542,14 @@ CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/QAction
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/QApplication
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/QCheckBox
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/QComboBox
+CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/QDialog
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/QGridLayout
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/QGroupBox
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/QLabel
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/QListWidget
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/QMainWindow
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/QMenu
+CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/QMessageBox
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/QPushButton
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/QTableWidget
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/QTableWidgetItem
@@ -557,6 +567,7 @@ CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/qboxlayout
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/qcheckbox.h
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/qcombobox.h
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/qdesktopwidget.h
+CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/qdialog.h
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/qframe.h
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/qgridlayout.h
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/qgroupbox.h
@@ -567,6 +578,7 @@ CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/qlistview.
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/qlistwidget.h
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/qmainwindow.h
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/qmenu.h
+CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/qmessagebox.h
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/qpushbutton.h
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/qrubberband.h
 CMakeFiles/NavigationSystem.dir/main.cpp.o: /usr/include/qt/QtWidgets/qsizepolicy.h
@@ -722,6 +734,7 @@ CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/QAct
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/QApplication
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/QCheckBox
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/QComboBox
+CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/QDialog
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/QGridLayout
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/QGroupBox
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/QLabel
@@ -729,6 +742,7 @@ CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/QLis
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/QMainWindow
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/QMenu
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/QMenuBar
+CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/QMessageBox
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/QPushButton
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/QStatusBar
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/QTableWidget
@@ -747,6 +761,7 @@ CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/qbox
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/qcheckbox.h
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/qcombobox.h
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/qdesktopwidget.h
+CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/qdialog.h
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/qframe.h
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/qgridlayout.h
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/qgroupbox.h
@@ -758,6 +773,7 @@ CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/qlis
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/qmainwindow.h
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/qmenu.h
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/qmenubar.h
+CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/qmessagebox.h
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/qpushbutton.h
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/qrubberband.h
 CMakeFiles/NavigationSystem.dir/mainwindow.cpp.o: /usr/include/qt/QtWidgets/qsizepolicy.h

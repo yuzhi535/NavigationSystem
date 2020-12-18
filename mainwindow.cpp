@@ -48,7 +48,6 @@ MainWindow::MainWindow(QWidget *parent)
 	paintWidget->setStatusTip(tr("graph"));
 	outLayout->addWidget(paintWidget, 0, 0, 16, 14);
 	list = new QListWidget(this);
-//	list->setWindowTitle(tr("the shortest path output"));
 	list->setStatusTip(tr("output"));
 	outLayout->addWidget(list, 12, 14, 4, 6);
 	groupBox = new QGroupBox(this);         //分组小组件
@@ -124,23 +123,21 @@ MainWindow::MainWindow(QWidget *parent)
 	//表格
 	tableWidget = new QTableWidget(groupBox);
 	tableWidget->setStatusTip(tr("vertex set"));
-	QStringList header;
-	header << "vertex" << "Description";
-	tableWidget->setHorizontalHeaderLabels(header);
 	tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);  //禁止编辑
 	inLayout->addWidget(tableWidget, 10, 2, -1, 6);
 	tableWidget->setRowCount(vex_num * 2);
 	tableWidget->setColumnCount(2);
+	QStringList header;
+	header << "Vertex" << "Description";      //设置标题
+	tableWidget->setHorizontalHeaderLabels(header);
 	for (int i = 0; i < vex_num; ++i) {
 		tableWidget->setItem(i, 0, new QTableWidgetItem(QString("%1").arg(i)));
 		tableWidget->setItem(i, 1, new QTableWidgetItem(paintWidget->getVExInfo(i)));
 	}
 
-	//test
-	//________________________________
-//	qDebug() << "row " << inLayout->rowCount() << "column" << inLayout->columnCount();
-	//________________________________
 
+	//更新列表的信号槽
+	connect(paintWidget, SIGNAL(updateList(QVector<QString>)), this, SLOT(updateListWidget(QVector<QString>)));
 }
 
 MainWindow::~MainWindow() {
@@ -149,7 +146,7 @@ MainWindow::~MainWindow() {
 
 void MainWindow::comboBox1_triggered(int index) {
 	startPos = paintWidget->getPos(index);
-	qDebug() << "index=" << index << " startPos=" << startPos;
+	index1 = index;
 }
 
 void MainWindow::action4_triggered() {
@@ -177,11 +174,23 @@ void MainWindow::onCheckBox2_stateChanged() {
 }
 
 void MainWindow::on_button_clicked() {
+	if (lastPos != startPos) {
+		paintWidget->getShortestRoad(index1, index2);
 
+	} else {
+		QMessageBox::information(this, tr("info"), QString("<h2>起点和终点一样!</h2>"));
+	}
 }
 
 void MainWindow::comboBox2_triggered(int index) {
 	lastPos = paintWidget->getPos(index);
-	qDebug() << "index=" << index << " lastPos=" << lastPos;
+	index2 = index;
+}
+
+void MainWindow::updateListWidget(QVector<QString> path) {
+	list->clear();
+	for (int i = 0; i < path.size(); ++i) {
+		list->addItem(path[i]);
+	}
 }
 

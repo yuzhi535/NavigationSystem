@@ -149,10 +149,11 @@ void Graph::init_from_file(QString fileName) {
 	}
 }
 
-QVector<QString> Graph::findShortestRoad(int from, int to, QVector<int> &pos) {
+QVector<QString> &Graph::findShortestRoad(int from, int to, QVector<int> &pos) {
+	ans.clear();
+	pos.clear();
 	this->updateGraph(1);
 	QVector<int> dis(this->vexNum, 0x7f7f7f7f);
-	QVector<QString> ans;   //在列表中输出相应的名字
 	QQueue<int> queue;
 	queue.push_back(from);
 	//邻接矩阵的写法
@@ -182,13 +183,14 @@ QVector<QString> Graph::findShortestRoad(int from, int to, QVector<int> &pos) {
 	if (dis[to] != 0x7f7f7f7f) {
 		QStack<QString> stack;
 		stack.push(this->vertexes[to].info);
+		pos.push_back(to);
 		int index(to);
 		//寻找路径
 		while (index != from) {
 			for (index = 0; index < this->vexNum; ++index) {
 				if (dis[index] == dis[to] - this->arc[index][to].getWeight()) {
 					stack.push(this->vertexes[index].info);
-					pos.push_back(index);  //倒过来无所谓，用于绘制图
+					pos.push_back(index);
 					to = index;
 					if (index == from)
 						break;
@@ -201,18 +203,12 @@ QVector<QString> Graph::findShortestRoad(int from, int to, QVector<int> &pos) {
 			stack.pop();
 		}
 
-		// test ------------------------------
-		for (auto i : ans) {
-			qDebug() << i;
-		}
-		//------------------------------------
-		return ans;
 	} else {
 		//这里因该弹出警告框
 		qDebug() << "can't find the path";
 		qDebug() << "Please check your graph";
-		return QVector<QString>{};   //检查为空则弹出消息框提示
 	}
+	return ans;
 }
 
 void Graph::updateGraph(int group) {

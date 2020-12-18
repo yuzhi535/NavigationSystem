@@ -41,8 +41,8 @@ GraphUi::paintEvent(QPaintEvent *event) {
 
 	qDebug() << graph.edge.size();
 	auto vex_num = graph.getVexNum();
+	QPen pen;
 	for (auto i = 0; i != vex_num; ++i) {
-		QPen pen;
 		pen.setWidth(5);
 		pen.setColor(Qt::red);
 		painter.setPen(pen);
@@ -55,12 +55,25 @@ GraphUi::paintEvent(QPaintEvent *event) {
 		painter.drawText(QPoint(point.x() + 3, point.y() - 8), graph.getInfo(i));
 	}
 	for (auto i = graph.edge.begin(); i != graph.edge.end(); ++i) {
-		QPen pen;
+		if (!specialVertex.contains(i->m_pair)) {
+			pen.setWidth(3);
+			pen.setColor(Qt::yellow);
+			painter.setPen(pen);
+			QPoint point1 = graph.getVertex(i->m_pair.from), point2 = graph.getVertex(i->m_pair.to);
+			painter.drawLine(point1, point2);
+		}
+	}
+	for (int i = 0; i < specialVertex.size(); ++i) {
+		QPoint pos1, pos2;
+		pos1.setX(this->getPos(specialVertex[i].from).x());
+		pos1.setY(this->getPos(specialVertex[i].from).y());
+		pos2.setX(this->getPos(specialVertex[i].to).x());
+		pos2.setY(this->getPos(specialVertex[i].to).y());
+
 		pen.setWidth(3);
-		pen.setColor(Qt::yellow);
+		pen.setColor(Qt::darkBlue);
 		painter.setPen(pen);
-		QPoint point1 = graph.getVertex(i->m_pair.from), point2 = graph.getVertex(i->m_pair.to);
-		painter.drawLine(point1, point2);
+		painter.drawLine(pos1, pos2);
 	}
 }
 
@@ -74,4 +87,27 @@ QString GraphUi::getVExInfo(int index) {
 
 QPoint GraphUi::getPos(int index) {
 	return graph.getVertex(index);
+}
+
+void GraphUi::getShortestRoad(int from, int to) {
+	specialVertex.clear();   //清空原来的最短路径
+	QVector<int> verteces;
+	QVector<QString> &orderedRoad = graph.findShortestRoad(from, to, verteces);
+	for (int i = 0; i < verteces.size(); ++i) {
+		qDebug() << "vertex!!!" << verteces[i];
+	}
+
+	for (int i = 0; i < orderedRoad.size(); ++i) {
+		qDebug() << "path" << orderedRoad[i];
+	}
+
+	if (!orderedRoad.empty()) {
+		//加载顶点对
+		for (int i = 0; i < verteces.size() - 1; ++i) {
+			Pair pair(verteces[i], verteces[i + 1]);
+			specialVertex.push_back(pair);
+		}
+		update();
+	}
+	emit updateList(orderedRoad);
 }
