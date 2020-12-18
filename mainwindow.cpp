@@ -47,8 +47,14 @@ MainWindow::MainWindow(QWidget *parent)
 	paintWidget = new GraphUi(this);
 	paintWidget->setStatusTip(tr("graph"));
 	outLayout->addWidget(paintWidget, 0, 0, 16, 14);
-	list = new QListWidget(this);
+	list = new QTableWidget(this);
+	list->setRowCount(12);
+	list->setColumnCount(2);
+	QStringList listHeader;
+	listHeader << "from" << "to";
+	list->setHorizontalHeaderLabels(listHeader);
 	list->setStatusTip(tr("output"));
+	list->setEditTriggers(QAbstractItemView::NoEditTriggers);  //禁止编辑
 	outLayout->addWidget(list, 12, 14, 4, 6);
 	groupBox = new QGroupBox(this);         //分组小组件
 	groupBox->setTitle(tr("choice"));
@@ -188,9 +194,19 @@ void MainWindow::comboBox2_triggered(int index) {
 }
 
 void MainWindow::updateListWidget(QVector<QString> path) {
-	list->clear();
-	for (int i = 0; i < path.size(); ++i) {
-		list->addItem(path[i]);
+	list->clearContents();
+	for (int i = 0; i < path.size() - 1; ++i) {
+		list->setItem(i, 0, new QTableWidgetItem(QString("%1").arg(path[i])));
+		list->setItem(i, 1, new QTableWidgetItem(QString("%1").arg(path[i + 1])));
+	}
+}
+
+void MainWindow::updateTableWidget() {
+	tableWidget->clearContents();
+	int vex_num = paintWidget->getVexNum();
+	for (int i = 0; i < vex_num; ++i) {
+		tableWidget->setItem(i, 0, new QTableWidgetItem(QString("%1").arg(i)));
+		tableWidget->setItem(i, 1, new QTableWidgetItem(QString("%1").arg(paintWidget->getVExInfo(i))));
 	}
 }
 

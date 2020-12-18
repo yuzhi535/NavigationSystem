@@ -22,11 +22,10 @@ public:
 	QString getVExInfo(int index);
 	QPoint getPos(int index);
 	void getShortestRoad(int from, int to);
+    void addVertex(QString info, int x, int y);
 
 protected:
 	void mouseReleaseEvent(QMouseEvent *event) override;
-
-	void mousePressEvent(QMouseEvent *event) override;
 
 	void paintEvent(QPaintEvent *event) override;
 

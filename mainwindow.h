@@ -42,6 +42,8 @@ public:
 
 	~MainWindow();
 
+	void updateTableWidget();
+
 public slots:
 
 	// 更换主题
@@ -76,7 +78,7 @@ private:
 	QWidget *widget;   //main widget
 	QGridLayout *outLayout, *inLayout;
 	GraphUi *paintWidget;
-	QListWidget *list;
+	QTableWidget *list;
 	QGroupBox *groupBox;
 	QComboBox *comboBox1;  //起点
 	QComboBox *comboBox2;  //终点

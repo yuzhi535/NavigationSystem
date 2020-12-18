@@ -13,15 +13,8 @@ GraphUi::GraphUi(QWidget *parent)
 	graph.init_from_file();
 }
 
-void
-GraphUi::mouseReleaseEvent(QMouseEvent *event) {
-	qDebug() << "currPos=" << event->pos();
+void GraphUi::mouseReleaseEvent(QMouseEvent *event) {
 	update();
-}
-
-void
-GraphUi::mousePressEvent(QMouseEvent *event) {
-	qDebug() << "press";
 }
 
 /**
@@ -32,14 +25,17 @@ GraphUi::mousePressEvent(QMouseEvent *event) {
  * @brief 顶点名字
  * @param event
  */
-void
-GraphUi::paintEvent(QPaintEvent *event) {
+void GraphUi::paintEvent(QPaintEvent *event) {
 	QPainter painter(this);
 	painter.setPen(Qt::NoPen);
 	painter.setBrush(QBrush(QColor(56, 116, 237)));
 	painter.drawRect(rect());
 
-	qDebug() << graph.edge.size();
+	QFont font;
+	font.setPointSize(15);
+	font.setLetterSpacing(QFont::AbsoluteSpacing, 0);
+	painter.setFont(font);
+
 	auto vex_num = graph.getVexNum();
 	QPen pen;
 	for (auto i = 0; i != vex_num; ++i) {
@@ -47,7 +43,6 @@ GraphUi::paintEvent(QPaintEvent *event) {
 		pen.setColor(Qt::red);
 		painter.setPen(pen);
 		QPoint point = graph.getVertex(i);
-		qDebug() << point;
 		painter.drawEllipse(point, 4, 4);
 		pen.setColor(Qt::green);
 		pen.setWidth(3);
@@ -55,13 +50,20 @@ GraphUi::paintEvent(QPaintEvent *event) {
 		painter.drawText(QPoint(point.x() + 3, point.y() - 8), graph.getInfo(i));
 	}
 	for (auto i = graph.edge.begin(); i != graph.edge.end(); ++i) {
+		QPoint point1 = graph.getVertex(i->m_pair.from), point2 = graph.getVertex(i->m_pair.to);
 		if (!specialVertex.contains(i->m_pair)) {
 			pen.setWidth(3);
 			pen.setColor(Qt::yellow);
 			painter.setPen(pen);
-			QPoint point1 = graph.getVertex(i->m_pair.from), point2 = graph.getVertex(i->m_pair.to);
 			painter.drawLine(point1, point2);
+
+			font.setPointSize(12);
+			pen.setWidth(5);
+			pen.setColor(Qt::darkRed);
+			pen.setStyle(Qt::SolidLine);
+			painter.setPen(pen);
 		}
+		painter.drawText((point2.x() + point1.x()) / 2, (point1.y() + point2.y()) / 2, QString("%1").arg(i->weight));;
 	}
 	for (int i = 0; i < specialVertex.size(); ++i) {
 		QPoint pos1, pos2;
@@ -93,13 +95,6 @@ void GraphUi::getShortestRoad(int from, int to) {
 	specialVertex.clear();   //清空原来的最短路径
 	QVector<int> verteces;
 	QVector<QString> &orderedRoad = graph.findShortestRoad(from, to, verteces);
-	for (int i = 0; i < verteces.size(); ++i) {
-		qDebug() << "vertex!!!" << verteces[i];
-	}
-
-	for (int i = 0; i < orderedRoad.size(); ++i) {
-		qDebug() << "path" << orderedRoad[i];
-	}
 
 	if (!orderedRoad.empty()) {
 		//加载顶点对
@@ -110,4 +105,8 @@ void GraphUi::getShortestRoad(int from, int to) {
 		update();
 	}
 	emit updateList(orderedRoad);
+}
+
+void GraphUi::addVertex(QString info, int x, int y) {
+	graph.addVex(info, x, y);
 }
