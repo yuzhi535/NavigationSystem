@@ -46,8 +46,8 @@
     </message>
     <message>
         <location filename="mainwindow.cpp" line="55"/>
-        <location filename="mainwindow.cpp" line="97"/>
-        <location filename="mainwindow.cpp" line="102"/>
+        <location filename="mainwindow.cpp" line="98"/>
+        <location filename="mainwindow.cpp" line="103"/>
         <source>choice</source>
         <translation type="unfinished"></translation>
     </message>
@@ -72,27 +72,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="96"/>
+        <location filename="mainwindow.cpp" line="97"/>
         <source>people</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="101"/>
+        <location filename="mainwindow.cpp" line="102"/>
         <source>weather</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="115"/>
+        <location filename="mainwindow.cpp" line="116"/>
         <source>confirm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="116"/>
+        <location filename="mainwindow.cpp" line="117"/>
         <source>confirm to find the shortest road</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="123"/>
+        <location filename="mainwindow.cpp" line="126"/>
         <source>vertex set</source>
         <translation type="unfinished"></translation>
     </message>

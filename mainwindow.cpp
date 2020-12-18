@@ -29,13 +29,13 @@ MainWindow::MainWindow(QWidget *parent)
 	edit->addAction(action4);
 
 	// 信号槽操作
-	connect(action3, &QAction::triggered, [&]() { qDebug() << "add vertex"; });
-	connect(action4, &QAction::triggered, [&]() { qDebug() << "add path"; });
+	connect(action3, &QAction::triggered, this, &MainWindow::action3_triggered);
+	connect(action4, &QAction::triggered, this, &MainWindow::action4_triggered);
 
 	//更换主题   未完待续
 	//+++++++++++++++++++++++++++++++++++++++++++++++
-	connect(action1, &QAction::trigger, [&]() {});
-	connect(action2, &QAction::trigger, [&]() {});
+	connect(action1, &QAction::trigger, this, &MainWindow::action1_triggered);
+	connect(action2, &QAction::trigger, this, &MainWindow::action2_triggered);
 	//-----------------------------------------------
 
 	// 针对整体进行设计
@@ -79,7 +79,8 @@ MainWindow::MainWindow(QWidget *parent)
 	comboBox2->setStatusTip(tr("choose the ending"));   //状态栏显示提示
 	inLayout->addWidget(comboBox2, 2, 4, 1, 4);
 
-	connect(comboBox1, &QComboBox::currentIndexChanged, [&]() { qDebug() << comboBox1->currentIndex(); });
+	connect(comboBox1, SIGNAL(activated(int)), this, SLOT(comboBox1_triggered(int)));
+	connect(comboBox2, SIGNAL(activated(int)), this, SLOT(comboBox2_triggered(int)));
 
 	//提取各个顶点的信息
 	int vex_num = paintWidget->getVexNum();
@@ -105,9 +106,9 @@ MainWindow::MainWindow(QWidget *parent)
 	//信号槽，未完待续
 	//-----------------------------------------------------
 	connect(checkBox1, &QCheckBox::stateChanged,
-	        [&]() { qDebug() << "checkbox1 state changed" << checkBox1->isChecked(); });
+	        this, &MainWindow::onCheckBox1_stateChanged);
 	connect(checkBox2, &QCheckBox::stateChanged,
-	        [&]() { qDebug() << "checkbox2 state changed" << checkBox2->isChecked(); });
+	        this, &MainWindow::onCheckBox2_stateChanged);
 	//-----------------------------------------------------
 
 	// 按钮
@@ -118,7 +119,7 @@ MainWindow::MainWindow(QWidget *parent)
 	inLayout->addWidget(button, 8, 4, 2, 3);   //加入group
 
 	//信号槽，注意最短路径返回值
-	connect(button, &QPushButton::clicked, [&]() { qDebug() << "button"; });
+	connect(button, &QPushButton::clicked, this, &MainWindow::on_button_clicked);
 
 	//表格
 	tableWidget = new QTableWidget(groupBox);
@@ -144,5 +145,43 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow() {
 	delete ui;
+}
+
+void MainWindow::comboBox1_triggered(int index) {
+	startPos = paintWidget->getPos(index);
+	qDebug() << "index=" << index << " startPos=" << startPos;
+}
+
+void MainWindow::action4_triggered() {
+
+}
+
+void MainWindow::action3_triggered() {
+
+}
+
+void MainWindow::action2_triggered() {
+
+}
+
+void MainWindow::action1_triggered() {
+
+}
+
+void MainWindow::onCheckBox1_stateChanged() {
+
+}
+
+void MainWindow::onCheckBox2_stateChanged() {
+
+}
+
+void MainWindow::on_button_clicked() {
+
+}
+
+void MainWindow::comboBox2_triggered(int index) {
+	lastPos = paintWidget->getPos(index);
+	qDebug() << "index=" << index << " lastPos=" << lastPos;
 }
 

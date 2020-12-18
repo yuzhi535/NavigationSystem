@@ -54,6 +54,10 @@ public slots:
 
 	void action4_triggered();
 
+	//下拉框
+	void comboBox1_triggered(int index);
+	void comboBox2_triggered(int index);
+
 	//是否加上人群
 	void onCheckBox1_stateChanged();
 
@@ -87,6 +91,11 @@ private:
 	QMenu *edit;  //编辑节点和道路
 	QAction *action3;  //节点
 	QAction *action4;  //道路
+
+
+
+	// the shortest road
+	QPoint startPos, lastPos;
 
 };
 

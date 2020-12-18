@@ -71,3 +71,7 @@ int GraphUi::getVexNum() {
 QString GraphUi::getVExInfo(int index) {
 	return graph.getInfo(index);
 }
+
+QPoint GraphUi::getPos(int index) {
+	return graph.getVertex(index);
+}

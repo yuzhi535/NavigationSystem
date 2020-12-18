@@ -18,6 +18,7 @@ public:
 
 	int getVexNum();
 	QString getVExInfo(int index);
+	QPoint getPos(int index);
 
 protected:
 	void mouseReleaseEvent(QMouseEvent *event) override;
