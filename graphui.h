@@ -14,14 +14,14 @@
 class GraphUi : public QWidget {
 Q_OBJECT
 public:
-    explicit GraphUi(QWidget *parent = nullptr);
+	explicit GraphUi(QWidget *parent = nullptr);
 
 protected:
-    void mouseReleaseEvent(QMouseEvent *event) override;
+	void mouseReleaseEvent(QMouseEvent *event) override;
 
-    void mousePressEvent(QMouseEvent *event) override;
+	void mousePressEvent(QMouseEvent *event) override;
 
-    void paintEvent(QPaintEvent *event) override;
+	void paintEvent(QPaintEvent *event) override;
 
 
 signals:
@@ -30,8 +30,8 @@ public slots:
 
 
 private:
-    Graph graph;
-    QPoint lastPos;
+	Graph graph;
+	QPoint lastPos;
 
 };
 
