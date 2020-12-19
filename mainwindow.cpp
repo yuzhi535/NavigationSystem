@@ -4,6 +4,9 @@
 MainWindow::MainWindow(QWidget *parent)
 		: QMainWindow(parent), ui(new Ui::MainWindow) {
 	ui->setupUi(this);
+
+	index1 = index2 = 0;
+
 	this->setWindowTitle(tr("Navigation System"));
 	this->setStyleSheet("background-color: rgba(12, 23, 34, 0.5)");
 	//设置最小尺寸
@@ -160,12 +163,14 @@ void MainWindow::comboBox1_triggered(int index) {
 // 编辑道路
 void MainWindow::action4_triggered() {
 	dialog1 = new EdgeDialog(paintWidget);
+	connect(dialog1, SIGNAL(updateGraph()), this, SLOT(updateWidget()));
 	dialog1->show();
 }
 
 // 编辑顶点
 void MainWindow::action3_triggered() {
 	dialog2 = new VertexDialog(paintWidget, this);
+	connect(dialog2, SIGNAL(updateGraph()), this, SLOT(updateWidget()));
 	dialog2->show();
 }
 
@@ -210,12 +215,19 @@ void MainWindow::updateListWidget(QVector<QString> path) {
 	}
 }
 
-void MainWindow::updateTableWidget() {
-	tableWidget->clearContents();
-	int vex_num = paintWidget->getVexNum();
+void MainWindow::updateWidget() {
+	this->tableWidget->clearContents();
+	int vex_num = this->paintWidget->getVexNum();
+	comboBox1->clear();
+	comboBox2->clear();
 	for (int i = 0; i < vex_num; ++i) {
 		tableWidget->setItem(i, 0, new QTableWidgetItem(QString("%1").arg(i)));
-		tableWidget->setItem(i, 1, new QTableWidgetItem(QString("%1").arg(paintWidget->getVExInfo(i))));
+		tableWidget->setItem(i, 1, new QTableWidgetItem(paintWidget->getVExInfo(i)));
+		comboBox1->addItem(paintWidget->getVExInfo(i));
+		comboBox2->addItem(paintWidget->getVExInfo(i));
 	}
+
+
+
 }
 

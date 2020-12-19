@@ -79,7 +79,8 @@ void EdgeDialog::on_button_1_clicked() {
 				ui->setVexInfo(i, col1[i].second);
 			} else {
 				qDebug() << "edit a new vertex";
-				ui->addVex(col1[i].second);
+				if (ui->getVexIndex(col1[i].second) == -1)
+					ui->addVex(col1[i].second);
 			}
 			flag1[i] = true;
 		}
@@ -89,7 +90,8 @@ void EdgeDialog::on_button_1_clicked() {
 				ui->setVexInfo(i, col1[i].second);
 			} else {
 				qDebug() << "edi a new vertex";
-				ui->addVex(col2[i].second);
+				if (ui->getVexIndex(col1[i].second) == -1)
+					ui->addVex(col2[i].second);
 			}
 			flag2[i] = true;
 		}
@@ -111,22 +113,17 @@ void EdgeDialog::on_button_1_clicked() {
 			qDebug() << QString("index1=%1,index2=%2,weight=%3").arg(index1).arg(index2).arg(col3[i].second);
 			if (index1 != -1 && index2 != -1) {
 				Road road(index1, index2, col3[i].second);
-//				if (!ui->findVex(col1[i].second)) {
-//					ui->addVex(col1[i].second);
-//				}
-//				if (!ui->findVex(col2[i].second)) {
-//					ui->addVex(col2[i].second);
-//				}
 				ui->addArc(road);
 			}
 		}
 	}
-	hide();
+	emit updateGraph();
+	this->close();
 }
 
 // 退出
 void EdgeDialog::on_button_2_clicked() {
-	deleteLater();
+	this->close();
 }
 
 void EdgeDialog::onTableItemChanged(int row, int column) {

@@ -131,10 +131,10 @@ void Graph::init_from_file(QString fileName) {
 		std::ofstream out;
 		out.open(fileName.toStdString());
 		out << "4 5\n"
-		       "a 1 2\n"
-		       "b 23 35\n"
-		       "c 45 6\n"
-		       "d 56 7\n"
+		       "a 1 234\n"
+		       "b 300 395\n"
+		       "c 455 600\n"
+		       "d 560 124\n"
 		       "0 1 12\n"
 		       "0 2 23\n"
 		       "0 3 1\n"

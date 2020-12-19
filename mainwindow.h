@@ -44,8 +44,6 @@ public:
 
 	~MainWindow();
 
-	void updateTableWidget();
-
 signals:
 	void updateGraph();
 
@@ -76,6 +74,8 @@ public slots:
 	void on_button_clicked();
 
 	void updateListWidget(QVector<QString> path);
+
+	void updateWidget();
 
 
 private:
