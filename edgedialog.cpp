@@ -10,14 +10,17 @@ EdgeDialog::EdgeDialog(GraphUi *graphUi, QWidget *parent) {
 	ui = graphUi;
 	this->setStyleSheet("background-color:black");
 	layout = new QGridLayout(this);
+	// 设置布局
 	this->setLayout(layout);
 	layout->setVerticalSpacing(12);
 	layout->setHorizontalSpacing(20);
+
 	tableWidget = new QTableWidget(maxEdgeNum, 3, this);
 	tableWidget->setStyleSheet("color: black; background-color:white");  //设计样式
 	QStringList header;
 	header << "from" << "to" << "weight";
 	tableWidget->setHorizontalHeaderLabels(header);
+	//添加到布局
 	layout->addWidget(tableWidget, 0, 0, 10, -1);
 
 	button1 = new QPushButton(this);
@@ -25,11 +28,13 @@ EdgeDialog::EdgeDialog(GraphUi *graphUi, QWidget *parent) {
 	button1->setText(tr("confirm"));
 	button2->setText(tr("exit"));
 
+	// 设置样式表
 	button1->setStyleSheet(
 			"background-color: black ; color: yellow; selection-color: white; selection-background-color: blue");
 	button2->setStyleSheet(
 			"background-color: black ; color: yellow; selection-color: white; selection-background-color: blue");
 
+	//添加到布局
 	layout->addWidget(button1, 10, 0, 2, 10);
 	layout->addWidget(button2, 10, 10, 2, 10);
 

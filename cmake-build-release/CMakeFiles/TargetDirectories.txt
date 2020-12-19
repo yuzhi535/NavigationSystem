@@ -1,0 +1,5 @@
+/home/sasuke/qtProjects/NavigationSystem/cmake-build-release/CMakeFiles/rebuild_cache.dir
+/home/sasuke/qtProjects/NavigationSystem/cmake-build-release/CMakeFiles/edit_cache.dir
+/home/sasuke/qtProjects/NavigationSystem/cmake-build-release/CMakeFiles/translations.dir
+/home/sasuke/qtProjects/NavigationSystem/cmake-build-release/CMakeFiles/NavigationSystem.dir
+/home/sasuke/qtProjects/NavigationSystem/cmake-build-release/CMakeFiles/NavigationSystem_autogen.dir

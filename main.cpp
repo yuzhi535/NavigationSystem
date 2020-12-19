@@ -11,8 +11,8 @@ int main(int argc, char *argv[]) {
 	MainWindow w;
 	w.show();
 #else
-	VertexDialog dialog;
-	dialog.show();
+	Graph graph;
+	graph.init_from_file();
 
 #endif
 	return a.exec();

@@ -4,12 +4,12 @@
 <context>
     <name>EdgeDialog</name>
     <message>
-        <location filename="edgedialog.cpp" line="25"/>
+        <location filename="edgedialog.cpp" line="28"/>
         <source>confirm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="edgedialog.cpp" line="26"/>
+        <location filename="edgedialog.cpp" line="29"/>
         <source>exit</source>
         <translation type="unfinished"></translation>
     </message>

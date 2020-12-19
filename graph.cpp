@@ -28,6 +28,7 @@ Graph::Graph() {
 	this->arc.resize(20);
 	for (int i = 0; i < 20; ++i) {
 		this->arc[i].resize(20);
+
 	}
 }
 
@@ -65,17 +66,55 @@ Status Graph::addArc(Road road) {
 		}
 	}
 	qDebug() << QString("from%1 to%2").arg(road.m_pair.from).arg(road.m_pair.to);
-	this->arc[road.m_pair.from][road.m_pair.to].setDistance(road.weight);
-	this->arc[road.m_pair.to][road.m_pair.from].setDistance(road.weight);
-	this->arc[road.m_pair.from][road.m_pair.to].setPair(Pair(road.m_pair.from, road.m_pair.to));
-	this->arc[road.m_pair.to][road.m_pair.from].setPair(Pair(road.m_pair.from, road.m_pair.to));
-	if (road.weight != 0) {
-		edge.push_back(road);
-		++this->arcNum;
-		qDebug() << QString("add %1->%2  %3").arg(road.m_pair.from).arg(road.m_pair.to).arg(road.weight);
-	} else {
-		deleteArc(road.m_pair.from, road.m_pair.to);
-	}
+    int flag = 1;
+    if (this->arc[road.m_pair.from][road.m_pair.to].getDistance() == 0x7f7f7f7f) {
+        this->arc[road.m_pair.from][road.m_pair.to].setDistance(road.weight);
+        this->arc[road.m_pair.to][road.m_pair.from].setDistance(road.weight);
+        this->arc[road.m_pair.from][road.m_pair.to].setPair(Pair(road.m_pair.from, road.m_pair.to));
+        this->arc[road.m_pair.to][road.m_pair.from].setPair(Pair(road.m_pair.from, road.m_pair.to));
+        if (road.weight != 0) {
+            edge.push_back(road);
+            ++this->arcNum;
+            qDebug() << QString("add %1->%2  %3").arg(road.m_pair.from).arg(road.m_pair.to).arg(road.weight);
+        }
+    }
+    else {
+        if (this->arc[road.m_pair.from][road.m_pair.to].getDistance() != 0) {
+            flag = 0;
+        }
+
+        this->arc[road.m_pair.from][road.m_pair.to].setDistance(road.weight);
+        this->arc[road.m_pair.to][road.m_pair.from].setDistance(road.weight);
+        this->arc[road.m_pair.from][road.m_pair.to].setPair(Pair(road.m_pair.from, road.m_pair.to));
+        this->arc[road.m_pair.to][road.m_pair.from].setPair(Pair(road.m_pair.from, road.m_pair.to));
+        if (road.weight != 0 && flag) {
+            edge.push_back(road);
+            ++this->arcNum;
+            qDebug() << QString("add %1->%2  %3").arg(road.m_pair.from).arg(road.m_pair.to).arg(road.weight);
+        } else if (!flag) {
+            int i(road.m_pair.from), j(road.m_pair.to);
+            Pair pair(i, j);
+            int result = -1;
+            for (int k = 0; k < this->edge.size(); ++k) {
+                if (i == j)
+                    continue;
+                if (this->edge[k].m_pair == pair) {
+                    result = k;
+                    break;
+                }
+                if (this->edge[k].m_pair == Pair(j, i)) {
+                    result = k;
+                    break;
+                }
+            }
+            if (result != -1) {
+                edge[result].weight = road.weight;
+            }
+
+        } else {
+            deleteArc(road.m_pair.from, road.m_pair.to);
+        }
+    }
 	return OK;
 }
 
