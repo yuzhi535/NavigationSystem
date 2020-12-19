@@ -72,4 +72,4 @@ Thumbs.db
 *.exe
 
 # custom directory
-cmake-build-debug
+./cmake-build-debug/
