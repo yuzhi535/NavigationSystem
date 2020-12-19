@@ -8,12 +8,13 @@ EdgeDialog::EdgeDialog(GraphUi *graphUi, QWidget *parent) {
 	this->setMinimumWidth(400);
 	this->setMinimumHeight(300);
 	ui = graphUi;
-
+	this->setStyleSheet("background-color:black");
 	layout = new QGridLayout(this);
 	this->setLayout(layout);
 	layout->setVerticalSpacing(12);
 	layout->setHorizontalSpacing(20);
 	tableWidget = new QTableWidget(maxEdgeNum, 3, this);
+	tableWidget->setStyleSheet("color: black; background-color:white");  //设计样式
 	QStringList header;
 	header << "from" << "to" << "weight";
 	tableWidget->setHorizontalHeaderLabels(header);
@@ -23,6 +24,11 @@ EdgeDialog::EdgeDialog(GraphUi *graphUi, QWidget *parent) {
 	button2 = new QPushButton(this);
 	button1->setText(tr("confirm"));
 	button2->setText(tr("exit"));
+
+	button1->setStyleSheet(
+			"background-color: black ; color: yellow; selection-color: white; selection-background-color: blue");
+	button2->setStyleSheet(
+			"background-color: black ; color: yellow; selection-color: white; selection-background-color: blue");
 
 	layout->addWidget(button1, 10, 0, 2, 10);
 	layout->addWidget(button2, 10, 10, 2, 10);

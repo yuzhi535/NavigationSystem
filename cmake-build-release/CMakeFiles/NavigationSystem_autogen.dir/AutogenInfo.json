@@ -1,0 +1,112 @@
+{
+	"BUILD_DIR" : "/home/sasuke/qtProjects/NavigationSystem/cmake-build-release/NavigationSystem_autogen",
+	"CMAKE_BINARY_DIR" : "/home/sasuke/qtProjects/NavigationSystem/cmake-build-release",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/sasuke/qtProjects/NavigationSystem/cmake-build-release",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/sasuke/qtProjects/NavigationSystem",
+	"CMAKE_EXECUTABLE" : "/home/sasuke/clion-2020.2.5/bin/cmake/linux/bin/cmake",
+	"CMAKE_SOURCE_DIR" : "/home/sasuke/qtProjects/NavigationSystem",
+	"DEP_FILE" : "",
+	"DEP_FILE_RULE_NAME" : "",
+	"HEADERS" : 
+	[
+		[
+			"/home/sasuke/qtProjects/NavigationSystem/edgedialog.h",
+			"MU",
+			"EWIEGA46WW/moc_edgedialog.cpp"
+		],
+		[
+			"/home/sasuke/qtProjects/NavigationSystem/graph.h",
+			"MU",
+			"EWIEGA46WW/moc_graph.cpp"
+		],
+		[
+			"/home/sasuke/qtProjects/NavigationSystem/graphui.h",
+			"MU",
+			"EWIEGA46WW/moc_graphui.cpp"
+		],
+		[
+			"/home/sasuke/qtProjects/NavigationSystem/mainwindow.h",
+			"MU",
+			"EWIEGA46WW/moc_mainwindow.cpp"
+		],
+		[
+			"/home/sasuke/qtProjects/NavigationSystem/vertexdialog.h",
+			"MU",
+			"EWIEGA46WW/moc_vertexdialog.cpp"
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/home/sasuke/qtProjects/NavigationSystem/cmake-build-release/NavigationSystem_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/sasuke/qtProjects/NavigationSystem/cmake-build-release/NavigationSystem_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"QT_CORE_LIB",
+		"QT_GUI_LIB",
+		"QT_MULTIMEDIA_LIB",
+		"QT_NETWORK_LIB",
+		"QT_NO_DEBUG",
+		"QT_WIDGETS_LIB"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/home/sasuke/qtProjects/NavigationSystem/cmake-build-release",
+		"/home/sasuke/qtProjects/NavigationSystem",
+		"/usr/include/qt",
+		"/usr/include/qt/QtWidgets",
+		"/usr/include/qt/QtGui",
+		"/usr/include/qt/QtCore",
+		"/usr/lib/qt/mkspecs/linux-g++",
+		"/usr/include/qt/QtMultimedia",
+		"/usr/include/qt/QtNetwork",
+		"/usr/include/c++/10.2.0",
+		"/usr/include/c++/10.2.0/x86_64-pc-linux-gnu",
+		"/usr/include/c++/10.2.0/backward",
+		"/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include",
+		"/usr/local/include",
+		"/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed",
+		"/usr/include"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : true,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/c++",
+		"-dM",
+		"-E",
+		"-c",
+		"/home/sasuke/clion-2020.2.5/bin/cmake/linux/share/cmake-3.17/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/home/sasuke/qtProjects/NavigationSystem/cmake-build-release/NavigationSystem_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 4,
+	"PARSE_CACHE_FILE" : "/home/sasuke/qtProjects/NavigationSystem/cmake-build-release/CMakeFiles/NavigationSystem_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/usr/bin/moc",
+	"QT_UIC_EXECUTABLE" : "/usr/bin/uic",
+	"QT_VERSION_MAJOR" : 5,
+	"QT_VERSION_MINOR" : 15,
+	"SETTINGS_FILE" : "/home/sasuke/qtProjects/NavigationSystem/cmake-build-release/CMakeFiles/NavigationSystem_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[ "/home/sasuke/qtProjects/NavigationSystem/edgedialog.cpp", "MU" ],
+		[ "/home/sasuke/qtProjects/NavigationSystem/graph.cpp", "MU" ],
+		[ "/home/sasuke/qtProjects/NavigationSystem/graphui.cpp", "MU" ],
+		[ "/home/sasuke/qtProjects/NavigationSystem/main.cpp", "MU" ],
+		[ "/home/sasuke/qtProjects/NavigationSystem/mainwindow.cpp", "MU" ],
+		[ "/home/sasuke/qtProjects/NavigationSystem/vertexdialog.cpp", "MU" ]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"VERBOSITY" : 0
+}

@@ -11,6 +11,7 @@
 GraphUi::GraphUi(QWidget *parent)
 		: QWidget(parent) {
 	graph.init_from_file();
+	isGroup1 = isGroup2 = 1;
 }
 
 void GraphUi::mouseReleaseEvent(QMouseEvent *event) {
@@ -28,7 +29,7 @@ void GraphUi::mouseReleaseEvent(QMouseEvent *event) {
 void GraphUi::paintEvent(QPaintEvent *event) {
 	QPainter painter(this);
 	painter.setPen(Qt::NoPen);
-	painter.setBrush(QBrush(QColor(56, 116, 237)));
+	painter.setBrush(QBrush(color[PAINT]));
 	painter.drawRect(rect());
 
 	QFont font;
@@ -38,42 +39,50 @@ void GraphUi::paintEvent(QPaintEvent *event) {
 
 	auto vex_num = graph.getVexNum();
 	QPen pen;
+	//点
 	for (auto i = 0; i != vex_num; ++i) {
 		pen.setWidth(5);
-		pen.setColor(Qt::red);
+		pen.setColor(color[NORMAL]);
 		painter.setPen(pen);
 		QPoint point = graph.getVertex(i);
 		painter.drawEllipse(point, 4, 4);
-		pen.setColor(Qt::green);
+
+		pen.setColor(color[IRRELEVANT]);
 		pen.setWidth(3);
 		painter.setPen(pen);
 		painter.drawText(QPoint(point.x() + 3, point.y() - 8), graph.getInfo(i));
 	}
+	//边
 	for (auto i = graph.edge.begin(); i != graph.edge.end(); ++i) {
 		QPoint point1 = graph.getVertex(i->m_pair.from), point2 = graph.getVertex(i->m_pair.to);
 		if (!specialVertex.contains(i->m_pair)) {
 			pen.setWidth(3);
-			pen.setColor(Qt::yellow);
+			if (i->weight < 200)
+				pen.setColor(color[NORMAL]);
+			else {
+				pen.setWidth(5);
+				pen.setColor(color[GROUP]);
+			}
 			painter.setPen(pen);
 			painter.drawLine(point1, point2);
-
-			font.setPointSize(12);
-			pen.setWidth(5);
-			pen.setColor(Qt::darkRed);
-			pen.setStyle(Qt::SolidLine);
-			painter.setPen(pen);
 		}
+		font.setPointSize(12);
+		pen.setWidth(5);
+		pen.setColor(color[TEXT]);
+		pen.setStyle(Qt::SolidLine);
+		painter.setPen(pen);
 		painter.drawText((point2.x() + point1.x()) / 2, (point1.y() + point2.y()) / 2, QString("%1").arg(i->weight));;
 	}
-	for (int i = 0; i < specialVertex.size(); ++i) {
+	//标记最短路径的边
+	for (auto &i : specialVertex) {
 		QPoint pos1, pos2;
-		pos1.setX(this->getPos(specialVertex[i].from).x());
-		pos1.setY(this->getPos(specialVertex[i].from).y());
-		pos2.setX(this->getPos(specialVertex[i].to).x());
-		pos2.setY(this->getPos(specialVertex[i].to).y());
+		pos1.setX(this->getPos(i.from).x());
+		pos1.setY(this->getPos(i.from).y());
+		pos2.setX(this->getPos(i.to).x());
+		pos2.setY(this->getPos(i.to).y());
 
 		pen.setWidth(3);
-		pen.setColor(Qt::darkBlue);
+		pen.setColor(color[TARGET]);
 		painter.setPen(pen);
 		painter.drawLine(pos1, pos2);
 	}
@@ -94,6 +103,7 @@ QPoint GraphUi::getPos(int index) {
 void GraphUi::getShortestRoad(int from, int to) {
 	specialVertex.clear();   //清空原来的最短路径
 	QVector<int> verteces;
+	graph.updateGraph(isGroup1 | isGroup2);
 	QVector<QString> &orderedRoad = graph.findShortestRoad(from, to, verteces);
 
 	if (!orderedRoad.empty()) {
@@ -161,7 +171,7 @@ bool GraphUi::findVex(QString info) {
 	return false;
 }
 
-void GraphUi::setPos(const QString& info, int x, int y) {
+void GraphUi::setPos(const QString &info, int x, int y) {
 	int index;
 	for (index = 0; index < graph.getVexNum(); ++index) {
 		if (info == graph.getInfo(index)) {
@@ -169,4 +179,14 @@ void GraphUi::setPos(const QString& info, int x, int y) {
 			break;
 		}
 	}
+}
+
+void GraphUi::setGroup1(int group) {
+	isGroup1 = group;
+	qDebug() << QString("isGroup=%1").arg(isGroup1);
+}
+
+void GraphUi::setGroup2(int group) {
+	isGroup2 = group;
+	qDebug() << QString("isGroup=%1").arg(isGroup2);
 }

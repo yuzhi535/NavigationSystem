@@ -80,6 +80,15 @@ include CMakeFiles/NavigationSystem.dir/flags.make
 ../NavigationSystem_zh_CN.ts: ../
 ../NavigationSystem_zh_CN.ts: ../graph.cpp
 ../NavigationSystem_zh_CN.ts: ../graph.h
+../NavigationSystem_zh_CN.ts: ../graphui.cpp
+../NavigationSystem_zh_CN.ts: ../graphui.h
+../NavigationSystem_zh_CN.ts: ../mainwindow.cpp
+../NavigationSystem_zh_CN.ts: ../mainwindow.h
+../NavigationSystem_zh_CN.ts: ../mainwindow.ui
+../NavigationSystem_zh_CN.ts: ../edgedialog.cpp
+../NavigationSystem_zh_CN.ts: ../edgedialog.h
+../NavigationSystem_zh_CN.ts: ../vertexdialog.cpp
+../NavigationSystem_zh_CN.ts: ../vertexdialog.h
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating ../NavigationSystem_zh_CN.ts"
 	/usr/bin/lupdate @/home/sasuke/qtProjects/NavigationSystem/cmake-build-debug/CMakeFiles/NavigationSystem_zh_CN.ts_lst_file -ts /home/sasuke/qtProjects/NavigationSystem/NavigationSystem_zh_CN.ts
 

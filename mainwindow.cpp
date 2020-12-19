@@ -8,38 +8,24 @@ MainWindow::MainWindow(QWidget *parent)
 	index1 = index2 = 0;
 
 	this->setWindowTitle(tr("Navigation System"));
-	this->setStyleSheet("background-color: rgba(12, 23, 34, 0.5)");
+	this->setStyleSheet("background-color: white; color:black"); //设置样式
 	//设置最小尺寸
 	this->setMinimumHeight(720);
 	this->setMinimumWidth(960);
 
-	//菜单栏待定，还没想好
-	//-----------------------------------------------
-	view = new QMenu(this);
-	view->setTitle(tr("theme"));   //待定，还诶想好
-	this->menuBar()->addMenu(view);
-	action1 = new QAction("dark", this);
-	view->addAction(action1);
-	action2 = new QAction("light", this);
-	view->addAction(action2);
-
+	//菜单栏待
 	edit = new QMenu(this);
 	edit->setTitle(tr("edit"));
 	this->menuBar()->addMenu(edit);
-	action3 = new QAction(tr("add vertex"), this);
-	action4 = new QAction(tr("add path"), this);
-	edit->addAction(action3);
-	edit->addAction(action4);
+	action1 = new QAction(tr("add vertex"), this);
+	action2 = new QAction(tr("add path"), this);
+	edit->addAction(action1);
+	edit->addAction(action2);
+
 
 	// 信号槽操作
-	connect(action3, &QAction::triggered, this, &MainWindow::action3_triggered);
-	connect(action4, &QAction::triggered, this, &MainWindow::action4_triggered);
-
-	//更换主题   未完待续
-	//+++++++++++++++++++++++++++++++++++++++++++++++
-	connect(action1, &QAction::trigger, this, &MainWindow::action1_triggered);
-	connect(action2, &QAction::trigger, this, &MainWindow::action2_triggered);
-	//-----------------------------------------------
+	connect(action1, &QAction::triggered, this, &MainWindow::action1_triggered);
+	connect(action2, &QAction::triggered, this, &MainWindow::action2_triggered);
 
 	// 针对整体进行设计
 	widget = new QWidget(this);
@@ -58,9 +44,12 @@ MainWindow::MainWindow(QWidget *parent)
 	list->setHorizontalHeaderLabels(listHeader);
 	list->setStatusTip(tr("output"));
 	list->setEditTriggers(QAbstractItemView::NoEditTriggers);  //禁止编辑
+	list->setStyleSheet("color:black; background-color: white"); //设置样式
 	outLayout->addWidget(list, 12, 14, 4, 6);
+
 	groupBox = new QGroupBox(this);         //分组小组件
 	groupBox->setTitle(tr("choice"));
+	groupBox->setStyleSheet("color:black; background-color: white"); //设置样式
 	outLayout->addWidget(groupBox, 0, 14, 12, 6);
 
 	// 针对右边groupBox进行设计
@@ -75,6 +64,7 @@ MainWindow::MainWindow(QWidget *parent)
 	// groupBox里面的组件
 	label1 = new QLabel(groupBox);
 	label1->setText(tr("beginning"));
+	label1->setStyleSheet("color:black");  //设置样式
 	inLayout->addWidget(label1, 0, 2, 1, 2);
 	comboBox1 = new QComboBox(groupBox);
 	comboBox1->setStatusTip(tr("choose the beginning"));   //状态栏显示提示
@@ -82,6 +72,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 	label2 = new QLabel(groupBox);
 	label2->setText(tr("ending"));
+	label2->setStyleSheet("color:black");   //设置样式
 	inLayout->addWidget(label2, 2, 2, 1, 2);
 	comboBox2 = new QComboBox(groupBox);
 	comboBox2->setStatusTip(tr("choose the ending"));   //状态栏显示提示
@@ -104,26 +95,28 @@ MainWindow::MainWindow(QWidget *parent)
 	checkBox1 = new QCheckBox(groupBox);
 	checkBox1->setText(tr("people"));
 	checkBox1->setStatusTip(tr("choice"));               //状态栏显示提示
+	checkBox1->setStyleSheet("background-color: white; color: black");
 	inLayout->addWidget(checkBox1, 4, 2, 1, 2);
 
 	checkBox2 = new QCheckBox(groupBox);
-	checkBox2->setText(tr("weather"));
+	checkBox2->setText(tr("car"));
 	checkBox2->setStatusTip(tr("choice"));
+	checkBox2->setStyleSheet("background-color: white; color: black");
 	inLayout->addWidget(checkBox2, 6, 2, 1, 2);
 
-	//信号槽，未完待续
-	//-----------------------------------------------------
+	//信号槽
 	connect(checkBox1, &QCheckBox::stateChanged,
 	        this, &MainWindow::onCheckBox1_stateChanged);
 	connect(checkBox2, &QCheckBox::stateChanged,
 	        this, &MainWindow::onCheckBox2_stateChanged);
-	//-----------------------------------------------------
 
 	// 按钮
 	button = new QPushButton(groupBox);
 	button->setText(tr("confirm"));
 	button->setStatusTip(tr("confirm to find the shortest road"));  //设置状态栏提示
 	button->setShortcut(QKeySequence::fromString("return"));   //设置快捷键
+	button->setStyleSheet(
+			"background-color:green; color: yellow; selection-color: white; selection-background-color: blue");
 	inLayout->addWidget(button, 8, 4, 2, 3);   //加入group
 
 	//信号槽，注意最短路径返回值
@@ -133,6 +126,7 @@ MainWindow::MainWindow(QWidget *parent)
 	tableWidget = new QTableWidget(groupBox);
 	tableWidget->setStatusTip(tr("vertex set"));
 	tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);  //禁止编辑
+	tableWidget->setStyleSheet("background-color: white; color: black");
 	inLayout->addWidget(tableWidget, 10, 2, -1, 6);
 	tableWidget->setRowCount(vex_num * 2);
 	tableWidget->setColumnCount(2);
@@ -161,36 +155,33 @@ void MainWindow::comboBox1_triggered(int index) {
 }
 
 // 编辑道路
-void MainWindow::action4_triggered() {
+void MainWindow::action2_triggered() {
 	dialog1 = new EdgeDialog(paintWidget);
 	connect(dialog1, SIGNAL(updateGraph()), this, SLOT(updateWidget()));
 	dialog1->show();
 }
 
 // 编辑顶点
-void MainWindow::action3_triggered() {
+void MainWindow::action1_triggered() {
 	dialog2 = new VertexDialog(paintWidget, this);
 	connect(dialog2, SIGNAL(updateGraph()), this, SLOT(updateWidget()));
 	dialog2->show();
 }
 
-//编辑主题
-void MainWindow::action2_triggered() {
-
-}
-
-//编辑主题
-void MainWindow::action1_triggered() {
-
-}
-
-
 void MainWindow::onCheckBox1_stateChanged() {
-
+	auto result = checkBox1->isChecked();
+	if (result)  //因为人群密度
+		paintWidget->setGroup1(2);
+	else
+		paintWidget->setGroup1(1);
 }
 
 void MainWindow::onCheckBox2_stateChanged() {
-
+	auto result = checkBox2->isChecked();
+	if (result)  //因为车辆密度
+		paintWidget->setGroup2(2);
+	else
+		paintWidget->setGroup2(1);
 }
 
 void MainWindow::on_button_clicked() {
@@ -226,7 +217,6 @@ void MainWindow::updateWidget() {
 		comboBox1->addItem(paintWidget->getVExInfo(i));
 		comboBox2->addItem(paintWidget->getVExInfo(i));
 	}
-
 
 
 }

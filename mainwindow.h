@@ -49,15 +49,10 @@ signals:
 
 public slots:
 
-	// 更换主题
+	//添加节点 边 删除等
 	void action1_triggered();
 
 	void action2_triggered();
-
-	//添加节点 边 删除等
-	void action3_triggered();
-
-	void action4_triggered();
 
 	//下拉框
 	void comboBox1_triggered(int index);
@@ -95,12 +90,9 @@ private:
 	QPushButton *button;   //搜索
 
 	//菜单
-	QMenu *view;   //视图
-	QAction *action1;   //切换主题
-	QAction *action2;
 	QMenu *edit;  //编辑节点和道路
-	QAction *action3;  //节点
-	QAction *action4;  //道路
+	QAction *action1;  //节点
+	QAction *action2;  //道路
 
 	EdgeDialog *dialog1;
 	VertexDialog *dialog2;

@@ -15,7 +15,8 @@
 					"targetIndexes" : 
 					[
 						0,
-						1
+						1,
+						2
 					]
 				}
 			],
@@ -31,7 +32,8 @@
 					"targetIndexes" : 
 					[
 						0,
-						1
+						1,
+						2
 					]
 				}
 			],
@@ -40,7 +42,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "NavigationSystem::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-NavigationSystem-Debug-529a435c31aec6ffd4a9.json",
+					"jsonFile" : "target-NavigationSystem-Debug-fe3892635243567ea468.json",
 					"name" : "NavigationSystem",
 					"projectIndex" : 0
 				},
@@ -49,6 +51,13 @@
 					"id" : "NavigationSystem_autogen::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-NavigationSystem_autogen-Debug-046e7962c4cf9d9e73cc.json",
 					"name" : "NavigationSystem_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "translations::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-translations-Debug-3be45668f046e3e15178.json",
+					"name" : "translations",
 					"projectIndex" : 0
 				}
 			]

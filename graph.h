@@ -59,6 +59,11 @@ struct Road {
 	Road(Pair pair, int w) : m_pair(pair), weight(w) {}
 
 	Road(int a, int b, int c) : m_pair(a, b), weight(c) {}
+
+	bool operator==(const Road &other) const {
+		return (this->m_pair == other.m_pair || (this->m_pair.to == other.m_pair.from &&
+		                                         this->m_pair.from == other.m_pair.to)) && this->weight == other.weight;
+	}
 };
 
 /**
@@ -143,15 +148,7 @@ public:
 
 	Status deleteArc(Pair pair);
 
-	enum ArcColor {
-		TARGET = 1, OTHER
-	};
-
-	enum VexColor {
-		AIM = 3, BY, IRRELEVANT
-	};
-
-	QVector<QString>& findShortestRoad(int from, int to, QVector<int> &pos);
+	QVector<QString> &findShortestRoad(int from, int to, QVector<int> &pos);
 
 	QVector<Road> edge; //有效顶点的集合
 
@@ -170,10 +167,6 @@ private:
 	QVector<Vertex> vertexes;  //顶点集合
 	int vexNum, arcNum;        //顶点数量  边的数量
 	QVector<QString> ans;
-
-	// RGB色彩
-	QColor color[9] = {QColor(), QColor(), QColor(), QColor(), QColor(),
-	                   QColor(), QColor(), QColor(), QColor()};
 };
 
 #endif // NAVIGATIONSYSTEM_GRAPH_H

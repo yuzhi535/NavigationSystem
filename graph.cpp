@@ -2,6 +2,8 @@
 // Created by sasuke on 2020/12/17.
 //
 
+#include <QTime>
+#include <QtGlobal>
 
 #include "graph.h"
 
@@ -24,7 +26,7 @@ QPoint Vertex::getPos() {
 Graph::Graph() {
 	this->arcNum = this->vexNum = 0;  //全部初始化为0
 	this->arc.resize(20);
-	for (int i = 0;i < 20; ++i ) {
+	for (int i = 0; i < 20; ++i) {
 		this->arc[i].resize(20);
 	}
 }
@@ -67,7 +69,7 @@ Status Graph::addArc(Road road) {
 	this->arc[road.m_pair.to][road.m_pair.from].setDistance(road.weight);
 	this->arc[road.m_pair.from][road.m_pair.to].setPair(Pair(road.m_pair.from, road.m_pair.to));
 	this->arc[road.m_pair.to][road.m_pair.from].setPair(Pair(road.m_pair.from, road.m_pair.to));
-	if (road.weight != -1) {
+	if (road.weight != 0) {
 		edge.push_back(road);
 		++this->arcNum;
 		qDebug() << QString("add %1->%2  %3").arg(road.m_pair.from).arg(road.m_pair.to).arg(road.weight);
@@ -165,7 +167,6 @@ void Graph::init_from_file(QString fileName) {
 QVector<QString> &Graph::findShortestRoad(int from, int to, QVector<int> &pos) {
 	ans.clear();
 	pos.clear();
-	this->updateGraph(1);
 	QVector<int> dis(this->vexNum, 0x7f7f7f7f);
 	QQueue<int> queue;
 	queue.push_back(from);
@@ -229,13 +230,41 @@ void Graph::updateGraph(int group) {
 	if (group == 1) {
 		for (int i = 0; i < this->vexNum; ++i) {
 			for (int j = 0; j < this->vexNum; ++j) {
-				this->arc[i][j].setWeight(this->arc[i][j].getDistance());
+				int weight = this->arc[i][j].getDistance();
+				this->arc[i][j].setWeight(weight);
+				Road road(i, j, weight);
+				auto result = this->edge.indexOf(road);
+				qDebug() << QString("result=%1").arg(result);
+				if (result != -1)
+					this->edge[result].weight = weight;
 			}
 		}
 
-	} else if (group == 2) {
-
-	} else if (group == 3) {
+	} else {
+		qsrand(QTime(0, 0, 0).secsTo(QTime::currentTime()));
+		for (int i = 0; i < this->vexNum; ++i) {
+			for (int j = 0; j < this->vexNum; ++j) {
+				int weight = qrand() % 180 + this->arc[i][j].getDistance();
+				this->arc[i][j].setWeight(weight);
+				Pair pair(i, j);
+				int result = -1;
+				for (int k = 0; k < this->edge.size(); ++k) {
+					if (i == j)
+						continue;
+					if (this->edge[k].m_pair == pair) {
+						result = k;
+						break;
+					}
+					if (this->edge[k].m_pair == Pair(j, i)) {
+						result = k;
+						break;
+					}
+				}
+				if (result != -1) {
+					this->edge[result].weight = weight;
+				}
+			}
+		}
 
 	}
 }

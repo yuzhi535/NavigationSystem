@@ -4,11 +4,13 @@ VertexDialog::VertexDialog(GraphUi *graphUi, QWidget *parent) : QDialog(parent) 
 	ui = graphUi;
 	this->setMinimumWidth(500);
 	this->setMinimumHeight(300);
+	this->setStyleSheet("background-color:black");
 	layout = new QGridLayout(this);
 	this->setLayout(layout);
 	layout->setVerticalSpacing(12);
 	layout->setHorizontalSpacing(20);
 	tableWidget = new QTableWidget(20, 4, this);
+	tableWidget->setStyleSheet("background-color:white;color: black; ");  //设计样式
 	QStringList header;
 	header << "vertex" << "description" << "x" << "y";
 	tableWidget->setHorizontalHeaderLabels(header);
