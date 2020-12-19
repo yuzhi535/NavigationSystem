@@ -161,6 +161,10 @@ public:
 
 	void setInfo(int index, QString info);
 
+	int getIndex(QString info);
+
+	void setPos(int index, int x, int y);
+
 private:
 	QVector<QVector<Arc>> arc; //邻接矩阵
 	QVector<Vertex> vertexes;  //顶点集合

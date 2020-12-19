@@ -15,10 +15,14 @@ public:
     explicit VertexDialog(GraphUi *graphUi, QWidget *parent = nullptr);
 
 signals:
+	void updateGraph();
+public slots:
+	void setPos(int row, int col);
 
 private:
 	QTableWidget* tableWidget;
 	QGridLayout* layout;
+	GraphUi* ui;
 };
 
 #endif // VERTEXDIALOG_H

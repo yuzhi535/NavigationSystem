@@ -19,7 +19,10 @@ public:
 	explicit GraphUi(QWidget *parent = nullptr);
 
 	void destroyGraph();
+	bool findVex(QString info);
+	void setPos(const QString& info, int x, int y);
 	void addArc(Road road);
+	void addVex(QString info);
 	int getVexNum();
 	int getVexIndex (const QString& info);
 	QString getVExInfo(int index);

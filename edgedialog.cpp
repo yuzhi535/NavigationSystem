@@ -1,5 +1,6 @@
 #include "edgedialog.h"
 #include <QDebug>
+#include <QMessageBox>
 
 const int maxEdgeNum = 20;
 
@@ -69,22 +70,53 @@ EdgeDialog::EdgeDialog(GraphUi *graphUi, QWidget *parent) {
 }
 
 void EdgeDialog::on_button_1_clicked() {
+	bool flag1[maxEdgeNum] = {0}, flag2[maxEdgeNum] = {0};
 	for (int i = 0; i < maxEdgeNum; ++i) {
 		// 对顶点的更改
 		//如果顶点名称第一个和第二个不一样，则更改顶点
 		if (col1[i].first != col1[i].second) {
-			ui->setVexInfo(i, col1[i].second);
+			if (col1[i].first != "") {
+				ui->setVexInfo(i, col1[i].second);
+			} else {
+				qDebug() << "edit a new vertex";
+				ui->addVex(col1[i].second);
+			}
+			flag1[i] = true;
 		}
+//		 改变顶点
 		if (col2[i].first != col2[i].second) {
-			ui->setVexInfo(i, col1[i].second);
+			if (col2[i].first != "") {
+				ui->setVexInfo(i, col1[i].second);
+			} else {
+				qDebug() << "edi a new vertex";
+				ui->addVex(col2[i].second);
+			}
+			flag2[i] = true;
 		}
+		//改变权重
 		if (col3[i].first != col3[i].second) {
+			if (col3[i].second == 0) {
+				if (flag1[i] && flag2[i]) {
+					QMessageBox::information(this, "info",
+					                         QString("row%1 col%2 no weight").arg(i).arg(i));
+				} else {
+					QMessageBox::information(this, "info", "edit not complete");
+					return;
+				}
+			}
 			int index1, index2;
 			qDebug() << QString("col1=%1 col2=%2").arg(col1[i].second).arg(col2[i].second);
 			index1 = ui->getVexIndex(col1[i].second);
 			index2 = ui->getVexIndex(col2[i].second);
+			qDebug() << QString("index1=%1,index2=%2,weight=%3").arg(index1).arg(index2).arg(col3[i].second);
 			if (index1 != -1 && index2 != -1) {
 				Road road(index1, index2, col3[i].second);
+//				if (!ui->findVex(col1[i].second)) {
+//					ui->addVex(col1[i].second);
+//				}
+//				if (!ui->findVex(col2[i].second)) {
+//					ui->addVex(col2[i].second);
+//				}
 				ui->addArc(road);
 			}
 		}

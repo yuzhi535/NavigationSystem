@@ -23,6 +23,10 @@ QPoint Vertex::getPos() {
 
 Graph::Graph() {
 	this->arcNum = this->vexNum = 0;  //全部初始化为0
+	this->arc.resize(20);
+	for (int i = 0;i < 20; ++i ) {
+		this->arc[i].resize(20);
+	}
 }
 
 Graph::~Graph() {
@@ -58,7 +62,7 @@ Status Graph::addArc(Road road) {
 			this->arc[i].resize(2 * this->vexNum);
 		}
 	}
-
+	qDebug() << QString("from%1 to%2").arg(road.m_pair.from).arg(road.m_pair.to);
 	this->arc[road.m_pair.from][road.m_pair.to].setDistance(road.weight);
 	this->arc[road.m_pair.to][road.m_pair.from].setDistance(road.weight);
 	this->arc[road.m_pair.from][road.m_pair.to].setPair(Pair(road.m_pair.from, road.m_pair.to));
@@ -261,6 +265,23 @@ void Graph::setInfo(int index, QString info) {
 		addVex(info, this->vertexes[index].getPos().x(), this->vertexes[index].getPos().y());
 		delVex(getInfo(index));
 
+	}
+}
+
+int Graph::getIndex(QString info) {
+	int vex_num = this->vertexes.size();
+	for (int i = 0; i < vex_num; ++i) {
+		if (info == this->vertexes[i].info) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+void Graph::setPos(int index, int x, int y) {
+	if (index < vertexes.size()) {
+		vertexes[index].setPos(QPoint(x, y));
+		qDebug() << "got it";
 	}
 }
 

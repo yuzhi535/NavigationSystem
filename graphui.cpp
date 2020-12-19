@@ -108,6 +108,12 @@ void GraphUi::getShortestRoad(int from, int to) {
 }
 
 void GraphUi::editVertex(QString info, int x, int y) {
+	int vex_num = graph.getVexNum();
+	//不能添加重复节点
+	for (int i = 0; i < vex_num; ++i) {
+		if (graph.getInfo(i) == info)
+			return;
+	}
 	graph.addVex(info, x, y);
 }
 
@@ -138,4 +144,29 @@ int GraphUi::getVexIndex(const QString &info) {
 
 void GraphUi::setVexInfo(int index, QString info) {
 	graph.setInfo(index, info);
+}
+
+void GraphUi::addVex(QString info) {
+	//这里先默认添加的位置，等到编辑顶点的时候进行改动
+	graph.addVex(info, 0, 0);
+}
+
+bool GraphUi::findVex(QString info) {
+	int vex_num = graph.getVexNum();
+	for (int i = 0; i < vex_num; ++i) {
+		if (graph.getIndex(info) != -1) {
+			return true;
+		}
+	}
+	return false;
+}
+
+void GraphUi::setPos(const QString& info, int x, int y) {
+	int index;
+	for (index = 0; index < graph.getVexNum(); ++index) {
+		if (info == graph.getInfo(index)) {
+			graph.setPos(index, x, y);
+			break;
+		}
+	}
 }
