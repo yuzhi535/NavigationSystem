@@ -77,8 +77,7 @@ Status Graph::addArc(Road road) {
             ++this->arcNum;
             qDebug() << QString("add %1->%2  %3").arg(road.m_pair.from).arg(road.m_pair.to).arg(road.weight);
         }
-    }
-    else {
+    } else {
         if (this->arc[road.m_pair.from][road.m_pair.to].getDistance() != 0) {
             flag = 0;
         }
