@@ -359,7 +359,9 @@ CMakeFiles/NavigationSystem.dir/graph.cpp.o
  /usr/include/qt/QtCore/QQueue
  /usr/include/qt/QtCore/QStack
  /usr/include/qt/QtCore/QString
+ /usr/include/qt/QtCore/QTime
  /usr/include/qt/QtCore/QVector
+ /usr/include/qt/QtCore/QtGlobal
  /usr/include/qt/QtCore/qalgorithms.h
  /usr/include/qt/QtCore/qarraydata.h
  /usr/include/qt/QtCore/qatomic.h
@@ -377,6 +379,7 @@ CMakeFiles/NavigationSystem.dir/graph.cpp.o
  /usr/include/qt/QtCore/qcontainertools_impl.h
  /usr/include/qt/QtCore/qcontiguouscache.h
  /usr/include/qt/QtCore/qcoreevent.h
+ /usr/include/qt/QtCore/qdatetime.h
  /usr/include/qt/QtCore/qdebug.h
  /usr/include/qt/QtCore/qflags.h
  /usr/include/qt/QtCore/qgenericatomic.h

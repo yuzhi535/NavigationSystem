@@ -4,7 +4,7 @@ VertexDialog::VertexDialog(GraphUi *graphUi, QWidget *parent) : QDialog(parent) 
 	ui = graphUi;
 	this->setMinimumWidth(500);
 	this->setMinimumHeight(300);
-	this->setStyleSheet("background-color:black");
+	this->setStyleSheet("background-color:black; color:white");
 	layout = new QGridLayout(this);
 	this->setLayout(layout);
 	layout->setVerticalSpacing(12);
