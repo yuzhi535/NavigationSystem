@@ -71,7 +71,7 @@ struct Road {
  */
 class Arc {
 public:
-    Arc();
+	Arc();
 
 	~Arc();
 
@@ -86,7 +86,7 @@ public:
 	void setPair(Pair pair);
 
 private:
-    int distance; //距离
+	int distance; //距离
 	int m_weight; //最终的权重
 	Pair m_pair;  //起点和终点
 #if DEV == 2
@@ -155,8 +155,6 @@ public:
 	QPoint getVertex(int index);
 
 	QString getInfo(int index);
-
-	void setInfo(int index, QString info);
 
 	int getIndex(QString info);
 

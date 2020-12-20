@@ -18,6 +18,7 @@
     <name>MainWindow</name>
     <message>
         <location filename="mainwindow.ui" line="14"/>
+        <location filename="build/NavigationSystem_autogen/include/ui_mainwindow.h" line="53"/>
         <location filename="cmake-build-debug/NavigationSystem_autogen/include/ui_mainwindow.h" line="50"/>
         <location filename="cmake-build-release/NavigationSystem_autogen/include/ui_mainwindow.h" line="50"/>
         <source>MainWindow</source>

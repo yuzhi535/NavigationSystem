@@ -152,8 +152,18 @@ int GraphUi::getVexIndex(const QString &info) {
 	return -1;
 }
 
-void GraphUi::setVexInfo(int index, QString info) {
-	graph.setInfo(index, info);
+void GraphUi::setVexInfo(int index1, QString tip, QString info, int w) {
+    int i = 0, j = 0, vex_num = this->graph.getVexNum();
+    for (; i < vex_num && this->graph.getInfo(i) != info; ++i);
+    for (; j < vex_num && this->graph.getInfo(j) != tip; ++j);
+    if (i < vex_num && j < vex_num) {  //如果有这个点
+        //删除原来的边，增加新的边
+        Pair pair(this->graph.edge[index1].m_pair.from, this->graph.edge[index1].m_pair.to);
+        this->graph.deleteArc(this->graph.edge[index1].m_pair);
+        this->graph.addArc(i, j, w);
+    } else {
+        qDebug() << QString("cannot find this vertex %1").arg(info);
+    }
 }
 
 void GraphUi::addVex(QString info) {
@@ -189,4 +199,18 @@ void GraphUi::setGroup1(int group) {
 void GraphUi::setGroup2(int group) {
 	isGroup2 = group;
 	qDebug() << QString("isGroup=%1").arg(isGroup2);
+}
+
+void GraphUi::delArc(Pair pair) {
+	graph.deleteArc(pair);
+	for (int i = 0; i < graph.edge.size(); ++i) {
+		if (graph.edge[i].m_pair == pair) {
+			graph.edge.remove(i);
+			break;
+		}
+		if (graph.edge[i].m_pair == Pair(pair.to, pair.from)) {
+			graph.edge.remove(i);
+			break;
+		}
+	}
 }

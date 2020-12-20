@@ -67,6 +67,7 @@ Status Graph::addArc(Road road) {
 	}
 	qDebug() << QString("from%1 to%2").arg(road.m_pair.from).arg(road.m_pair.to);
     int flag = 1;
+    //初始化的权重
     if (this->arc[road.m_pair.from][road.m_pair.to].getDistance() == 0x7f7f7f7f) {
         this->arc[road.m_pair.from][road.m_pair.to].setDistance(road.weight);
         this->arc[road.m_pair.to][road.m_pair.from].setDistance(road.weight);
@@ -323,17 +324,18 @@ QString Graph::getInfo(int index) {
 	return this->vertexes[index].info;
 }
 
-void Graph::setInfo(int index, QString info) {
-	int i = 0;
-	for (; i < this->vertexes.size() && this->vertexes[i].info != info; ++i);
-	if (i == this->vertexes.size())
-		this->vertexes[index].info = info;
-	else {
-		addVex(info, this->vertexes[index].getPos().x(), this->vertexes[index].getPos().y());
-		delVex(getInfo(index));
-
-	}
-}
+//void Graph::setInfo(int index, QString info) {
+//	int i = 0;
+//	for (; i < this->vertexes.size() && this->vertexes[i].info != info; ++i);
+//    //如果找不到点
+//    if (i == this->vertexes.size()) {
+//        addVex(info, this->vertexes[index].getPos().x(), this->vertexes[index].getPos().y());
+//        delVex(getInfo(index));
+//    } else { //如果找到了这个点
+////        this->deleteArc();
+////        this->addArc();
+//	}
+//}
 
 int Graph::getIndex(QString info) {
 	int vex_num = this->vertexes.size();

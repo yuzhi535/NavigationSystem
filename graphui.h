@@ -26,6 +26,8 @@ public:
 
 	void addArc(Road road);
 
+	void delArc(Pair pair);
+
 	void addVex(QString info);
 
 	int getVexNum();
@@ -34,7 +36,7 @@ public:
 
 	QString getVExInfo(int index);
 
-	void setVexInfo(int index, QString info);
+    void setVexInfo(int index1, QString tip, QString info, int w);
 
 	QPoint getPos(int index);
 
