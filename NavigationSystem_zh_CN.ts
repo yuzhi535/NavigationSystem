@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="NavigationSystem_zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>EdgeDialog</name>
     <message>
@@ -31,7 +31,7 @@
     <name>MainWindow</name>
     <message>
         <location filename="mainwindow.ui" line="14"/>
-        <location filename="cmake-build-debug/NavigationSystem_autogen/include/ui_mainwindow.h" line="50"/>
+        <location filename="build/NavigationSystem_autogen/include/ui_mainwindow.h" line="50"/>
         <source>MainWindow</source>
         <translation type="unfinished"></translation>
     </message>
@@ -48,7 +48,6 @@
     <message>
         <location filename="mainwindow.cpp" line="20"/>
         <source>change vertexes&apos; position</source>
-        <oldsource>change vertex position</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -119,7 +118,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="192"/>
+        <location filename="mainwindow.cpp" line="194"/>
         <source>info</source>
         <translation type="unfinished"></translation>
     </message>

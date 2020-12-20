@@ -7,19 +7,11 @@
 
 #include "graph.h"
 
-void Vertex::addInfo(QString context) {
-	this->info = context;
-}
-
 void Vertex::setPos(QPoint pos) {
 	point = pos;
 }
 
-Vertex::~Vertex() {
-
-}
-
-QPoint Vertex::getPos() {
+QPoint Vertex::getPos() const {
 	return point;
 }
 
@@ -28,15 +20,12 @@ Graph::Graph() {
 	this->arc.resize(20);
 	for (int i = 0; i < 20; ++i) {
 		this->arc[i].resize(20);
-
 	}
 }
 
-Graph::~Graph() {
+Graph::~Graph() = default;
 
-}
-
-void Graph::addVex(QString info, int x, int y) {
+void Graph::addVex(const QString& info, int x, int y) {
 	this->vertexes.push_back(Vertex(info, x, y));
 	qDebug() << this->vexNum << info << " x=" << x << " y=" << y;
 	++this->vexNum;
@@ -47,19 +36,13 @@ Status Graph::addArc(int start, int end, int weight) {
 	return addArc(tmp);
 }
 
-Status Graph::addArc(Pair pair, int weight) {
-	Road tmp(pair, weight);
-	return addArc(tmp);
-}
-
-Status Graph::addArc(Road road) {
+Status Graph::addArc(const Road& road) {
 	if (this->vexNum < road.m_pair.from || this->vexNum < road.m_pair.to) {
 		return ERR;
 	}
 
 	//扩容
 	if (this->arc.size() < this->vexNum) {
-		int size = this->arc.size();
 		this->arc.resize(2 * this->vexNum);
 		for (int i = 0; i < this->vexNum; ++i) {
 			this->arc[i].resize(2 * this->vexNum);
@@ -123,9 +106,9 @@ Status Graph::deleteArc(int start, int end) {
 	return deleteArc(pair);
 }
 
-Status Graph::deleteArc(Pair pair) {
-	this->arc[pair.from][pair.to].setDistance(-1);
-	this->arc[pair.to][pair.from].setDistance(-1);
+Status Graph::deleteArc(const Pair& pair) {
+    this->arc[pair.from][pair.to].setDistance(0x7f7f7f7f);
+    this->arc[pair.to][pair.from].setDistance(0x7f7f7f7f);
 
 	auto i = edge.begin();
 	for (; i != edge.end() && i->m_pair != pair; ++i);
@@ -133,7 +116,7 @@ Status Graph::deleteArc(Pair pair) {
 	return OK;
 }
 
-Status Graph::delVex(QString info) {
+Status Graph::delVex(const QString& info) {
 	int ff;  //寻找该顶点
 	for (ff = this->vertexes.size() - 1; ff < this->vexNum && this->vertexes[ff].info != info; --ff);
 	if (ff) {
@@ -146,7 +129,6 @@ Status Graph::delVex(QString info) {
 			if (this->arc[i].size() > ff + 1)
 				this->arc[i].remove(ff);
 		}
-		qDebug() << "ttttttttt";
 		this->arc.remove(ff);
 		this->vertexes.remove(ff);   //葱顶点集合中删除
 
@@ -163,7 +145,7 @@ Status Graph::delVex(QString info) {
 	}
 }
 
-void Graph::init_from_file(QString fileName) {
+void Graph::init_from_file(const QString& fileName) {
 	qDebug() << "init from " << fileName;
 	std::ifstream in;
 	in.open(fileName.toStdString());
@@ -305,10 +287,6 @@ void Graph::updateGraph(int group) {
 		}
 
 	}
-}
-
-int Graph::getArcNum() {
-	return this->arcNum;
 }
 
 int Graph::getVexNum() {

@@ -138,6 +138,8 @@ MainWindow::MainWindow(QWidget *parent)
 		tableWidget->setItem(i, 1, new QTableWidgetItem(paintWidget->getVExInfo(i)));
 	}
 
+	dialog1 = nullptr;
+	dialog2 = nullptr;
 
 	//更新列表的信号槽
 	connect(paintWidget, SIGNAL(updateList(QVector<QString>)), this,

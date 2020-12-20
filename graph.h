@@ -98,15 +98,15 @@ private:
 
 class Vertex {
 public:
-	~Vertex();
+	~Vertex() = default;
+
+	Vertex() = default;
 
 	Vertex(QString context, int x, int y) : info(context), point(x, y) {}
 
-	void addInfo(QString context);
-
 	void setPos(QPoint pos);
 
-	QPoint getPos();
+	QPoint getPos() const;
 
 	QString info;
 	QPoint point;
@@ -122,35 +122,31 @@ public:
 
 	~Graph();
 
-	void init_from_file(QString fileName = "pre.txt");
+	void init_from_file(const QString &fileName = "pre.txt");
 
 	void updateGraph(int group);
 
 	int getVexNum();
 
-	int getArcNum();
-
 	//添加顶点
-	void addVex(QString info, int x, int y);
+	void addVex(const QString &info, int x, int y);
 
 	//删除顶点
-	Status delVex(QString info);
+	Status delVex(const QString &info);
 
 	//加边  注意发送信号槽
 	Status addArc(int start, int end, int weight);
 
-	Status addArc(Road road);
-
-	Status addArc(Pair pair, int weight);
+	Status addArc(const Road &road);
 
 	//删除边
 	Status deleteArc(int start, int end);
 
-	Status deleteArc(Pair pair);
+	Status deleteArc(const Pair &pair);
 
 	QVector<QString> &findShortestRoad(int from, int to, QVector<int> &pos);
 
-	QVector<Road> edge; //有效顶点的集合
+	QVector<Road> edge; //有效顶点的集合   这里最好使用哈希表
 
 	QPoint getVertex(int index);
 
