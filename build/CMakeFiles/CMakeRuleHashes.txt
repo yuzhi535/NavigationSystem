@@ -1,5 +1,0 @@
-# Hashes of file build rules.
-737ca94cd4d910ca6d1b555d7352d5ac ../NavigationSystem_zh_CN.ts
-585299033b28a0e7d6e30cd2ec37da71 CMakeFiles/NavigationSystem_autogen
-66794b4079a2344dfcf77ee7b1dfa876 CMakeFiles/translations
-233a90524461f73957f58bee00d05a2e NavigationSystem_zh_CN.qm
