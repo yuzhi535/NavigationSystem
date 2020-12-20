@@ -273,7 +273,6 @@ void Graph::updateGraph(int group) {
 				this->arc[i][j].setWeight(weight);
 				Road road(i, j, weight);
 				auto result = this->edge.indexOf(road);
-				qDebug() << QString("result=%1").arg(result);
 				if (result != -1)
 					this->edge[result].weight = weight;
 			}

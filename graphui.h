@@ -36,7 +36,7 @@ public:
 
 	QString getVExInfo(int index);
 
-    void setVexInfo(int index1, QString tip, QString info, int w);
+    void setVexInfo(int index1, const QString& tip, const QString& info, int w);
 
 	QPoint getPos(int index);
 

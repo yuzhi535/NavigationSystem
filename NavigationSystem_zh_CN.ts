@@ -15,12 +15,23 @@
     </message>
 </context>
 <context>
+    <name>GraphUi</name>
+    <message>
+        <location filename="graphui.cpp" line="117"/>
+        <source>warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="graphui.cpp" line="118"/>
+        <source>no path from %1 to %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="mainwindow.ui" line="14"/>
-        <location filename="build/NavigationSystem_autogen/include/ui_mainwindow.h" line="53"/>
         <location filename="cmake-build-debug/NavigationSystem_autogen/include/ui_mainwindow.h" line="50"/>
-        <location filename="cmake-build-release/NavigationSystem_autogen/include/ui_mainwindow.h" line="50"/>
         <source>MainWindow</source>
         <translation type="unfinished"></translation>
     </message>
@@ -36,12 +47,13 @@
     </message>
     <message>
         <location filename="mainwindow.cpp" line="20"/>
-        <source>add vertex</source>
+        <source>change vertexes&apos; position</source>
+        <oldsource>change vertex position</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="21"/>
-        <source>add path</source>
+        <source>change paths and vertexes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

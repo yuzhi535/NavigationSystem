@@ -17,8 +17,8 @@ MainWindow::MainWindow(QWidget *parent)
 	edit = new QMenu(this);
 	edit->setTitle(tr("edit"));
 	this->menuBar()->addMenu(edit);
-	action1 = new QAction(tr("add vertex"), this);
-	action2 = new QAction(tr("add path"), this);
+	action1 = new QAction(tr("change vertexes' position"), this);
+	action2 = new QAction(tr("change paths and vertexes"), this);
 	edit->addAction(action1);
 	edit->addAction(action2);
 
@@ -116,7 +116,7 @@ MainWindow::MainWindow(QWidget *parent)
 	button->setStatusTip(tr("confirm to find the shortest road"));  //设置状态栏提示
 	button->setShortcut(QKeySequence::fromString("return"));   //设置快捷键
 	button->setStyleSheet(
-			"background-color:green; color: yellow; selection-color: white; selection-background-color: blue");
+			"background-color:white; color: black; selection-color: white; selection-background-color: blue;");
 	inLayout->addWidget(button, 8, 4, 2, 3);   //加入group
 
 	//信号槽，注意最短路径返回值
