@@ -286,9 +286,10 @@ void Graph::updateGraph(int group) {
 	if (group == 1) {
 		for (int i = 0; i < this->vexNum; ++i) {
 			for (int j = 0; j < this->vexNum; ++j) {
-				int weight = this->arc[i][j].getDistance();
+                int weight = this->arc[i][j].getDistance(), w;
+                w = this->arc[i][j].getWeight();
 				this->arc[i][j].setWeight(weight);
-				Road road(i, j, weight);
+                Road road(i, j, w);
 				auto result = this->edge.indexOf(road);
 				if (result != -1)
 					this->edge[result].weight = weight;
