@@ -6,23 +6,31 @@
 #include <QTableWidgetItem>
 #include <QTableWidget>
 #include <QGridLayout>
+#include <QPushButton>
 #include "graphui.h"
 
-class VertexDialog : public QDialog
-{
-    Q_OBJECT
+class VertexDialog : public QDialog {
+Q_OBJECT
 public:
-    explicit VertexDialog(GraphUi *graphUi, QWidget *parent = nullptr);
+	explicit VertexDialog(GraphUi *graphUi, QWidget *parent = nullptr);
 
 signals:
+
 	void updateGraph();
+
 public slots:
+
 	void setPos(int row, int col);
 
+	void on_button2_clicked();
+
 private:
-	QTableWidget* tableWidget;
-	QGridLayout* layout;
-	GraphUi* ui;
+	QTableWidget *tableWidget;
+	QPushButton *button1;
+	QPushButton *button2;
+	QGridLayout *layout;
+	GraphUi *ui;
+    bool isValid;
 };
 
 #endif // VERTEXDIALOG_H

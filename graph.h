@@ -40,7 +40,12 @@ struct Pair {
 	}
 
 	bool operator!=(const Pair &other) const {
-		return from != other.from || to != other.to;
+        if (from == other.from && to == other.to) {
+            return 0;
+        } else if (from == other.to && to == other.from) {
+            return 0;
+        }
+        return 1;
 	}
 };
 
@@ -83,12 +88,9 @@ public:
 
 	int getWeight() const;
 
-	void setPair(Pair pair);
-
 private:
 	int distance; //距离
 	int m_weight; //最终的权重
-	Pair m_pair;  //起点和终点
 #if DEV == 2
 	//实验性内容
 	int group;
@@ -144,7 +146,7 @@ public:
 
 	Status deleteArc(const Pair &pair);
 
-	QVector<QString> &findShortestRoad(int from, int to, QVector<int> &pos);
+	QVector<QString> &findShortestRoad(int from, int to, QVector<int> &path);
 
 	QVector<Road> edge; //有效顶点的集合   这里最好使用哈希表
 

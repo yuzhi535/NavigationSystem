@@ -71,7 +71,8 @@ void GraphUi::paintEvent(QPaintEvent *event) {
 		pen.setColor(color[TEXT]);
 		pen.setStyle(Qt::SolidLine);
 		painter.setPen(pen);
-		painter.drawText((point2.x() + point1.x()) / 2, (point1.y() + point2.y()) / 2, QString("%1").arg(i->weight));;
+		painter.drawText((point2.x() + point1.x()) / 2, (point1.y() + point2.y()) / 2,
+		                 QString("%1").arg(i->weight));
 	}
 	//标记最短路径的边
 	for (auto &i : specialVertex) {
@@ -85,6 +86,26 @@ void GraphUi::paintEvent(QPaintEvent *event) {
 		pen.setColor(color[TARGET]);
 		painter.setPen(pen);
 		painter.drawLine(pos1, pos2);
+	}
+
+	if (!specialVertex.empty()) {
+		QPoint endPos;
+		int t = specialVertex[0].from;
+		endPos.setX(this->getPos(t).x());
+		endPos.setY(this->getPos(t).y());
+
+
+		QPoint startPos;
+		t = specialVertex[specialVertex.size() - 1].to;
+		startPos.setX(this->getPos(t).x());
+		startPos.setY(this->getPos(t).y());
+
+		pen.setColor(color[START]);
+		painter.setPen(pen);
+		painter.drawEllipse(startPos, 4, 4);
+		pen.setColor(color[END]);
+		painter.setPen(pen);
+		painter.drawEllipse(endPos, 4, 4);
 	}
 }
 
@@ -102,14 +123,14 @@ QPoint GraphUi::getPos(int index) {
 
 void GraphUi::getShortestRoad(int from, int to) {
 	specialVertex.clear();   //清空原来的最短路径
-	QVector<int> verteces;
+	QVector<int> uiVertexes;
 	graph.updateGraph(isGroup1 | isGroup2);
-	QVector<QString> &orderedRoad = graph.findShortestRoad(from, to, verteces);
+	QVector<QString> &orderedRoad = graph.findShortestRoad(from, to, uiVertexes);
 
 	if (!orderedRoad.empty()) {
 		//加载顶点对
-		for (int i = 0; i < verteces.size() - 1; ++i) {
-			Pair pair(verteces[i], verteces[i + 1]);
+		for (int i = 0; i < uiVertexes.size() - 1; ++i) {
+			Pair pair(uiVertexes[i], uiVertexes[i + 1]);
 			specialVertex.push_back(pair);
 		}
 		update();
@@ -120,27 +141,11 @@ void GraphUi::getShortestRoad(int from, int to) {
 	emit updateList(orderedRoad);
 }
 
-void GraphUi::editVertex(QString info, int x, int y) {
-	int vex_num = graph.getVexNum();
-	//不能添加重复节点
-	for (int i = 0; i < vex_num; ++i) {
-		if (graph.getInfo(i) == info)
-			return;
-	}
-	graph.addVex(info, x, y);
-}
-
 const QVector<Road> &GraphUi::getEdge() const {
 	return graph.edge;
 }
 
-void GraphUi::destroyGraph() {
-	for (int i = graph.getVexNum() - 1; i >= 0; --i) {
-		graph.delVex(this->getVExInfo(i));
-	}
-}
-
-void GraphUi::addArc(Road road) {
+void GraphUi::addArc(const Road &road) {
 	qDebug() << QString("add %1->%2  %3").arg(road.m_pair.from).arg(road.m_pair.to).arg(road.weight);
 	graph.addArc(road);
 }
@@ -161,7 +166,6 @@ void GraphUi::setVexInfo(int index1, const QString &tip, const QString &info, in
 	for (; j < vex_num && this->graph.getInfo(j) != tip; ++j);
 	if (i < vex_num && j < vex_num) {  //如果有这个点
 		//删除原来的边，增加新的边
-		Pair pair(this->graph.edge[index1].m_pair.from, this->graph.edge[index1].m_pair.to);
 		this->graph.deleteArc(this->graph.edge[index1].m_pair);
 		this->graph.addArc(i, j, w);
 	} else {
@@ -169,19 +173,9 @@ void GraphUi::setVexInfo(int index1, const QString &tip, const QString &info, in
 	}
 }
 
-void GraphUi::addVex(QString info) {
+void GraphUi::addVex(const QString &info) {
 	//这里先默认添加的位置，等到编辑顶点的时候进行改动
 	graph.addVex(info, 0, 0);
-}
-
-bool GraphUi::findVex(QString info) {
-	int vex_num = graph.getVexNum();
-	for (int i = 0; i < vex_num; ++i) {
-		if (graph.getIndex(info) != -1) {
-			return true;
-		}
-	}
-	return false;
 }
 
 void GraphUi::setPos(const QString &info, int x, int y) {
@@ -204,16 +198,8 @@ void GraphUi::setGroup2(int group) {
 	qDebug() << QString("isGroup=%1").arg(isGroup2);
 }
 
-void GraphUi::delArc(Pair pair) {
-	graph.deleteArc(pair);
-	for (int i = 0; i < graph.edge.size(); ++i) {
-		if (graph.edge[i].m_pair == pair) {
-			graph.edge.remove(i);
-			break;
-		}
-		if (graph.edge[i].m_pair == Pair(pair.to, pair.from)) {
-			graph.edge.remove(i);
-			break;
-		}
-	}
+void GraphUi::delVex(const QString &info) {
+	qDebug() << QString("delete info=%1").arg(info);
+	this->graph.delVex(info);
+	update();
 }

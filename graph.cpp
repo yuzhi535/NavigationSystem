@@ -25,10 +25,23 @@ Graph::Graph() {
 
 Graph::~Graph() = default;
 
-void Graph::addVex(const QString& info, int x, int y) {
-	this->vertexes.push_back(Vertex(info, x, y));
-	qDebug() << this->vexNum << info << " x=" << x << " y=" << y;
-	++this->vexNum;
+void Graph::addVex(const QString &info, int x, int y) {
+	if (x && y) {
+		this->vertexes.push_back(Vertex(info, x, y));
+		qDebug() << this->vexNum << info << " x=" << x << " y=" << y;
+		++this->vexNum;
+	} else {
+		int index;
+		for (index = 0; index < vertexes.size() && this->vertexes[index].info != info; ++index) {
+			qDebug() << QString("info=%1   vertexes info=%2").arg(info).arg(this->vertexes[index].info);
+		}
+		if (index == this->vertexes.size()) {
+			this->vertexes.push_back(Vertex(info, x, y));
+			qDebug() << this->vexNum << info << " x=" << x << " y=" << y;
+			++this->vexNum;
+		}
+	}
+
 }
 
 Status Graph::addArc(int start, int end, int weight) {
@@ -36,7 +49,7 @@ Status Graph::addArc(int start, int end, int weight) {
 	return addArc(tmp);
 }
 
-Status Graph::addArc(const Road& road) {
+Status Graph::addArc(const Road &road) {
 	if (this->vexNum < road.m_pair.from || this->vexNum < road.m_pair.to) {
 		return ERR;
 	}
@@ -49,55 +62,50 @@ Status Graph::addArc(const Road& road) {
 		}
 	}
 	qDebug() << QString("from%1 to%2").arg(road.m_pair.from).arg(road.m_pair.to);
-    int flag = 1;
-    //初始化的权重
-    if (this->arc[road.m_pair.from][road.m_pair.to].getDistance() == 0x7f7f7f7f) {
-        this->arc[road.m_pair.from][road.m_pair.to].setDistance(road.weight);
-        this->arc[road.m_pair.to][road.m_pair.from].setDistance(road.weight);
-        this->arc[road.m_pair.from][road.m_pair.to].setPair(Pair(road.m_pair.from, road.m_pair.to));
-        this->arc[road.m_pair.to][road.m_pair.from].setPair(Pair(road.m_pair.from, road.m_pair.to));
-        if (road.weight != 0) {
-            edge.push_back(road);
-            ++this->arcNum;
-            qDebug() << QString("add %1->%2  %3").arg(road.m_pair.from).arg(road.m_pair.to).arg(road.weight);
-        }
-    } else {
-        if (this->arc[road.m_pair.from][road.m_pair.to].getDistance() != 0) {
-            flag = 0;
-        }
+	int flag = 1;
+	//初始化的权重
+	if (this->arc[road.m_pair.from][road.m_pair.to].getDistance() == 0x7f7f7f7f) {
+		this->arc[road.m_pair.from][road.m_pair.to].setDistance(road.weight);
+		this->arc[road.m_pair.to][road.m_pair.from].setDistance(road.weight);
+		if (road.weight != 0) {
+			edge.push_back(road);
+			++this->arcNum;
+			qDebug() << QString("add %1->%2  %3").arg(road.m_pair.from).arg(road.m_pair.to).arg(road.weight);
+		}
+	} else {
+		if (this->arc[road.m_pair.from][road.m_pair.to].getDistance() != 0) {
+			flag = 0;
+		}
+		this->arc[road.m_pair.from][road.m_pair.to].setDistance(road.weight);
+		this->arc[road.m_pair.to][road.m_pair.from].setDistance(road.weight);
+		if (road.weight != 0 && flag) {
+			edge.push_back(road);
+			++this->arcNum;
+			qDebug() << QString("add %1->%2  %3").arg(road.m_pair.from).arg(road.m_pair.to).arg(road.weight);
+		} else if (!flag) {
+			int i(road.m_pair.from), j(road.m_pair.to);
+			Pair pair(i, j);
+			int result = -1;
+			for (int k = 0; k < this->edge.size(); ++k) {
+				if (i == j)
+					continue;
+				if (this->edge[k].m_pair == pair) {
+					result = k;
+					break;
+				}
+				if (this->edge[k].m_pair == Pair(j, i)) {
+					result = k;
+					break;
+				}
+			}
+			if (result != -1) {
+				edge[result].weight = road.weight;
+			}
 
-        this->arc[road.m_pair.from][road.m_pair.to].setDistance(road.weight);
-        this->arc[road.m_pair.to][road.m_pair.from].setDistance(road.weight);
-        this->arc[road.m_pair.from][road.m_pair.to].setPair(Pair(road.m_pair.from, road.m_pair.to));
-        this->arc[road.m_pair.to][road.m_pair.from].setPair(Pair(road.m_pair.from, road.m_pair.to));
-        if (road.weight != 0 && flag) {
-            edge.push_back(road);
-            ++this->arcNum;
-            qDebug() << QString("add %1->%2  %3").arg(road.m_pair.from).arg(road.m_pair.to).arg(road.weight);
-        } else if (!flag) {
-            int i(road.m_pair.from), j(road.m_pair.to);
-            Pair pair(i, j);
-            int result = -1;
-            for (int k = 0; k < this->edge.size(); ++k) {
-                if (i == j)
-                    continue;
-                if (this->edge[k].m_pair == pair) {
-                    result = k;
-                    break;
-                }
-                if (this->edge[k].m_pair == Pair(j, i)) {
-                    result = k;
-                    break;
-                }
-            }
-            if (result != -1) {
-                edge[result].weight = road.weight;
-            }
-
-        } else {
-            deleteArc(road.m_pair.from, road.m_pair.to);
-        }
-    }
+		} else {
+			deleteArc(road.m_pair.from, road.m_pair.to);
+		}
+	}
 	return OK;
 }
 
@@ -106,9 +114,9 @@ Status Graph::deleteArc(int start, int end) {
 	return deleteArc(pair);
 }
 
-Status Graph::deleteArc(const Pair& pair) {
-    this->arc[pair.from][pair.to].setDistance(0x7f7f7f7f);
-    this->arc[pair.to][pair.from].setDistance(0x7f7f7f7f);
+Status Graph::deleteArc(const Pair &pair) {
+	this->arc[pair.from][pair.to].setDistance(0x7f7f7f7f);
+	this->arc[pair.to][pair.from].setDistance(0x7f7f7f7f);
 
 	auto i = edge.begin();
 	for (; i != edge.end() && i->m_pair != pair; ++i);
@@ -116,26 +124,53 @@ Status Graph::deleteArc(const Pair& pair) {
 	return OK;
 }
 
-Status Graph::delVex(const QString& info) {
+Status Graph::delVex(const QString &info) {
 	int ff;  //寻找该顶点
-	for (ff = this->vertexes.size() - 1; ff < this->vexNum && this->vertexes[ff].info != info; --ff);
-	if (ff) {
+	for (ff = 0; ff < this->vexNum && this->vertexes[ff < this->vexNum ? ff : 0].info != info; ++ff);
+	if (ff < this->vexNum) {
 		if (!this->vexNum) {
 			return ERR;
+        }
+        //不能移除，，，应该置为-1 ，把后面的往前挪
+        for (int i = this->edge.size() - 1; i >= 0; --i) {
+			int from = this->edge[i].m_pair.from;
+			int to = this->edge[i].m_pair.to;
+			if (ff == from) {
+				this->deleteArc(from, to);
+				for (int k = 0; k < this->arc.size(); ++k) {
+					for (int l = ff; l < this->vertexes.size() - 1; ++l) {
+						this->arc[k][l].setDistance(this->arc[k][l + 1].getDistance());
+					}
+				}
+				for (int k = ff; k < this->vertexes.size() - 1; ++k) {
+					for (int l = 0; l < this->vertexes.size(); ++l) {
+						this->arc[k][l].setDistance(this->arc[k + 1][l].getDistance());
+					}
+				}
+			} else if (ff == to) {
+				this->deleteArc(from, to);
+				for (int k = 0; k < this->vertexes.size(); ++k) {
+					for (int l = ff; l < this->vertexes.size() - 1; ++l) {
+						this->arc[k][l].setDistance(this->arc[k][l + 1].getDistance());
+					}
+				}
+				for (int k = ff; k < this->vertexes.size() - 1; ++k) {
+					for (int l = 0; l < this->vertexes.size(); ++l) {
+						this->arc[k][l].setDistance(this->arc[k + 1][l].getDistance());
+					}
+				}
+			}
 		}
-
-		//不能移除，，，应该置为-1 ，把后面的往前挪
-		for (int i = this->vexNum - 1; i >= 0; --i) {
-			if (this->arc[i].size() > ff + 1)
-				this->arc[i].remove(ff);
-		}
-		this->arc.remove(ff);
 		this->vertexes.remove(ff);   //葱顶点集合中删除
 
-		for (auto i = edge.begin(); i != edge.end(); ++i) {
-			if (i->m_pair.from == ff || i->m_pair.to == ff) {
-				i = edge.erase(i);
-				--i;
+		for (int index = 0; index < edge.size(); ++index) {
+			int v1 = edge[index].m_pair.from;
+			int v2 = edge[index].m_pair.to;
+            if (v1 && v1 >= ff) {
+				--edge[index].m_pair.from;
+			}
+            if (v2 && v2 >= ff) {
+				--edge[index].m_pair.to;
 			}
 		}
 		--this->vexNum;
@@ -145,7 +180,7 @@ Status Graph::delVex(const QString& info) {
 	}
 }
 
-void Graph::init_from_file(const QString& fileName) {
+void Graph::init_from_file(const QString &fileName) {
 	qDebug() << "init from " << fileName;
 	std::ifstream in;
 	in.open(fileName.toStdString());
@@ -185,9 +220,9 @@ void Graph::init_from_file(const QString& fileName) {
 	}
 }
 
-QVector<QString> &Graph::findShortestRoad(int from, int to, QVector<int> &pos) {
+QVector<QString> &Graph::findShortestRoad(int from, int to, QVector<int> &path) {
 	ans.clear();
-	pos.clear();
+	path.clear();
 	QVector<int> dis(this->vexNum, 0x7f7f7f7f);
 	QQueue<int> queue;
 	queue.push_back(from);
@@ -218,14 +253,14 @@ QVector<QString> &Graph::findShortestRoad(int from, int to, QVector<int> &pos) {
 	if (dis[to] != 0x7f7f7f7f) {
 		QStack<QString> stack;
 		stack.push(this->vertexes[to].info);
-		pos.push_back(to);
+		path.push_back(to);
 		int index(to);
 		//寻找路径
 		while (index != from) {
 			for (index = 0; index < this->vexNum; ++index) {
 				if (dis[index] == dis[to] - this->arc[index][to].getWeight()) {
 					stack.push(this->vertexes[index].info);
-					pos.push_back(index);
+					path.push_back(index);
 					to = index;
 					if (index == from)
 						break;
@@ -353,8 +388,4 @@ Arc::Arc() {
 
 Arc::~Arc() {
 
-}
-
-void Arc::setPair(Pair pair) {
-	this->m_pair = pair;
 }

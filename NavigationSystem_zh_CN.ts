@@ -17,12 +17,12 @@
 <context>
     <name>GraphUi</name>
     <message>
-        <location filename="graphui.cpp" line="117"/>
+        <location filename="graphui.cpp" line="138"/>
         <source>warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="graphui.cpp" line="118"/>
+        <location filename="graphui.cpp" line="139"/>
         <source>no path from %1 to %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -32,6 +32,7 @@
     <message>
         <location filename="mainwindow.ui" line="14"/>
         <location filename="build/NavigationSystem_autogen/include/ui_mainwindow.h" line="50"/>
+        <location filename="cmake-build-debug/NavigationSystem_autogen/include/ui_mainwindow.h" line="53"/>
         <source>MainWindow</source>
         <translation type="unfinished"></translation>
     </message>
@@ -120,6 +121,19 @@
     <message>
         <location filename="mainwindow.cpp" line="194"/>
         <source>info</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>VertexDialog</name>
+    <message>
+        <location filename="vertexdialog.cpp" line="41"/>
+        <source>confirm to change the pos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="vertexdialog.cpp" line="45"/>
+        <source>delete the vertex on the line</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

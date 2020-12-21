@@ -144,7 +144,7 @@ MainWindow::MainWindow(QWidget *parent)
 	//更新列表的信号槽
 	connect(paintWidget, SIGNAL(updateList(QVector<QString>)), this,
 	        SLOT(updateListWidget(QVector<QString>)));
-	connect(this, SIGNAL(updateGraph()), paintWidget, SIGNAL(update()));
+	connect(this, &MainWindow::updateGraph, [&] () {paintWidget->update();});
 }
 
 MainWindow::~MainWindow() {
@@ -158,7 +158,7 @@ void MainWindow::comboBox1_triggered(int index) {
 
 // 编辑道路
 void MainWindow::action2_triggered() {
-	dialog1 = new EdgeDialog(paintWidget);
+	dialog1 = new EdgeDialog(paintWidget, this);
 	connect(dialog1, SIGNAL(updateGraph()), this, SLOT(updateWidget()));
 	dialog1->show();
 }
@@ -219,7 +219,5 @@ void MainWindow::updateWidget() {
 		comboBox1->addItem(paintWidget->getVExInfo(i));
 		comboBox2->addItem(paintWidget->getVExInfo(i));
 	}
-
-
 }
 
