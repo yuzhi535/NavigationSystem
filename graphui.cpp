@@ -124,7 +124,7 @@ QPoint GraphUi::getPos(int index) {
 void GraphUi::getShortestRoad(int from, int to) {
 	specialVertex.clear();   //清空原来的最短路径
 	QVector<int> uiVertexes;
-	graph.updateGraph(isGroup1 | isGroup2);
+    graph.updateGraph((isGroup1 - 1) || (isGroup2 - 1) ? 2 : 1);
 	QVector<QString> &orderedRoad = graph.findShortestRoad(from, to, uiVertexes);
 
 	if (!orderedRoad.empty()) {
