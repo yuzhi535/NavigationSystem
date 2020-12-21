@@ -74,3 +74,5 @@ Thumbs.db
 # custom directory
 ./cmake-build-debug/
 ./cmake-build-release/
+#cmake ignore
+*.txt.user
