@@ -76,3 +76,6 @@ Thumbs.db
 ./cmake-build-release/
 #cmake ignore
 *.txt.user
+/.vs
+/out/build
+/CMakeSettings.json
