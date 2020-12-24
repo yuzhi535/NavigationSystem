@@ -5,11 +5,11 @@
 #ifndef NAVIGATIONSYSTEM_GRAPH_H
 #define NAVIGATIONSYSTEM_GRAPH_H
 
-#include <QColor> //各种颜色表示不同
-#include <QMap>   //表示颜色
-#include <QPoint> //点的坐标
-#include <QQueue> //最短路径
-#include <QStack> //最短路径
+#include <QColor>//各种颜色表示不同
+#include <QMap>  //表示颜色
+#include <QPoint>//点的坐标
+#include <QQueue>//最短路径
+#include <QStack>//最短路径
 #include <QString>
 #include <QVector>
 #include <fstream>
@@ -20,7 +20,8 @@
 #define DEV 1
 
 enum Status {
-	OK, ERR
+	OK,
+	ERR
 };
 
 /**
@@ -31,7 +32,7 @@ struct Pair {
 
 	Pair() : Pair(-1, -1) {}
 
-	Pair(const Pair &other) : from(other.from), to(other.to) {} //拷贝构造函数
+	Pair(const Pair &other) : from(other.from), to(other.to) {}//拷贝构造函数
 
 	Pair(int a, int b) : from(a), to(b) {}
 
@@ -40,12 +41,12 @@ struct Pair {
 	}
 
 	bool operator!=(const Pair &other) const {
-        if (from == other.from && to == other.to) {
-            return 0;
-        } else if (from == other.to && to == other.from) {
-            return 0;
-        }
-        return 1;
+		if (from == other.from && to == other.to) {
+			return 0;
+		} else if (from == other.to && to == other.from) {
+			return 0;
+		}
+		return 1;
 	}
 };
 
@@ -59,7 +60,7 @@ struct Road {
 	Road() : Road(Pair(-1, -1), -1) {}
 
 	Road(const Road &other)
-			: m_pair(other.m_pair), weight(other.weight) {} //拷贝构造函数
+	    : m_pair(other.m_pair), weight(other.weight) {}//拷贝构造函数
 
 	Road(Pair pair, int w) : m_pair(pair), weight(w) {}
 
@@ -67,7 +68,8 @@ struct Road {
 
 	bool operator==(const Road &other) const {
 		return (this->m_pair == other.m_pair || (this->m_pair.to == other.m_pair.from &&
-		                                         this->m_pair.from == other.m_pair.to)) && this->weight == other.weight;
+		                                         this->m_pair.from == other.m_pair.to)) &&
+		       this->weight == other.weight;
 	}
 };
 
@@ -89,8 +91,8 @@ public:
 	int getWeight() const;
 
 private:
-	int distance; //距离
-	int m_weight; //最终的权重
+	int distance;//距离
+	int m_weight;//最终的权重
 #if DEV == 2
 	//实验性内容
 	int group;
@@ -148,7 +150,7 @@ public:
 
 	QVector<QString> &findShortestRoad(int from, int to, QVector<int> &path);
 
-	QVector<Road> edge; //有效顶点的集合   这里最好使用哈希表
+	QVector<Road> edge;//有效顶点的集合   这里最好使用哈希表
 
 	QPoint getVertex(int index);
 
@@ -159,10 +161,10 @@ public:
 	void setPos(int index, int x, int y);
 
 private:
-	QVector<QVector<Arc>> arc; //邻接矩阵
-	QVector<Vertex> vertexes;  //顶点集合
-	int vexNum, arcNum;        //顶点数量  边的数量
+	QVector<QVector<Arc>> arc;//邻接矩阵
+	QVector<Vertex> vertexes; //顶点集合
+	int vexNum, arcNum;       //顶点数量  边的数量
 	QVector<QString> ans;
 };
 
-#endif // NAVIGATIONSYSTEM_GRAPH_H
+#endif// NAVIGATIONSYSTEM_GRAPH_H

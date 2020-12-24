@@ -32,6 +32,12 @@
     <message>
         <location filename="mainwindow.ui" line="14"/>
         <location filename="cmake-build-debug/NavigationSystem_autogen/include/ui_mainwindow.h" line="50"/>
+        <location filename="cmake-build-debug-mingw/NavigationSystem_autogen/include/ui_mainwindow.h" line="50"/>
+        <location filename="cmake-build-debug-visual-studio/NavigationSystem_autogen/include/ui_mainwindow.h" line="50"/>
+        <location filename="out/build/x64-Clang-Debug/NavigationSystem_autogen/include/ui_mainwindow.h" line="50"/>
+        <location filename="out/build/x64-Debug (默认值)/NavigationSystem_autogen/include/ui_mainwindow.h" line="50"/>
+        <location filename="out/build/x64-Release/NavigationSystem_autogen/include/ui_mainwindow.h" line="50"/>
+        <location filename="out/build/x86-Release/NavigationSystem_autogen/include/ui_mainwindow.h" line="50"/>
         <source>MainWindow</source>
         <translation type="unfinished"></translation>
     </message>

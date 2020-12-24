@@ -16,7 +16,7 @@ QPoint Vertex::getPos() const {
 }
 
 Graph::Graph() {
-	this->arcNum = this->vexNum = 0;  //全部初始化为0
+	this->arcNum = this->vexNum = 0;//全部初始化为0
 	this->arc.resize(20);
 	for (int i = 0; i < 20; ++i) {
 		this->arc[i].resize(20);
@@ -41,7 +41,6 @@ void Graph::addVex(const QString &info, int x, int y) {
 			++this->vexNum;
 		}
 	}
-
 }
 
 Status Graph::addArc(int start, int end, int weight) {
@@ -119,20 +118,22 @@ Status Graph::deleteArc(const Pair &pair) {
 	this->arc[pair.to][pair.from].setDistance(0x7f7f7f7f);
 
 	auto i = edge.begin();
-	for (; i != edge.end() && i->m_pair != pair; ++i);
+	for (; i != edge.end() && i->m_pair != pair; ++i)
+		;
 	edge.erase(i);
 	return OK;
 }
 
 Status Graph::delVex(const QString &info) {
-	int ff;  //寻找该顶点
-	for (ff = 0; ff < this->vexNum && this->vertexes[ff < this->vexNum ? ff : 0].info != info; ++ff);
+	int ff;//寻找该顶点
+	for (ff = 0; ff < this->vexNum && this->vertexes[ff < this->vexNum ? ff : 0].info != info; ++ff)
+		;
 	if (ff < this->vexNum) {
 		if (!this->vexNum) {
 			return ERR;
-        }
-        //不能移除，，，应该置为-1 ，把后面的往前挪
-        for (int i = this->edge.size() - 1; i >= 0; --i) {
+		}
+		//不能移除，，，应该置为-1 ，把后面的往前挪
+		for (int i = this->edge.size() - 1; i >= 0; --i) {
 			int from = this->edge[i].m_pair.from;
 			int to = this->edge[i].m_pair.to;
 			if (ff == from) {
@@ -161,15 +162,15 @@ Status Graph::delVex(const QString &info) {
 				}
 			}
 		}
-		this->vertexes.remove(ff);   //葱顶点集合中删除
+		this->vertexes.remove(ff);//葱顶点集合中删除
 
 		for (int index = 0; index < edge.size(); ++index) {
 			int v1 = edge[index].m_pair.from;
 			int v2 = edge[index].m_pair.to;
-            if (v1 && v1 >= ff) {
+			if (v1 && v1 >= ff) {
 				--edge[index].m_pair.from;
 			}
-            if (v2 && v2 >= ff) {
+			if (v2 && v2 >= ff) {
 				--edge[index].m_pair.to;
 			}
 		}
@@ -214,7 +215,7 @@ void Graph::init_from_file(const QString &fileName) {
 
 	//录入边的权值  (距离)
 	for (int i = 0; i < arc_num; ++i) {
-		int j, k, l;  //顶点 顶点 距离
+		int j, k, l;//顶点 顶点 距离
 		in >> j >> k >> l;
 		this->addArc(j, k, l);
 	}
@@ -286,10 +287,10 @@ void Graph::updateGraph(int group) {
 	if (group == 1) {
 		for (int i = 0; i < this->vexNum; ++i) {
 			for (int j = 0; j < this->vexNum; ++j) {
-                int weight = this->arc[i][j].getDistance(), w;
-                w = this->arc[i][j].getWeight();
+				int weight = this->arc[i][j].getDistance(), w;
+				w = this->arc[i][j].getWeight();
 				this->arc[i][j].setWeight(weight);
-                Road road(i, j, w);
+				Road road(i, j, w);
 				auto result = this->edge.indexOf(road);
 				if (result != -1)
 					this->edge[result].weight = weight;
@@ -321,7 +322,6 @@ void Graph::updateGraph(int group) {
 				}
 			}
 		}
-
 	}
 }
 
@@ -388,5 +388,4 @@ Arc::Arc() {
 }
 
 Arc::~Arc() {
-
 }

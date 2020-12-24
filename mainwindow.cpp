@@ -191,7 +191,7 @@ void MainWindow::on_button_clicked() {
 		paintWidget->getShortestRoad(index1, index2);
 
 	} else {
-		QMessageBox::information(this, tr("info"), QString("<h2>起点和终点一样!</h2>"));
+        QMessageBox::information(this, tr("info"), QString("<h2>起点和终点相同！</h2>"));
 	}
 }
 
