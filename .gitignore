@@ -80,3 +80,4 @@ Thumbs.db
 /.vs
 /out/build
 /CMakeSettings.json
+/.idea/workspace.xml
