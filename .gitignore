@@ -74,6 +74,7 @@ Thumbs.db
 # custom directory
 ./cmake-build-debug/
 ./cmake-build-release/
+./.idea
 #cmake ignore
 *.txt.user
 /.vs
