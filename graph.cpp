@@ -8,6 +8,8 @@
 
 #include "graph.h"
 
+#define FAST 1
+
 void Vertex::setPos(QPoint pos) {
 	point = pos;
 }
@@ -214,24 +216,24 @@ void Graph::init_from_file(const QString &fileName) {
 		       "北门 259 111\n"      //15
 		       "0 1 12\n"            //liu he
 		       "1 2 24\n"            // he ju
-		       "2 3 12\n"             //ju song
+		       "2 3 12\n"            //ju song
 		       "1 4 12\n"            //he zhongxin
 		       "2 4 12\n"            //ju zhongxin
-		       "4 5 35\n"             //zhongxin nanhe
-		       "4 6 25\n"             //zhongxin zhonghe
-		       "4 7 35\n"             //zhongxin beihe
-		       "5 8 30\n"             //nanhe tushu
-		       "6 8 20\n"             //zhonghe tushu
-		       "7 8 30\n"             //beihe tushu
-		       "0 9 10\n"             //liu canting
-		       "1 10 10\n"            //he canting
-		       "2 11 10\n"            //ju canting
-		       "3 12 10\n"            //song canting
+		       "4 5 35\n"            //zhongxin nanhe
+		       "4 6 25\n"            //zhongxin zhonghe
+		       "4 7 35\n"            //zhongxin beihe
+		       "5 8 30\n"            //nanhe tushu
+		       "6 8 20\n"            //zhonghe tushu
+		       "7 8 30\n"            //beihe tushu
+		       "0 9 10\n"            //liu canting
+		       "1 10 10\n"           //he canting
+		       "2 11 10\n"           //ju canting
+		       "3 12 10\n"           //song canting
 		       "0 13 14\n"           //liu nan
 		       "8 14 9\n"            //tushu dongmen
-		       "3 15 20\n"            //song beimen
-		       "5 6 10\n"             //nanhe zhonghe
-		       "6 7 10\n";            //zhonghe beihe
+		       "3 15 20\n"           //song beimen
+		       "5 6 10\n"            //nanhe zhonghe
+		       "6 7 10\n";           //zhonghe beihe
 		out.close();
 		in.open(fileName.toStdString());
 	}
@@ -254,12 +256,17 @@ void Graph::init_from_file(const QString &fileName) {
 	}
 }
 
+/**
+  * @brief find the shortest road
+  * @note use the priority queue to accelerate it
+  * 
+  */
 QVector<QString> &Graph::findShortestRoad(int from, int to, QVector<int> &path) {
 	ans.clear();
 	path.clear();
 	QVector<int> dis(this->vexNum, 0x7f7f7f7f);
-	//QPriority
-	std::priority_queue<int> queue;
+#ifndef FAST
+	std::queue<int> queue;
 	queue.push(from);
 	//邻接矩阵的写法
 	//先把最近的初始化
@@ -284,6 +291,31 @@ QVector<QString> &Graph::findShortestRoad(int from, int to, QVector<int> &path) 
 			}
 		}
 	}
+#else
+	using pair = std::pair<int, int>;// first is distance, second is source
+	std::priority_queue<pair, std::vector<pair>, std::greater<pair>> queue;
+
+
+	queue.push(std::make_pair(0, from));
+	dis[from] = 0;
+
+	while (!queue.empty()) {
+		const pair &tmp = queue.top();
+		queue.pop();
+		int v = tmp.second;
+		if (dis[v] < tmp.first) {
+			continue;
+		}
+		for (int i = 0; i < this->vertexes.size(); ++i) {
+			int weight = arc[v][i].getWeight();
+			if (dis[v] + weight < dis[i]) {
+				dis[i] = dis[v] + weight;
+				queue.push(std::make_pair(dis[i], i));
+			}
+		}
+	}
+
+#endif
 
 	if (dis[to] != 0x7f7f7f7f) {
 		QStack<QString> stack;
