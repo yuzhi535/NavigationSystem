@@ -10,8 +10,8 @@ MainWindow::MainWindow(QWidget *parent)
 	this->setWindowTitle(tr("Navigation System"));
 	this->setStyleSheet("background-color: white; color:black"); //设置样式
 	//设置最小尺寸
-	this->setMinimumHeight(720);
-	this->setMinimumWidth(960);
+	this->setMinimumHeight(1000);
+	this->setMinimumWidth(1200);
 
 	//菜单栏待
 	edit = new QMenu(this);

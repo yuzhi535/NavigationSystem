@@ -4,6 +4,7 @@
 
 #include <QTime>
 #include <QtGlobal>
+#include <queue>
 
 #include "graph.h"
 
@@ -162,7 +163,7 @@ Status Graph::delVex(const QString &info) {
 				}
 			}
 		}
-		this->vertexes.remove(ff);//葱顶点集合中删除
+		this->vertexes.remove(ff);//从顶点集合中删除
 
 		for (int index = 0; index < edge.size(); ++index) {
 			int v1 = edge[index].m_pair.from;
@@ -181,6 +182,11 @@ Status Graph::delVex(const QString &info) {
 	}
 }
 
+/**
+ * @brief initialize from a file
+ * @mark 柳园 荷园 菊园 松园 中心体育馆 南核 中核 北核 图书馆 柳园餐厅 荷园餐厅 菊园餐厅 松园餐厅 南门 东门 北门
+ *       
+ */
 void Graph::init_from_file(const QString &fileName) {
 	qDebug() << "init from " << fileName;
 	std::ifstream in;
@@ -189,16 +195,43 @@ void Graph::init_from_file(const QString &fileName) {
 		in.close();
 		std::ofstream out;
 		out.open(fileName.toStdString());
-		out << "4 5\n"
-		       "a 1 234\n"
-		       "b 300 395\n"
-		       "c 455 600\n"
-		       "d 560 124\n"
-		       "0 1 12\n"
-		       "0 2 23\n"
-		       "0 3 1\n"
-		       "1 3 22\n"
-		       "1 2 11";
+		out << "16 20\n"
+		       "柳园 200 700\n"      //0
+		       "荷园 200 550\n"      //1
+		       "菊园 200 388\n"      //2
+		       "松园 200 222\n"      //3
+		       "中心体育馆 150 455\n"//4
+		       "南核 370 600\n"      //5
+		       "中核 370 450\n"      //6
+		       "北核 370 270\n"      //7
+		       "图书馆 555 450\n"    //8
+		       "柳园餐厅 11 690\n"   //9
+		       "荷园餐厅 11 500\n"   //10
+		       "菊园餐厅 11 370\n"   //11
+		       "松园餐厅 11 210\n"   //12
+		       "南门 280 750\n"      //13
+		       "东门 760 444\n"      //14
+		       "北门 259 111\n"      //15
+		       "0 1 12\n"            //liu he
+		       "1 2 24\n"            // he ju
+		       "2 3 12\n"             //ju song
+		       "1 4 12\n"            //he zhongxin
+		       "2 4 12\n"            //ju zhongxin
+		       "4 5 35\n"             //zhongxin nanhe
+		       "4 6 25\n"             //zhongxin zhonghe
+		       "4 7 35\n"             //zhongxin beihe
+		       "5 8 30\n"             //nanhe tushu
+		       "6 8 20\n"             //zhonghe tushu
+		       "7 8 30\n"             //beihe tushu
+		       "0 9 10\n"             //liu canting
+		       "1 10 10\n"            //he canting
+		       "2 11 10\n"            //ju canting
+		       "3 12 10\n"            //song canting
+		       "0 13 14\n"           //liu nan
+		       "8 14 9\n"            //tushu dongmen
+		       "3 15 20\n"            //song beimen
+		       "5 6 10\n"             //nanhe zhonghe
+		       "6 7 10\n";            //zhonghe beihe
 		out.close();
 		in.open(fileName.toStdString());
 	}
@@ -225,27 +258,28 @@ QVector<QString> &Graph::findShortestRoad(int from, int to, QVector<int> &path) 
 	ans.clear();
 	path.clear();
 	QVector<int> dis(this->vexNum, 0x7f7f7f7f);
-	QQueue<int> queue;
-	queue.push_back(from);
+	//QPriority
+	std::priority_queue<int> queue;
+	queue.push(from);
 	//邻接矩阵的写法
 	//先把最近的初始化
 	for (int i = 0; i < this->vexNum; ++i) {
 		if (this->arc[from][i].getWeight() != -1) {
 			dis[i] = this->arc[from][i].getWeight();
-			queue.push_back(i);
+			queue.push(i);
 		}
 	}
 	dis[from] = 0;
 
 	while (!queue.empty()) {
-		auto tmp = queue.front();
-		queue.pop_front();
+		auto tmp = queue.top();
+		queue.pop();
 		for (int i = 0; i < this->vexNum; ++i) {
 			int weight = arc[tmp][i].getWeight();
 			if (weight + dis[tmp] >= 0) {
 				if (dis[i] > dis[tmp] + weight) {
 					dis[i] = dis[tmp] + weight;
-					queue.push_back(i);
+					queue.push(i);
 				}
 			}
 		}

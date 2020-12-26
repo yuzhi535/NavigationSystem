@@ -2,11 +2,11 @@
 #include <QDebug>
 #include <QMessageBox>
 
-const int maxEdgeNum = 20;
+const int maxEdgeNum = 30;
 
 EdgeDialog::EdgeDialog(GraphUi *graphUi, QWidget *parent) {
-	this->setMinimumWidth(400);
-	this->setMinimumHeight(300);
+	this->setMinimumWidth(450);
+	this->setMinimumHeight(600);
 	ui = graphUi;
 	this->setStyleSheet("background-color:black");
 	layout = new QGridLayout(this);

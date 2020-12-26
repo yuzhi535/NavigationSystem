@@ -81,3 +81,5 @@ Thumbs.db
 /out/build
 /CMakeSettings.json
 /.idea/workspace.xml
+/.idea
+/cmake-build-debug
