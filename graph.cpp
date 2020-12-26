@@ -293,8 +293,7 @@ QVector<QString> &Graph::findShortestRoad(int from, int to, QVector<int> &path) 
 	}
 #else
 	using pair = std::pair<int, int>;// first is distance, second is source
-	std::priority_queue<pair, std::vector<pair>, std::greater<pair>> queue;
-
+	std::priority_queue<pair, std::vector<pair>, std::greater<pair>> queue;  // 最小堆
 
 	queue.push(std::make_pair(0, from));
 	dis[from] = 0;
