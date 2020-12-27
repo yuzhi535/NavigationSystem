@@ -10,6 +10,8 @@
 
 #define FAST 1
 
+const int maxArcSize = 20;
+
 void Vertex::setPos(QPoint pos) {
 	point = pos;
 }
@@ -20,9 +22,9 @@ QPoint Vertex::getPos() const {
 
 Graph::Graph() {
 	this->arcNum = this->vexNum = 0;//全部初始化为0
-	this->arc.resize(20);
-	for (int i = 0; i < 20; ++i) {
-		this->arc[i].resize(20);
+	this->arc.resize(maxArcSize);
+	for (int i = 0; i < maxArcSize; ++i) {
+		this->arc[i].resize(maxArcSize);
 	}
 }
 
