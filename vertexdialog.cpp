@@ -1,5 +1,6 @@
 #include "vertexdialog.h"
 #include <QTableWidgetSelectionRange>
+#include <QHeaderView>
 
 VertexDialog::VertexDialog(GraphUi *graphUi, QWidget *parent) : QDialog(parent) {
 	ui = graphUi;
@@ -13,11 +14,12 @@ VertexDialog::VertexDialog(GraphUi *graphUi, QWidget *parent) : QDialog(parent) 
 	layout->setVerticalSpacing(12);
 	layout->setHorizontalSpacing(20);
 	tableWidget = new QTableWidget(20, 4, this);
-	tableWidget->setStyleSheet("background-color:white;color: black; ");  //设计样式
 	QStringList header;
 	header << "vertex" << "description" << "x" << "y";
 
 	tableWidget->setHorizontalHeaderLabels(header);
+	tableWidget->setStyleSheet("background-color:white; color: black; ");  //设计样式
+    tableWidget->horizontalHeader()->setStyleSheet("background-color:white; color: black; ");
 	layout->addWidget(tableWidget, 0, 0, 10, -1);
 	for (int i = 0; i < graphUi->getVexNum(); ++i) {
 

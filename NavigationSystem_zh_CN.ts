@@ -4,12 +4,12 @@
 <context>
     <name>EdgeDialog</name>
     <message>
-        <location filename="edgedialog.cpp" line="28"/>
+        <location filename="edgedialog.cpp" line="30"/>
         <source>confirm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="edgedialog.cpp" line="29"/>
+        <location filename="edgedialog.cpp" line="31"/>
         <source>exit</source>
         <translation type="unfinished"></translation>
     </message>
@@ -129,12 +129,12 @@
 <context>
     <name>VertexDialog</name>
     <message>
-        <location filename="vertexdialog.cpp" line="41"/>
+        <location filename="vertexdialog.cpp" line="43"/>
         <source>confirm to change the pos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="vertexdialog.cpp" line="45"/>
+        <location filename="vertexdialog.cpp" line="47"/>
         <source>delete the vertex on the line</source>
         <translation type="unfinished"></translation>
     </message>

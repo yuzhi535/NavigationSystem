@@ -29,12 +29,13 @@ Graph::Graph() {
 Graph::~Graph() {
 	std::fstream ff;
 	ff.open("pre.txt", std::ios::out);
-	ff << this->vexNum  << ' '<< this->edge.size() << '\n';
+	ff << this->vexNum << ' ' << this->edge.size() << '\n';
 	for (int i = 0; i < this->vexNum; ++i) {
-		ff << this->vertexes[i].info.toStdString() << ' ' << this->vertexes[i].getPos().x() << ' ' << this->vertexes[i].getPos().y() << '\n';
+		ff << this->vertexes[i].info.toStdString() << ' ' << this->vertexes[i].getPos().x() << ' '
+		   << this->vertexes[i].getPos().y() << '\n';
 	}
 	for (int i = 0; i < this->edge.size(); ++i) {
-		ff << this->edge[i].m_pair.from << ' '<< this->edge[i].m_pair.to << ' ' << this->edge[i].weight << '\n';
+		ff << this->edge[i].m_pair.from << ' ' << this->edge[i].m_pair.to << ' ' << this->edge[i].weight << '\n';
 	}
 	ff.close();
 }
@@ -303,8 +304,8 @@ QVector<QString> &Graph::findShortestRoad(int from, int to, QVector<int> &path) 
 		}
 	}
 #else
-	using pair = std::pair<int, int>;// first is distance, second is source
-	std::priority_queue<pair, std::vector<pair>, std::greater<pair>> queue;  // 最小堆
+	using pair = std::pair<int, int>;                                      // first is distance, second is source
+	std::priority_queue<pair, std::vector<pair>, std::greater<pair>> queue;// 最小堆
 
 	queue.push(std::make_pair(0, from));
 	dis[from] = 0;

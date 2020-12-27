@@ -1,6 +1,7 @@
 #include "edgedialog.h"
 #include <QDebug>
 #include <QMessageBox>
+#include <QHeaderView>
 
 const int maxEdgeNum = 30;
 
@@ -8,7 +9,7 @@ EdgeDialog::EdgeDialog(GraphUi *graphUi, QWidget *parent) {
 	this->setMinimumWidth(450);
 	this->setMinimumHeight(600);
 	ui = graphUi;
-	this->setStyleSheet("background-color:black");
+	this->setStyleSheet("background-color:black; color:white");
 	layout = new QGridLayout(this);
 	// 设置布局
 	this->setLayout(layout);
@@ -16,10 +17,11 @@ EdgeDialog::EdgeDialog(GraphUi *graphUi, QWidget *parent) {
 	layout->setHorizontalSpacing(20);
 
 	tableWidget = new QTableWidget(maxEdgeNum, 3, this);
-	tableWidget->setStyleSheet("color: black; background-color:white");  //设计样式
 	QStringList header;
 	header << "from" << "to" << "weight";
 	tableWidget->setHorizontalHeaderLabels(header);
+	tableWidget->setStyleSheet("color: black; background-color:white");  //设计样式
+    tableWidget->horizontalHeader()->setStyleSheet("color: black; background-color:white");
 	//添加到布局
 	layout->addWidget(tableWidget, 0, 0, 10, -1);
 
