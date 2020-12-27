@@ -26,7 +26,18 @@ Graph::Graph() {
 	}
 }
 
-Graph::~Graph() = default;
+Graph::~Graph() {
+	std::fstream ff;
+	ff.open("pre.txt", std::ios::out);
+	ff << this->vexNum  << ' '<< this->edge.size() << '\n';
+	for (int i = 0; i < this->vexNum; ++i) {
+		ff << this->vertexes[i].info.toStdString() << ' ' << this->vertexes[i].getPos().x() << ' ' << this->vertexes[i].getPos().y() << '\n';
+	}
+	for (int i = 0; i < this->edge.size(); ++i) {
+		ff << this->edge[i].m_pair.from << ' '<< this->edge[i].m_pair.to << ' ' << this->edge[i].weight << '\n';
+	}
+	ff.close();
+}
 
 void Graph::addVex(const QString &info, int x, int y) {
 	if (x && y) {

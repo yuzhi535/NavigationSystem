@@ -13,7 +13,8 @@
 #include <QString>
 #include <QVector>
 #include <fstream>
-#include <iostream>
+#include <ostream>
+#include <istream>
 
 #include <QDebug>
 
