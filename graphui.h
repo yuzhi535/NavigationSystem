@@ -71,6 +71,8 @@ signals:
 
 	void updateList(QVector<QString> path);
 
+	void tips();
+
 public slots:
 
 

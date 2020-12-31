@@ -170,6 +170,7 @@ void GraphUi::setVexInfo(int index1, const QString &tip, const QString &info, in
 		this->graph.addArc(i, j, w);
 	} else {
 		qDebug() << QString("cannot find this vertex %1").arg(info);
+		emit tips();
 	}
 }
 

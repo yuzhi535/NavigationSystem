@@ -80,6 +80,7 @@ EdgeDialog::EdgeDialog(GraphUi *graphUi, QWidget *parent) {
 	}
 
 	connect(tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(onTableItemChanged(int, int)));
+	connect(ui, SIGNAL(tips()), this, SLOT(tips()));
 }
 
 void EdgeDialog::on_button_1_clicked() {
@@ -94,7 +95,7 @@ void EdgeDialog::on_button_1_clicked() {
 				qDebug() << "edit a new vertex";
 				if (ui->getVexIndex(col1[i].second) == -1) {
 					ui->addVex(col1[i].second);
-                }
+				}
 			}
 			flag1[i] = true;
 		}
@@ -161,4 +162,8 @@ void EdgeDialog::onTableItemChanged(int row, int column) {
 		default:
 			qDebug() << "test";
 	}
+}
+
+void EdgeDialog::tips() {
+	QMessageBox::information(this, "tips", "<h3>cannot add a new vertex in this way!</h3>");
 }

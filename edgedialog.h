@@ -26,6 +26,8 @@ public slots:
 
 	void onTableItemChanged(int row, int column);
 
+	void tips();
+
 private:
 	QTableWidget *tableWidget;
 	QGridLayout *layout;
