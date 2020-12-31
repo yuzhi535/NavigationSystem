@@ -36,6 +36,7 @@ Graph::~Graph() {
 		ff << this->vertexes[i].info.toStdString() << ' ' << this->vertexes[i].getPos().x() << ' '
 		   << this->vertexes[i].getPos().y() << '\n';
 	}
+	updateGraph(1);
 	for (int i = 0; i < this->edge.size(); ++i) {
 		ff << this->edge[i].m_pair.from << ' ' << this->edge[i].m_pair.to << ' ' << this->edge[i].weight << '\n';
 	}
@@ -341,11 +342,11 @@ QVector<QString> &Graph::findShortestRoad(int from, int to, QVector<int> &path) 
 	}
 
 #endif
-	#ifdef DEV
+#ifndef DEV
 	for (int i = 0; i < dis.size(); ++i) {
 		qDebug() << QString("%1   %2").arg(this->vertexes[i].info).arg(dis[i]);
 	}
-	#endif
+#endif
 
 	if (dis[to] != 0x7f7f7f7f) {
 		QStack<QString> stack;
