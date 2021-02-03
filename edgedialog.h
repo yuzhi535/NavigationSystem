@@ -16,6 +16,7 @@ public:
 	explicit EdgeDialog(GraphUi *graphUi, QWidget *parent = nullptr);
 
 signals:
+
 	void updateGraph();
 
 public slots:

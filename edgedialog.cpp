@@ -89,8 +89,8 @@ void EdgeDialog::on_button_1_clicked() {
 		// 对顶点的更改
 		//如果顶点名称第一个和第二个不一样，则更改顶点
 		if (col1[i].first != col1[i].second) {
-            if (col1[i].first != "") {  //改变已有的顶点
-                ui->setVexInfo(i, col2[i].second, col1[i].second, col3[i].second);
+			if (col1[i].first != "") {  //改变已有的顶点
+				ui->setVexInfo(i, col2[i].second, col1[i].second, col3[i].second);
 			} else {
 				qDebug() << "edit a new vertex";
 				if (ui->getVexIndex(col1[i].second) == -1) {
@@ -102,13 +102,13 @@ void EdgeDialog::on_button_1_clicked() {
 //		 改变顶点
 		if (col2[i].first != col2[i].second) {
 
-            if (col2[i].first != "") { //改已有的顶点
-                ui->setVexInfo(i, col1[i].second, col2[i].second, col3[i].second);
+			if (col2[i].first != "") { //改已有的顶点
+				ui->setVexInfo(i, col1[i].second, col2[i].second, col3[i].second);
 			} else {
 				qDebug() << "edi a new vertex";
-                if (ui->getVexIndex(col2[i].second) == -1) {
-                    ui->addVex(col2[i].second);
-                }
+				if (ui->getVexIndex(col2[i].second) == -1) {
+					ui->addVex(col2[i].second);
+				}
 			}
 			flag2[i] = true;
 		}
@@ -125,7 +125,7 @@ void EdgeDialog::on_button_1_clicked() {
 			}
 			int index1, index2;
 			qDebug() << QString("col1=%1 col2=%2").arg(col1[i].second).arg(col2[i].second);
-            //找到下标
+			//找到下标
 			index1 = ui->getVexIndex(col1[i].second);
 			index2 = ui->getVexIndex(col2[i].second);
 			qDebug() << QString("index1=%1,index2=%2,weight=%3").arg(index1).arg(index2).arg(col3[i].second);

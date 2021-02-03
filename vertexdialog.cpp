@@ -4,7 +4,7 @@
 
 VertexDialog::VertexDialog(GraphUi *graphUi, QWidget *parent) : QDialog(parent) {
 	ui = graphUi;
-    isValid = true;
+	isValid = true;
 
 	this->setMinimumWidth(600);
 	this->setMinimumHeight(450);
@@ -19,22 +19,22 @@ VertexDialog::VertexDialog(GraphUi *graphUi, QWidget *parent) : QDialog(parent) 
 
 	tableWidget->setHorizontalHeaderLabels(header);
 	tableWidget->setStyleSheet("background-color:white; color: black; ");  //设计样式
-    tableWidget->horizontalHeader()->setStyleSheet("background-color:white; color: black; ");
+	tableWidget->horizontalHeader()->setStyleSheet("background-color:white; color: black; ");
 	layout->addWidget(tableWidget, 0, 0, 10, -1);
 	for (int i = 0; i < graphUi->getVexNum(); ++i) {
 
-        //设置点的信息不可编辑
-        QTableWidgetItem *item1 = new QTableWidgetItem(QString("%1").arg(i));
-        item1->setBackground(QBrush(QColor(Qt::lightGray)));
-        item1->setFlags(item1->flags() & (~Qt::ItemIsEditable));
-        tableWidget->setItem(i, 0, item1);
+		//设置点的信息不可编辑
+		QTableWidgetItem *item1 = new QTableWidgetItem(QString("%1").arg(i));
+		item1->setBackground(QBrush(QColor(Qt::lightGray)));
+		item1->setFlags(item1->flags() & (~Qt::ItemIsEditable));
+		tableWidget->setItem(i, 0, item1);
 
-        QTableWidgetItem *item2 = new QTableWidgetItem(QString("%1").arg(graphUi->getVExInfo(i)));
-        item2->setBackground(QBrush(QColor(Qt::lightGray)));
-        item2->setFlags(item2->flags() & (~Qt::ItemIsEditable));
-        tableWidget->setItem(i, 1, item2);
+		QTableWidgetItem *item2 = new QTableWidgetItem(QString("%1").arg(graphUi->getVExInfo(i)));
+		item2->setBackground(QBrush(QColor(Qt::lightGray)));
+		item2->setFlags(item2->flags() & (~Qt::ItemIsEditable));
+		tableWidget->setItem(i, 1, item2);
 
-        //添加坐标
+		//添加坐标
 		tableWidget->setItem(i, 2, new QTableWidgetItem(QString("%1").arg(graphUi->getPos(i).x())));
 		tableWidget->setItem(i, 3, new QTableWidgetItem(QString("%1").arg(graphUi->getPos(i).y())));
 	}
@@ -49,8 +49,8 @@ VertexDialog::VertexDialog(GraphUi *graphUi, QWidget *parent) : QDialog(parent) 
 
 
 	connect(tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(setPos(int, int)));
-    connect(this, &VertexDialog::updateGraph,
-            [&] () {ui->update();});
+	connect(this, &VertexDialog::updateGraph,
+	        [&]() { ui->update(); });
 	connect(button2, SIGNAL(clicked(bool)), this, SLOT(on_button2_clicked()));
 	connect(button1, SIGNAL(clicked(bool)), this, SLOT(close()));
 }
@@ -62,17 +62,17 @@ void VertexDialog::setPos(int row, int col) {
 		emit updateGraph();
 	} else {
 		QMessageBox::information(this, "info", "you can only change the pos");
-        isValid = false;
+		isValid = false;
 	}
 }
 
 void VertexDialog::on_button2_clicked() {
 	int index = this->tableWidget->currentRow();
-    if (index < ui->getVexNum()) {
-        if (this->tableWidget->item(index, 1)->text() != "" && isValid) {
-            this->ui->delVex(this->tableWidget->item(index, 1)->text());
-        }
-    }
+	if (index < ui->getVexNum()) {
+		if (this->tableWidget->item(index, 1)->text() != "" && isValid) {
+			this->ui->delVex(this->tableWidget->item(index, 1)->text());
+		}
+	}
 	emit updateGraph();
-    close();
+	close();
 }

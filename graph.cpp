@@ -139,8 +139,7 @@ Status Graph::deleteArc(const Pair &pair) {
 	this->arc[pair.to][pair.from].setDistance(0x7f7f7f7f);
 
 	auto i = edge.end() - 1;
-	for (; i != edge.begin() && i->m_pair != pair; --i)
-		;
+	for (; i != edge.begin() && i->m_pair != pair; --i);
 	edge.erase(i);
 	--this->arcNum;
 	return OK;
@@ -148,8 +147,7 @@ Status Graph::deleteArc(const Pair &pair) {
 
 Status Graph::delVex(const QString &info) {
 	int ff;//寻找该顶点
-	for (ff = 0; ff < this->vexNum && this->vertexes[ff < this->vexNum ? ff : 0].info != info; ++ff)
-		;
+	for (ff = 0; ff < this->vexNum && this->vertexes[ff < this->vexNum ? ff : 0].info != info; ++ff);
 	if (ff < this->vexNum) {
 		if (!this->vexNum) {
 			return ERR;

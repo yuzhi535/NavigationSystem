@@ -61,7 +61,7 @@ struct Road {
 	Road() : Road(Pair(-1, -1), -1) {}
 
 	Road(const Road &other)
-	    : m_pair(other.m_pair), weight(other.weight) {}//拷贝构造函数
+			: m_pair(other.m_pair), weight(other.weight) {}//拷贝构造函数
 
 	Road(Pair pair, int w) : m_pair(pair), weight(w) {}
 

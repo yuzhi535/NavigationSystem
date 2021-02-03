@@ -144,7 +144,7 @@ MainWindow::MainWindow(QWidget *parent)
 	//更新列表的信号槽
 	connect(paintWidget, SIGNAL(updateList(QVector<QString>)), this,
 	        SLOT(updateListWidget(QVector<QString>)));
-	connect(this, &MainWindow::updateGraph, [&] () {paintWidget->update();});
+	connect(this, &MainWindow::updateGraph, [&]() { paintWidget->update(); });
 }
 
 MainWindow::~MainWindow() {
@@ -191,7 +191,7 @@ void MainWindow::on_button_clicked() {
 		paintWidget->getShortestRoad(index1, index2);
 
 	} else {
-        QMessageBox::information(this, tr("info"), QString("<h2>起点和终点相同！</h2>"));
+		QMessageBox::information(this, tr("info"), QString("<h2>起点和终点相同！</h2>"));
 	}
 }
 
