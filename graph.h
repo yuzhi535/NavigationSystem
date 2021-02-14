@@ -43,12 +43,12 @@ struct Pair {
 	}
 
 	bool operator!=(const Pair &other) const {
-		if (from == other.from && to == other.to) {
-			return 0;
-		} else if (from == other.to && to == other.from) {
-			return 0;
+		if (other.from == from && other.to == to) {
+			return false;
+		} else if (other.to == from && other.from == to) {
+			return false;
 		}
-		return 1;
+		return true;
 	}
 };
 
@@ -64,7 +64,7 @@ struct Road {
 	Road(const Road &other)
 			: m_pair(other.m_pair), weight(other.weight) {}//拷贝构造函数
 
-	Road(Pair pair, int w) : m_pair(pair), weight(w) {}
+	Road(const Pair& pair, int w) : m_pair(pair), weight(w) {}
 
 	Road(int a, int b, int c) : m_pair(a, b), weight(c) {}
 
