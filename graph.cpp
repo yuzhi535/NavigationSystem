@@ -5,7 +5,6 @@
 #include <QTime>
 #include <QtGlobal>
 #include <queue>
-#include <QtGlobal>
 #include <QRandomGenerator>
 
 
@@ -40,8 +39,8 @@ Graph::~Graph() {
 		   << this->vertexes[i].getPos().y() << '\n';
 	}
 	updateGraph(1);
-	for (int i = 0; i < this->edge.size(); ++i) {
-		ff << this->edge[i].m_pair.from << ' ' << this->edge[i].m_pair.to << ' ' << this->edge[i].weight << '\n';
+	for (auto &i : this->edge) {
+		ff << i.m_pair.from << ' ' << i.m_pair.to << ' ' << i.weight << '\n';
 	}
 	ff.close();
 }
@@ -161,9 +160,9 @@ Status Graph::delVex(const QString &info) {
 			int to = this->edge[i].m_pair.to;
 			if (ff == from) {
 				this->deleteArc(from, to);
-				for (int k = 0; k < this->arc.size(); ++k) {
+				for (auto &k : this->arc) {
 					for (int l = ff; l < this->vertexes.size() - 1; ++l) {
-						this->arc[k][l].setDistance(this->arc[k][l + 1].getDistance());
+						k[l].setDistance(k[l + 1].getDistance());
 					}
 				}
 				for (int k = ff; k < this->vertexes.size() - 1; ++k) {
@@ -187,14 +186,14 @@ Status Graph::delVex(const QString &info) {
 		}
 		this->vertexes.remove(ff);//从顶点集合中删除
 
-		for (int index = 0; index < edge.size(); ++index) {
-			int v1 = edge[index].m_pair.from;
-			int v2 = edge[index].m_pair.to;
+		for (auto &index : edge) {
+			int v1 = index.m_pair.from;
+			int v2 = index.m_pair.to;
 			if (v1 && v1 >= ff) {
-				--edge[index].m_pair.from;
+				--index.m_pair.from;
 			}
 			if (v2 && v2 >= ff) {
-				--edge[index].m_pair.to;
+				--index.m_pair.to;
 			}
 		}
 		--this->vexNum;
@@ -396,36 +395,36 @@ void Graph::updateGraph(int group) {
 			}
 		}
 	} else {
-        QRandomGenerator generator;
-        generator.seed(QTime(0, 0, 0).secsTo(QTime::currentTime()));
+		QRandomGenerator generator;
+		generator.seed(QTime(0, 0, 0).secsTo(QTime::currentTime()));
 
-        for (int i = 0; i < this->vexNum; ++i) {
-            for (int j = 0; j < this->vexNum; ++j) {
-                int weight = generator.generate() % 180 + this->arc[i][j].getDistance();
-                this->arc[i][j].setWeight(weight);
-                Pair pair(i, j);
-                int result = -1;
-                for (int k = 0; k < this->edge.size(); ++k) {
-                    if (i == j)
-                        continue;
-                    if (this->edge[k].m_pair == pair) {
-                        result = k;
-                        break;
-                    }
-                    if (this->edge[k].m_pair == Pair(j, i)) {
-                        result = k;
-                        break;
-                    }
-                }
-                if (result != -1) {
-                    this->edge[result].weight = weight;
-                }
-            }
-        }
+		for (int i = 0; i < this->vexNum; ++i) {
+			for (int j = 0; j < this->vexNum; ++j) {
+				int weight = generator.bounded(180) + this->arc[i][j].getDistance();
+				this->arc[i][j].setWeight(weight);
+				Pair pair(i, j);
+				int result = -1;
+				for (int k = 0; k < this->edge.size(); ++k) {
+					if (i == j)
+						continue;
+					if (this->edge[k].m_pair == pair) {
+						result = k;
+						break;
+					}
+					if (this->edge[k].m_pair == Pair(j, i)) {
+						result = k;
+						break;
+					}
+				}
+				if (result != -1) {
+					this->edge[result].weight = weight;
+				}
+			}
+		}
 	}
 }
 
-int Graph::getVexNum() {
+int Graph::getVexNum() const {
 	return this->vexNum;
 }
 
@@ -435,29 +434,6 @@ QPoint Graph::getVertex(int index) {
 
 QString Graph::getInfo(int index) {
 	return this->vertexes[index].info;
-}
-
-//void Graph::setInfo(int index, QString info) {
-//	int i = 0;
-//	for (; i < this->vertexes.size() && this->vertexes[i].info != info; ++i);
-//    //如果找不到点
-//    if (i == this->vertexes.size()) {
-//        addVex(info, this->vertexes[index].getPos().x(), this->vertexes[index].getPos().y());
-//        delVex(getInfo(index));
-//    } else { //如果找到了这个点
-////        this->deleteArc();
-////        this->addArc();
-//	}
-//}
-
-int Graph::getIndex(QString info) {
-	int vex_num = this->vertexes.size();
-	for (int i = 0; i < vex_num; ++i) {
-		if (info == this->vertexes[i].info) {
-			return i;
-		}
-	}
-	return -1;
 }
 
 void Graph::setPos(int index, int x, int y) {
@@ -487,5 +463,4 @@ Arc::Arc() {
 	distance = 0x7f7f7f7f;
 }
 
-Arc::~Arc() {
-}
+Arc::~Arc() = default;

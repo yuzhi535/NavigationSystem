@@ -17,6 +17,7 @@
 #include <istream>
 
 #include <QDebug>
+#include <utility>
 
 #define DEV 1
 
@@ -93,7 +94,7 @@ public:
 
 private:
 	int distance;//距离
-	int m_weight;//最终的权重
+	int m_weight{};//最终的权重
 #if DEV == 2
 	//实验性内容
 	int group;
@@ -107,7 +108,7 @@ public:
 
 	Vertex() = default;
 
-	Vertex(QString context, int x, int y) : info(context), point(x, y) {}
+	Vertex(QString context, int x, int y) : info(std::move(context)), point(x, y) {}
 
 	void setPos(QPoint pos);
 
@@ -131,7 +132,7 @@ public:
 
 	void updateGraph(int group);
 
-	int getVexNum();
+	int getVexNum() const;
 
 	//添加顶点
 	void addVex(const QString &info, int x, int y);
@@ -156,8 +157,6 @@ public:
 	QPoint getVertex(int index);
 
 	QString getInfo(int index);
-
-	int getIndex(QString info);
 
 	void setPos(int index, int x, int y);
 

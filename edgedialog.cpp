@@ -84,7 +84,7 @@ EdgeDialog::EdgeDialog(GraphUi *graphUi, QWidget *parent) {
 }
 
 void EdgeDialog::on_button_1_clicked() {
-	bool flag1[maxEdgeNum] = {0}, flag2[maxEdgeNum] = {0};
+	bool flag1[maxEdgeNum] = {false}, flag2[maxEdgeNum] = {false};
 	for (int i = 0; i < maxEdgeNum; ++i) {
 		// 对顶点的更改
 		//如果顶点名称第一个和第二个不一样，则更改顶点

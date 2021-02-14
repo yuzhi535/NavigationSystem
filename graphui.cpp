@@ -1,11 +1,7 @@
 #include "graphui.h"
 
 /**
- * @brief 初始化图   OK
- * @brief 完善绘图   OK
- * @brief 完善颜色   OK
- * @brief 最好加上鼠标移动顶点
- * @brief 最好加上添加顶点和边，这个功能需要信号槽传递了   OK
+ * @TODO 最好加上鼠标移动顶点
  * @param parent
  */
 GraphUi::GraphUi(QWidget *parent)

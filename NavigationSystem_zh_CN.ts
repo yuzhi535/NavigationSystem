@@ -19,13 +19,13 @@
 <context>
     <name>GraphUi</name>
     <message>
-        <location filename="graphui.cpp" line="138"/>
+        <location filename="graphui.cpp" line="134"/>
         <source>warning</source>
         <translatorcomment>警告</translatorcomment>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="graphui.cpp" line="139"/>
+        <location filename="graphui.cpp" line="135"/>
         <source>no path from %1 to %2</source>
         <translation></translation>
     </message>
