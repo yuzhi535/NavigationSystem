@@ -5,6 +5,9 @@
 #include <QTime>
 #include <QtGlobal>
 #include <queue>
+#include <QtGlobal>
+#include <QRandomGenerator>
+
 
 #include "graph.h"
 
@@ -394,30 +397,32 @@ void Graph::updateGraph(int group) {
 		}
 
 	} else {
-		qsrand(QTime(0, 0, 0).secsTo(QTime::currentTime()));
-		for (int i = 0; i < this->vexNum; ++i) {
-			for (int j = 0; j < this->vexNum; ++j) {
-				int weight = qrand() % 180 + this->arc[i][j].getDistance();
-				this->arc[i][j].setWeight(weight);
-				Pair pair(i, j);
-				int result = -1;
-				for (int k = 0; k < this->edge.size(); ++k) {
-					if (i == j)
-						continue;
-					if (this->edge[k].m_pair == pair) {
-						result = k;
-						break;
-					}
-					if (this->edge[k].m_pair == Pair(j, i)) {
-						result = k;
-						break;
-					}
-				}
-				if (result != -1) {
-					this->edge[result].weight = weight;
-				}
-			}
-		}
+        QRandomGenerator generator;
+        generator.seed(QTime(0, 0, 0).secsTo(QTime::currentTime()));
+
+        for (int i = 0; i < this->vexNum; ++i) {
+            for (int j = 0; j < this->vexNum; ++j) {
+                int weight = generator.generate() % 180 + this->arc[i][j].getDistance();
+                this->arc[i][j].setWeight(weight);
+                Pair pair(i, j);
+                int result = -1;
+                for (int k = 0; k < this->edge.size(); ++k) {
+                    if (i == j)
+                        continue;
+                    if (this->edge[k].m_pair == pair) {
+                        result = k;
+                        break;
+                    }
+                    if (this->edge[k].m_pair == Pair(j, i)) {
+                        result = k;
+                        break;
+                    }
+                }
+                if (result != -1) {
+                    this->edge[result].weight = weight;
+                }
+            }
+        }
 	}
 }
 
