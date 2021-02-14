@@ -395,7 +395,6 @@ void Graph::updateGraph(int group) {
 					this->edge[result].weight = weight;
 			}
 		}
-
 	} else {
         QRandomGenerator generator;
         generator.seed(QTime(0, 0, 0).secsTo(QTime::currentTime()));
