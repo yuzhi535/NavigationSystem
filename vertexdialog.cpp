@@ -76,3 +76,9 @@ void VertexDialog::on_button2_clicked() {
 	emit updateGraph();
 	close();
 }
+
+VertexDialog::~VertexDialog() {
+    delete tableWidget;
+    delete button1;
+    delete button2;
+}

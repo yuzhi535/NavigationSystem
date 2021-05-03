@@ -15,6 +15,10 @@ Q_OBJECT
 public:
 	explicit EdgeDialog(GraphUi *graphUi, QWidget *parent = nullptr);
 
+    EdgeDialog(const EdgeDialog& another) = delete;
+
+    ~EdgeDialog();
+
 signals:
 
 	void updateGraph();

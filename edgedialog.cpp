@@ -167,3 +167,10 @@ void EdgeDialog::onTableItemChanged(int row, int column) {
 void EdgeDialog::tips() {
 	QMessageBox::information(this, "tips", "<h3>cannot add a new vertex in this way!</h3>");
 }
+
+EdgeDialog::~EdgeDialog() {
+    delete tableWidget;
+    delete layout;
+    delete button1;
+    delete button2;
+}

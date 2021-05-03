@@ -14,6 +14,10 @@ Q_OBJECT
 public:
 	explicit VertexDialog(GraphUi *graphUi, QWidget *parent = nullptr);
 
+    VertexDialog(const VertexDialog& another) = delete;
+
+    ~VertexDialog();
+
 signals:
 
 	void updateGraph();
